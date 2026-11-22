@@ -32,7 +32,7 @@ export default function GoalsScreen() {
           </HeaderAction>
         }
       />
-      <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
         {/* -------- Em cima: este mês -------- */}
         <section className="space-y-4 lg:col-span-6" aria-label="Este mês">
           {state.monthCap > 0 ? (
@@ -87,7 +87,7 @@ export default function GoalsScreen() {
                   const done = p >= 100
                   return (
                     <li key={g.id} className="flex items-center gap-4 rounded-tile bg-gm-surface shadow-soft p-4 pl-5">
-                      <button onClick={() => nav.open({ kind: 'goal', goal: g })} className="min-w-0 flex-1 cursor-pointer text-left">
+                      <button onClick={() => nav.open({ kind: 'goalDetail', goalId: g.id })} aria-label={`Ver ${g.name}`} className="min-w-0 flex-1 cursor-pointer text-left">
                         <span className="flex items-baseline justify-between gap-3">
                           <span className="flex min-w-0 items-center gap-2">
                             <span className="truncate text-[16px] font-bold">{g.name}</span>
@@ -149,7 +149,7 @@ function FeaturedGoal() {
         </Ring>
         <div className="min-w-0">
           <span className="mb-2 inline-grid size-9 place-items-center rounded-full bg-gm-lilac text-gm-on"><Plane size={17} /></span>
-          <button onClick={() => nav.open({ kind: 'goal', goal: g })} className="block cursor-pointer text-left text-[20px] font-bold leading-tight tracking-[-0.02em] underline-offset-4 hover:underline">{g.name}</button>
+          <button onClick={() => nav.open({ kind: 'goalDetail', goalId: g.id })} className="block cursor-pointer text-left text-[20px] font-bold leading-tight tracking-[-0.02em] underline-offset-4 hover:underline">{g.name}</button>
           {g.date && <p className="text-[13px] text-gm-secondary">{formatGoalDate(g.date)}</p>}
         </div>
       </div>
@@ -168,7 +168,10 @@ function FeaturedGoal() {
           {perMonth > 0 && <> · <b className="text-gm-text num">{fmt(perMonth, true)}/mês</b> por {months} {months === 1 ? 'mês' : 'meses'}</>}
         </p>
       )}
-      {!done && <Button className="mt-6 w-full" onClick={() => nav.open({ kind: 'deposit', goalId: g.id, amount: 500 })}>Guardar R$ 500</Button>}
+      <div className={cx('mt-6 grid gap-3', !done && 'grid-cols-[1fr_auto]')}>
+        {!done && <Button onClick={() => nav.open({ kind: 'deposit', goalId: g.id, amount: 500 })}>Guardar R$ 500</Button>}
+        <Button variant="secondary" onClick={() => nav.open({ kind: 'goalDetail', goalId: g.id })}>{done ? 'Ver depósitos' : 'Detalhes'}</Button>
+      </div>
     </article>
   )
 }

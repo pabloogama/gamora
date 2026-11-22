@@ -3,6 +3,7 @@ import { userEvent, within } from 'storybook/test'
 import { Dock, TopBand, TopBar } from '@/components/layout/AppChrome'
 import HomeScreen from '@/features/home/HomeScreen'
 import CardsScreen from '@/features/cards/CardsScreen'
+import TransactionsScreen from '@/features/transactions/TransactionsScreen'
 import GoalsScreen from '@/features/goals/GoalsScreen'
 import InvoiceScreen from '@/features/invoice/InvoiceScreen'
 import AssistantScreen from '@/features/assistant/AssistantScreen'
@@ -35,6 +36,8 @@ type S = StoryObj
 
 export const Home: S = { parameters: { view: 'home' }, render: () => <Shell><HomeScreen /></Shell> }
 export const HomeContaNova: S = { name: 'Home · conta nova (vazia)', parameters: { view: 'home', state: emptyDemo() }, render: () => <Shell><HomeScreen /></Shell> }
+export const Extrato: S = { name: 'Extrato (todos os lançamentos)', parameters: { view: 'transactions' }, render: () => <Shell><TransactionsScreen /></Shell> }
+export const ExtratoVazio: S = { name: 'Extrato · conta nova', parameters: { view: 'transactions', state: emptyDemo() }, render: () => <Shell><TransactionsScreen /></Shell> }
 export const Cartoes: S = { name: 'Cartões', parameters: { view: 'cards' }, render: () => <Shell><CardsScreen /></Shell> }
 export const Metas: S = { parameters: { view: 'goals' }, render: () => <Shell><GoalsScreen /></Shell> }
 export const Fatura: S = { name: 'Fatura · enviar', parameters: { view: 'invoice' }, render: () => <Shell><InvoiceScreen /></Shell> }

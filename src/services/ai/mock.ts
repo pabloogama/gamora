@@ -7,6 +7,7 @@ import type { CategoryId, InvoiceItem, InvoiceResult, State } from '@/types/fina
 import { CATEGORIES } from '@/types/finance'
 import { money, toISODate, uid } from '@/lib/format'
 import { monthsUntil } from '@/lib/goals'
+import { dueLabel } from '@/lib/cards'
 
 const wait = (ms: number, signal?: AbortSignal) =>
   new Promise<void>((resolve, reject) => {
@@ -123,7 +124,7 @@ export async function mockAsk(question: string, s: State, signal?: AbortSignal):
     const c = s.cards[0]
     if (!c) return 'Você ainda não cadastrou cartões.'
     const total = s.cards.reduce((a, x) => a + x.invoice, 0)
-    return `${c.nickname}: fatura de ${money(c.invoice)}, ${Math.round((c.invoice / c.limit) * 100)}% do limite, vence em ${c.dueInDays} dias. Somando todos os cartões: ${money(total)}.`
+    return `${c.nickname}: fatura de ${money(c.invoice)}, ${Math.round((c.invoice / c.limit) * 100)}% do limite, vence ${dueLabel(c)}. Somando todos os cartões: ${money(total)}.`
   }
   if (has(q, 'posso gastar', 'sobra', 'sobrou', 'resta', 'teto', 'orcamento')) {
     if (!s.monthCap) return 'Defina o teto do mês em Metas e eu digo quanto ainda pode gastar.'

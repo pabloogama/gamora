@@ -15,10 +15,10 @@ const meta: Meta = {
 }
 export default meta
 
-export const Cartao: StoryObj<{ nickname: string; last4: string; invoice: number; limit: number; dueInDays: number; color: Card['color'] }> = {
+export const Cartao: StoryObj<{ nickname: string; last4: string; invoice: number; limit: number; dueDay: number; color: Card['color'] }> = {
   name: 'WalletCard',
-  args: { nickname: 'Principal', last4: '4552', invoice: 1284, limit: 3000, dueInDays: 8, color: 'gradient' },
-  argTypes: { color: { control: 'inline-radio', options: ['gradient', 'lilac', 'offwhite'], description: 'gradient = violeta Gamora (texto branco) · lilac = verde-água · offwhite = lavanda' } },
+  args: { nickname: 'Principal', last4: '4552', invoice: 1284, limit: 3000, dueDay: 15, color: 'gradient' },
+  argTypes: { dueDay: { control: { type: 'range', min: 1, max: 31 }, description: 'Dia do vencimento (1–31). "Vence em Nd" é calculado.' }, color: { control: 'inline-radio', options: ['gradient', 'lilac', 'offwhite'], description: 'gradient = violeta Gamora (texto branco) · lilac = verde-água · offwhite = lavanda' } },
   render: (a) => <div className="max-w-[360px]"><WalletCard card={{ id: 'x', ...a }} /></div>,
 }
 

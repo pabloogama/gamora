@@ -43,4 +43,11 @@ export const monthName = (d: Date, offset = 0) =>
 export const daysLeftInMonth = (d = new Date()) =>
   new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate() - d.getDate()
 
-export const uid = () => Math.random().toString(36).slice(2, 10)
+/** id gerado no aparelho. UUID v4 para o banco aceitar o mesmo id (tabelas usam uuid). */
+export const uid = (): string => {
+  try { if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) return crypto.randomUUID() } catch { /* contexto sem crypto */ }
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0
+    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
+  })
+}

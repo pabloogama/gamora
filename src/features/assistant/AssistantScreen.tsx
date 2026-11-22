@@ -3,21 +3,23 @@ import { ArrowUp, RotateCcw, Sparkles } from 'lucide-react'
 import { askAssistant, type ChatMessage } from '@/services/ai/client'
 import { topInsight } from '@/services/ai/mock'
 import { useStore } from '@/store'
+import { uid } from '@/lib/format'
 import { cx, IconButton } from '@/components/ui'
 import { ScreenHeader } from '@/components/layout/AppChrome'
 import { maskMoneyText } from '@/hooks/useMoney'
 
 const SUGGESTIONS = ['Quanto gastei com delivery?', 'Como guardo mais para a viagem?', 'Quanto ainda posso gastar?', 'Quanto pago de assinaturas?']
 
-interface Msg extends ChatMessage { id: number; error?: boolean }
+interface Msg extends ChatMessage { id: string; error?: boolean }
 
 /** Assistente (estágio 2): uma tela de chat. Usuário em lima, resposta como insight em gradiente. */
 export default function AssistantScreen() {
-  const { state } = useStore()
-  const [msgs, setMsgs] = useState<Msg[]>([])
+  const { state, dispatch } = useStore()
+  // a conversa fica salva por usuário (state.chat); erros não são salvos
+  const [msgs, setMsgs] = useState<Msg[]>(() => state.chat.map(({ id, role, content }) => ({ id, role, content })))
   const [text, setText] = useState('')
   const [waiting, setWaiting] = useState(false)
-  const [streaming, setStreaming] = useState<{ id: number; shown: number } | null>(null)
+  const [streaming, setStreaming] = useState<{ id: string; shown: number } | null>(null)
   const endRef = useRef<HTMLDivElement>(null)
   const abort = useRef<AbortController | null>(null)
   const insight = topInsight(state)
@@ -37,17 +39,19 @@ export default function AssistantScreen() {
   const send = async (q: string) => {
     const question = q.trim()
     if (!question || waiting) return
-    const user: Msg = { id: Date.now(), role: 'user', content: question }
+    const user: Msg = { id: uid(), role: 'user', content: question }
+    dispatch({ type: 'chatAdd', entry: { id: user.id, role: 'user', content: question, createdAt: new Date().toISOString() } })
     const history = [...msgs, user]
     setMsgs(history); setText(''); setWaiting(true)
     abort.current = new AbortController()
     try {
       const reply = await askAssistant(history.map(({ role, content }) => ({ role, content })), state, abort.current.signal)
-      const id = Date.now() + 1
+      const id = uid()
       setMsgs((m) => [...m, { id, role: 'assistant', content: reply }])
+      dispatch({ type: 'chatAdd', entry: { id, role: 'assistant', content: reply, createdAt: new Date().toISOString() } })
       setStreaming({ id, shown: 0 })
     } catch (e) {
-      if ((e as Error).name !== 'AbortError') setMsgs((m) => [...m, { id: Date.now() + 1, role: 'assistant', content: 'Não consegui responder agora. Tente de novo em instantes.', error: true }])
+      if ((e as Error).name !== 'AbortError') setMsgs((m) => [...m, { id: uid(), role: 'assistant', content: 'Não consegui responder agora. Tente de novo em instantes.', error: true }])
     } finally {
       setWaiting(false)
     }
@@ -58,7 +62,7 @@ export default function AssistantScreen() {
       <ScreenHeader
         kicker="Assistente Gamora"
         title="Pergunte sobre seu dinheiro"
-        action={msgs.length > 0 && <IconButton label="Nova conversa" onClick={() => { abort.current?.abort(); setMsgs([]); setWaiting(false) }}><RotateCcw size={18} /></IconButton>}
+        action={msgs.length > 0 && <IconButton label="Nova conversa" onClick={() => { abort.current?.abort(); setMsgs([]); setWaiting(false); setStreaming(null); dispatch({ type: 'chatClear' }) }}><RotateCcw size={18} /></IconButton>}
       />
 
       <div className="flex-1 space-y-4 pb-40 lg:pb-36" aria-live="polite">

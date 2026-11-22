@@ -7,6 +7,7 @@ import { Toast } from '@/components/ui'
 import HomeScreen from '@/features/home/HomeScreen'
 import AuthScreen from '@/features/auth/AuthScreen'
 
+const TransactionsScreen = lazy(() => import('@/features/transactions/TransactionsScreen'))
 const CardsScreen = lazy(() => import('@/features/cards/CardsScreen'))
 const GoalsScreen = lazy(() => import('@/features/goals/GoalsScreen'))
 const InvoiceScreen = lazy(() => import('@/features/invoice/InvoiceScreen'))
@@ -83,6 +84,7 @@ export default function App() {
         <Suspense fallback={null}>
           <div key={view} className="animate-pop">
             {view === 'home' && <HomeScreen />}
+            {view === 'transactions' && <TransactionsScreen />}
             {view === 'cards' && <CardsScreen />}
             {view === 'goals' && <GoalsScreen />}
             {view === 'invoice' && <InvoiceScreen />}

@@ -6,6 +6,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { CategoryIcon, cx, LogoMark } from '@/components/ui'
 import { Nfc } from 'lucide-react'
 import { useMoney } from '@/hooks/useMoney'
+import { dueIn } from '@/lib/cards'
 
 export function useMethodLabel() {
   const { state } = useStore()
@@ -74,7 +75,7 @@ export function WalletCard({ card, className }: { card: Card; className?: string
         </div>
         <div className="text-right">
           <p className="text-[17px] font-extrabold leading-none tracking-[-0.03em]">Gamora</p>
-          <p className="mt-1 text-[11px] font-semibold opacity-75">Vence em {card.dueInDays}d</p>
+          <p className="mt-1 text-[11px] font-semibold opacity-75">Vence em {dueIn(card)}d</p>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ import { useStore } from '@/store'
 import { Button, cx, Empty, Kicker, LinkButton, Money, SectionTitle, Skeleton } from '@/components/ui'
 import { TransactionRow, WalletCard, WavyPocket } from '@/components/finance'
 import { useMoney } from '@/hooks/useMoney'
+import { dueLabel } from '@/lib/cards'
 
 const SEG = ['bg-gm-lilac-strong', 'bg-gm-teal', 'bg-gm-primary']
 
@@ -16,7 +17,6 @@ export default function Home() {
   const { state, d } = useStore()
   const nav = useNav()
   const [loading, setLoading] = useState(true)
-  const [all, setAll] = useState(false)
   useEffect(() => { const t = setTimeout(() => setLoading(false), 450); return () => clearTimeout(t) }, [])
 
   const now = new Date()
@@ -32,12 +32,12 @@ export default function Home() {
   const nextCard = () => { setDetails(false); if (heroBack) setHeroFront(heroBack.id) }
   const left = state.monthCap - d.monthTotal
   const list = [...state.transactions].sort((a, b) => b.date.localeCompare(a.date))
-  const shown = all ? list : list.slice(0, 5)
+  const shown = list.slice(0, 5)
 
   if (loading) return <HomeSkeleton />
 
   return (
-    <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
       {/* ---------- coluna principal ---------- */}
       <div className="space-y-6 lg:col-span-7">
         {/* Hero: carteira — cartões saindo de um bolso escuro com borda em onda e costura tracejada */}
@@ -114,7 +114,7 @@ export default function Home() {
                   <dl className="mt-3 grid grid-cols-3 gap-3">
                     <div><dt className="text-[11px] uppercase tracking-[0.08em] text-white/55">Fatura</dt><dd className="mt-1 text-[18px] font-bold num">{fmt(heroMain.invoice, true)}</dd></div>
                     <div><dt className="text-[11px] uppercase tracking-[0.08em] text-white/55">Disponível</dt><dd className="mt-1 text-[18px] font-bold num">{fmt(Math.max(0, heroMain.limit - heroMain.invoice), true)}</dd></div>
-                    <div><dt className="text-[11px] uppercase tracking-[0.08em] text-white/55">Vence em</dt><dd className="mt-1 text-[18px] font-bold">{heroMain.dueInDays} dias</dd></div>
+                    <div><dt className="text-[11px] uppercase tracking-[0.08em] text-white/55">Vence</dt><dd className="mt-1 text-[18px] font-bold">{dueLabel(heroMain)}</dd></div>
                   </dl>
                   <div className="mt-6 flex items-center justify-between gap-3">
                     <button onClick={() => setDetails(false)} className="h-11 cursor-pointer rounded-full border border-white/15 bg-white/10 px-6 text-[14px] font-bold transition hover:bg-white/15">Fechar</button>
@@ -139,12 +139,12 @@ export default function Home() {
         {/* Este mês */}
         <section className="rounded-hero bg-gm-surface p-6 shadow-soft md:p-7" aria-label="Este mês">
           <div className="flex items-start justify-between gap-4">
-            <div>
+            <div className="min-w-0">
               <Kicker>Este mês · {monthName(now)}</Kicker>
-              <Money value={d.monthTotal} compact className="mt-2 block text-[40px] font-bold leading-none md:text-[48px]" />
+              <Money value={d.monthTotal} compact className="mt-2 block text-[34px] font-bold leading-none min-[400px]:text-[40px] md:text-[48px]" />
             </div>
             {state.lastMonthTotal > 0 && (
-              <span className={cx('mt-1 inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-[13px] font-bold', diff <= 0 ? 'bg-gm-primary text-gm-on-primary' : 'bg-gm-row text-gm-text')}>
+              <span className={cx('mt-1 inline-flex shrink-0 items-center gap-1 rounded-full px-3 py-1.5 text-[13px] font-bold', diff <= 0 ? 'bg-gm-primary text-gm-on-primary' : 'bg-gm-row text-gm-text')}>
                 {diff <= 0 ? <ArrowDownRight size={15} /> : <ArrowUpRight size={15} />}{Math.abs(diff)}%
               </span>
             )}
@@ -205,7 +205,7 @@ export default function Home() {
           )}
           {front && (
             <button onClick={() => nav.go('cards')} className="flex min-h-[168px] cursor-pointer flex-col justify-between rounded-tile bg-gm-card p-5 text-left text-gm-on-card shadow-soft transition hover:brightness-[.98]">
-              <span className="text-[14px] font-medium leading-snug">Sua fatura {front.nickname} vence em <b className="text-gm-accent">{front.dueInDays} dias</b>.</span>
+              <span className="text-[14px] font-medium leading-snug">Sua fatura {front.nickname} vence <b className="text-gm-accent">{dueLabel(front)}</b>.</span>
               <span>
                 <span className="block text-[26px] font-bold leading-none num">{fmt(front.invoice, true)}</span>
                 <span className="mt-1 block text-[12px] font-medium opacity-60">{pct(front.invoice, front.limit)}% do limite</span>
@@ -215,7 +215,7 @@ export default function Home() {
         </section>
 
         <section aria-label="Transações">
-          <SectionTitle action={list.length > 5 && <LinkButton onClick={() => setAll((v) => !v)}>{all ? 'Ver menos' : 'Ver todas'}</LinkButton>}>
+          <SectionTitle action={state.transactions.length > 0 && <LinkButton onClick={() => nav.push('transactions')}>Ver extrato</LinkButton>}>
             Transações
           </SectionTitle>
           {list.length === 0 ? (
@@ -253,7 +253,7 @@ function Shortcut({ label, icon, onClick, primary }: { label: string; icon: Reac
 
 function HomeSkeleton() {
   return (
-    <div className="grid gap-6 lg:grid-cols-12 lg:gap-8" aria-busy="true" aria-label="Carregando">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8" aria-busy="true" aria-label="Carregando">
       <div className="space-y-6 lg:col-span-7">
         <Skeleton className="mt-[88px] h-[190px] rounded-[30px]" />
         <div className="grid grid-cols-4 gap-3">{[0, 1, 2, 3].map((i) => <Skeleton key={i} className="h-[92px]" />)}</div>

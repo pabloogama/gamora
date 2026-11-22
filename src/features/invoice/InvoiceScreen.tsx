@@ -68,7 +68,7 @@ function Pick({ cardId, setCardId, error, onFile }: { cardId: string; setCardId:
   const sample = () => onFile(new File(['%PDF-1.4 exemplo'], 'fatura-novembro.pdf', { type: 'application/pdf' }))
 
   return (
-    <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10">
       <div className="space-y-5 lg:col-span-7">
         <div
           onDragOver={(e) => { e.preventDefault(); setDrag(true) }}
@@ -166,13 +166,13 @@ function Review({ result, cardId, onRestart }: { result: InvoiceResult; cardId: 
   const cats = [...byCat.entries()].sort((a, b) => b[1] - a[1])
 
   const confirm = () => {
-    dispatch({ type: 'importInvoice', items: chosen, cardId, total: chosenTotal })
-    nav.toast(`${chosen.length} lançamentos adicionados`)
+    dispatch({ type: 'importInvoice', items: chosen, cardId, total: chosenTotal, fileName: result.fileName })
+    nav.toast(`${chosen.length} lançamentos adicionados · desfaça em Cartões`)
     nav.go('home')
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10">
       <div className="space-y-5 lg:col-span-5">
         <section className="rounded-hero bg-hero p-6 text-gm-on md:p-7">
           <p className="kicker opacity-60">Encontramos · {card?.nickname}</p>

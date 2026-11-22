@@ -9,6 +9,7 @@
 import { env } from '@/config/env'
 import type { InvoiceResult, State } from '@/types/finance'
 import { mockAsk, mockReadInvoice } from './mock'
+import { dueIn } from '@/lib/cards'
 
 export interface ChatMessage { role: 'user' | 'assistant'; content: string }
 
@@ -27,7 +28,7 @@ export function validateInvoiceFile(file: File) {
 export function buildContext(s: State) {
   return {
     transactions: s.transactions.slice(0, 200).map(({ name, category, date, amount }) => ({ name, category, date, amount })),
-    cards: s.cards.map(({ nickname, invoice, limit, dueInDays }) => ({ nickname, invoice, limit, dueInDays })),
+    cards: s.cards.map((c) => ({ nickname: c.nickname, invoice: c.invoice, limit: c.limit, dueDay: c.dueDay, dueInDays: dueIn(c) })),
     goals: s.goals.map(({ name, saved, target, date }) => ({ name, saved, target, date })),
     budgets: s.budgets,
     monthCap: s.monthCap,

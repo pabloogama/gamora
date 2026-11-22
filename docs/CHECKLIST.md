@@ -1,91 +1,112 @@
-# Checklist de telas — Gamora × briefing
+# Checklist — telas e funcionalidades do Gamora
 
-Legenda: ✅ feito e testado no navegador · 🟡 feito com dados simulados · ⏳ fica para a integração · ➕ além do briefing
+Revisão completa contra o briefing, com **CRUD completo** para tudo que a pessoa cria. O mapa de cada operação até o banco está em [`docs/CRUD.md`](CRUD.md).
 
-## Estágio 1 — App nativo
+**Legenda:**
 
-| Item do briefing | Status | Onde |
-|---|---|---|
-| Home: avatar + "Olá, Lucas" (sem sino, sem busca) | ✅ | `features/home` |
-| Card hero: Seu saldo R$ 14.500, olho para ocultar, gradiente lima → lilás | ✅ | `features/home` |
-| Atalhos: Adicionar · Cartões · Metas | ✅ | `features/home` |
-| Este mês: R$ 2.340 · "12% menos que em outubro" · 3 categorias | ✅ | `features/home` |
-| Transações; toque abre folha de detalhe (editar / apagar) | ✅ | `features/sheets` |
-| Folha Adicionar gasto: valor, categoria, cartão/dinheiro/pix, data (hoje), salvar | ✅ | `features/sheets` |
-| Salvar atualiza saldo, mês, metas e fatura do cartão | ✅ | `store` |
-| Cartões: pilha Viagem · Salário · Principal, toque troca a frente | ✅ | `features/cards` |
-| Cartões: fatura atual, limite usado 43%, próximas faturas | ✅ | `features/cards` |
-| Folha novo / editar cartão (apelido, final, limite, fatura à mão) | ✅ | `features/sheets` |
-| ➕ Cartões: disponível, compras do cartão, apagar cartão | ✅ | `features/cards` |
-| Metas: Ainda pode gastar R$ 860 de R$ 3.200 | ✅ | `features/goals` |
-| Metas: grid Alimentação 62% · Moradia 100% · Transporte 40% · Lazer 78% | ✅ | `features/goals` |
-| Toque no bloco = folha para ajustar o teto | ✅ | `features/sheets` |
-| Guardando: Viagem ao Japão · Dez 2027 · R$ 13.600 · 68% | ✅ | `features/goals` |
-| Guardar R$ 500 (folha rápida) | ✅ | `features/sheets` |
-| Lista curta: Reserva 72% · Curso 90% · Carro 24% | ✅ | `features/goals` |
-| + nova meta (nome, valor, data) | ✅ | `features/sheets` |
-| ➕ Metas: quanto guardar por mês até a data, meta concluída, apagar meta, teto por categoria nova | ✅ | `features/goals` |
-| Folha Conta: nome, e-mail, ocultar saldo, Sair com "Deseja sair?" | ✅ | `features/sheets` |
-| Toast / loading / empty | ✅ | todas as telas |
-| Login simples (e-mail + senha) | ✅ | `features/auth` |
-| ➕ Cadastro (nome, e-mail, senha, confirmação, saldo inicial) | ✅ | `features/auth` |
-| Validação de formulários (gasto, cartão, meta, teto, login, cadastro) | ✅ | |
-| Mobile-first + desktop (~800px / ~1100px), mesma home mais larga, sem sidebar | ✅ | |
-| Persistência real (auth, transações, cartões, metas) | ⏳ | hoje: localStorage por conta; schema em `supabase/migrations` |
+- ✅ feito e testado no navegador
+- 🟡 feito com dados simulados (estágio 2)
+- ⏳ depende da integração (Supabase, OpenAI)
+- ➕ além do briefing
 
-## Estágio 2 — OpenAI (interface pronta, respostas simuladas)
+**Testes:**
 
-| Item do briefing | Status | Onde |
-|---|---|---|
-| Atalhos: Adicionar · Fatura · Cartões · Metas | ✅ | `VITE_APP_STAGE=2` |
-| Fatura: escolher PDF ou foto → "Lendo sua fatura" → Encontramos | 🟡 | `features/invoice` |
-| 34 compras · 6 assinaturas · total R$ 1.284 · `fatura-novembro.pdf` | 🟡 | `services/ai/mock.ts` |
-| Confirmar antes de entrar; lançamentos caem na home | ✅ | marcados com selo "Fatura" |
-| Validação do upload (tipo e tamanho) + progresso + cancelar | ✅ | |
-| Assistente: "Pergunte sobre seu dinheiro", bolhas lima + resposta em gradiente | 🟡 | `features/assistant` |
-| Respostas com número + consequência, usando os dados do app | 🟡 | regras locais no lugar da OpenAI |
-| Espera do chat (digitando) e efeito de streaming | ✅ | |
-| Card lilás ASSISTENTE GAMORA em Metas → abre o Assistente | ✅ | |
-| Botão no hero → Assistente (não vira aba) | ✅ | |
-| OpenAI no servidor, chave só no servidor | ⏳ | exemplos em `api/_examples` |
-| Leitura real de PDF | ⏳ | exemplo cobre foto; PDF precisa da Files API |
+- **Fluxos gerais:** 22 verificações ponta a ponta.
+- **CRUD:** 54 verificações ponta a ponta (celular 390px, build de produção).
+- **Banco:** `supabase/tests/crud_rls.test.sql` num Postgres 16.
 
-## Identidade visual Gamora
+---
 
-Tirada da peça de identidade: **Suas finanças, em família.** Tokens em `src/styles/index.css` (`--gm-*`) e `tokens/source.mjs`.
+## 1. Telas
 
-| Papel | Cor | Uso no app |
-|---|---|---|
-| Primária | `#0B1230` | texto, botão principal, chip selecionado |
-| Secundária | `#7B5CFF` | violeta da marca: cartão, 1ª série dos gráficos, assinaturas (só preenchimento; texto usa `#5B3FE0`) |
-| Acento | `#00C2A8` | verde-água: barras e anéis de progresso, 2ª série (nunca texto sobre branco) |
-| Superfície | `#EDE9FF` | ícones de categoria, chips, botões secundários |
-| Fundo | `#F8F9FF` | fundo da página |
+| # | Tela | O que verificar | Status |
+|---|---|---|---|
+| 1 | **Login** | E-mail + senha · validação · "E-mail ou senha incorretos" · botão da conta de demonstração · tema claro/escuro | ✅ |
+| 2 | **Cadastro** ➕ | Nome, e-mail, senha, confirmação, saldo inicial (opcional) · e-mail duplicado bloqueia | ✅ |
+| 3 | **Home** | "Olá, Pablo" com foto · carteira (toque troca o cartão da frente) · Seu saldo · ocultar valores · Detalhes do cartão · atalhos · Este mês (−12% vs. mês anterior, 3 categorias) · tiles (teto e fatura) · últimos 5 gastos + **Ver extrato** | ✅ |
+| 4 | **Extrato** ➕ | Todos os lançamentos agrupados por dia · busca · filtro de mês (ou todos) · filtro de categoria · total do filtro · estado vazio e "Nada encontrado" · no desktop é item do menu | ✅ |
+| 5 | **Cartões** | Pilha de cartões (toque traz para a frente) · bolso com fatura, limite usado e vencimento · disponível e final · próximas faturas (por vencimento) · faturas importadas (estágio 2) · compras no cartão | ✅ |
+| 6 | **Metas** | Teto do mês ("Ainda pode gastar") · tetos por categoria · meta em destaque (anel, por mês até a data) · lista de metas · card do assistente (estágio 2) | ✅ |
+| 7 | **Fatura** (estágio 2) | Enviar PDF ou foto · validação de tipo e tamanho · "Lendo sua fatura" com cancelar · revisão (34 compras, 6 assinaturas, R$ 1.284) · marcar e desmarcar itens · confirmar | 🟡 |
+| 8 | **Assistente** (estágio 2) | Insight inicial · sugestões · digitando + streaming · respostas com os números do app · conversa salva · Nova conversa | 🟡 |
+
+## 2. Folhas (sheets)
+
+| # | Folha | Abre em | Status |
+|---|---|---|---|
+| 1 | Adicionar gasto | **+** do dock e do topo · Home · Extrato | ✅ |
+| 2 | Editar gasto | Detalhe da compra → Editar | ✅ |
+| 3 | Detalhe da compra (categoria, pagamento, data, **origem**, assinatura) | Toque num gasto em qualquer lista | ✅ |
+| 4 | Novo cartão / Editar cartão (**dia do vencimento**, de 1 a 31) | Cartões · Home | ✅ |
+| 5 | **Detalhe da meta** ➕ (progresso, já tinha × guardado pelo app, depósitos) | Toque numa meta · "Detalhes" | ✅ |
+| 6 | Nova meta / Editar meta | Metas **+** · Detalhe da meta | ✅ |
+| 7 | Guardar valor / **Editar depósito** ➕ (valor, data, observação) | Metas · Detalhe da meta | ✅ |
+| 8 | Teto: novo · ajustar · **remover** ➕ · teto do mês | Metas · Home | ✅ |
+| 9 | **Fatura importada** ➕ (lista e desfazer) | Cartões → Faturas importadas | ✅ |
+| 10 | Conta (ajustar saldo, ocultar valores, tema, alterar senha, restaurar, sair, excluir conta) | Avatar no topo | ✅ |
+| 11 | Editar perfil (foto, nome, e-mail) | Conta | ✅ |
+| 12 | **Ajustar saldo** ➕ | Conta | ✅ |
+| 13 | **Alterar senha** ➕ (confere a senha atual) | Conta | ✅ |
+| 14 | **Excluir conta** ➕ (pede a senha, apaga os dados) | Conta | ✅ |
+
+## 3. CRUD por entidade
+
+| Entidade | Criar | Ver | Editar | Apagar | Banco |
+|---|---|---|---|---|---|
+| Lançamento (gasto) | ✅ | ✅ Home · Extrato · Detalhe · Cartões | ✅ | ✅ com confirmação | `transactions` |
+| Cartão | ✅ | ✅ Cartões · Home | ✅ | ✅ gastos ficam como "Cartão removido" | `cards` |
+| Meta | ✅ | ✅ Metas · Detalhe da meta | ✅ | ✅ depósitos voltam ao saldo | `goals` + view `goal_progress` |
+| Depósito em meta | ✅ | ✅ histórico na meta | ✅ | ✅ valor volta ao saldo | `goal_deposits` |
+| Teto por categoria | ✅ | ✅ | ✅ | ✅ | `budgets` |
+| Teto do mês | ✅ | ✅ | ✅ | ✅ (0 = sem teto) | `profiles.month_cap` |
+| Fatura importada | ✅ | ✅ | via cada lançamento | ✅ desfazer | `invoice_imports` + RPCs |
+| Conversa do assistente | ✅ | ✅ | não se aplica | ✅ Nova conversa | `assistant_messages` |
+| Perfil / conta | ✅ cadastro | ✅ | ✅ foto, nome, e-mail, senha, saldo | ✅ excluir conta | `auth.users` + `profiles` |
+
+## 4. Regras de negócio
+
+| Regra | Status |
+|---|---|
+| Gasto atualiza saldo, mês, categorias, teto e fatura do cartão | ✅ |
+| Editar ou apagar gasto desfaz o efeito anterior na fatura | ✅ (front e banco) |
+| Depósito sai do saldo; editar ou apagar devolve | ✅ |
+| "Já guardado" da meta = guardado antes do app + depósitos | ✅ |
+| Desfazer importação: apaga os lançamentos e a fatura volta ao valor anterior | ✅ (front e banco) |
+| Vencimento calculado a partir do dia (não envelhece) | ✅ |
+| Dados salvos antes da revisão são migrados sem mudar o saldo | ✅ |
+| Ocultar valores vale para o app inteiro (inclusive textos do assistente) | ✅ |
+| Cada conta vê só os próprios dados (front: por e-mail; banco: RLS) | ✅ |
+
+## 5. Base para o backend
 
 | Item | Status |
 |---|---|
-| Logo "G" em gradiente violeta → verde-água (componente `LogoMark`) e ícone da aba | ✅ |
-| Tipografia Manrope (Google Fonts) | ✅ |
-| Faixa do topo em roxo profundo, dock e bolso da carteira na mesma família | ✅ |
-| Cartão Gamora: violeta com logo, chip e aproximação; variações verde-água e lavanda | ✅ |
-| Login com slogan e os 4 pilares (gastos, família, metas, patrimônio) | ✅ |
-| Tema claro como padrão; escuro opcional (botão no topo), escolha salva | ✅ |
-| Contraste AA conferido nas combinações de texto dos dois temas | ✅ |
+| Schema completo: 8 tabelas, 3 views, triggers, 2 RPCs, bucket de fotos | ✅ `supabase/migrations/0001_init.sql` |
+| RLS com 4 políticas por tabela (select/insert/update/delete) | ✅ testado |
+| Isolamento: não usa o cartão ou a meta de outra conta | ✅ testado |
+| Cascatas: excluir conta apaga tudo; apagar meta apaga depósitos; apagar cartão mantém os gastos | ✅ testado |
+| Tipos das linhas (`src/types/database.ts`) e mapeadores domínio ⇄ banco | ✅ |
+| Contratos de repositório por entidade (`src/services/api/contracts.ts`) | ✅ |
+| Contrato de auth com alterar senha e excluir conta | ✅ local · ⏳ Supabase |
+| `.env` / `.env.example` / `.gitignore` · rotas de exemplo da OpenAI | ✅ |
+| Persistência real no Supabase | ⏳ hoje: localStorage por conta |
+| OpenAI real (fatura e assistente) | ⏳ hoje: simulado |
 
-## Conta e perfil
+## 6. Visual e acessibilidade
 
 | Item | Status |
 |---|---|
-| Folha **Editar perfil** (Conta → Editar perfil): foto, nome completo, e-mail | ✅ |
-| Foto: escolher/trocar/remover, recorte quadrado e redução para 256 px no navegador | ✅ |
-| Saudação usa o primeiro nome ("Olá, Pablo") | ✅ |
-| Conta de demonstração: **Pablo Gama** · `pablo@gamora.app` · `gamora123`, com foto | ✅ |
-| Persistência do perfil (recarregar, sair/entrar) | ✅ local · ⏳ Supabase (`auth.updateUser` + `profiles`) |
+| Mobile-first; desktop a partir de 1100px (menu no topo, sem sidebar) | ✅ |
+| Sem rolagem lateral em 390px (corrigido nesta revisão: o total do mês com centavos alargava a Home) | ✅ |
+| Tema claro padrão, escuro opcional; calendário nativo segue o tema (corrigido nesta revisão) | ✅ |
+| Identidade Gamora: paleta, Manrope, logo G, slogan | ✅ |
+| Ações destrutivas sempre pedem confirmação | ✅ |
+| Toasts, carregamento e estados vazios | ✅ |
+| Storybook com todas as telas e folhas novas | ✅ |
 
 ## Lacunas conhecidas
 
-- **ESLint**: o briefing cita, o projeto ainda não tem configuração de lint.
-- **Modo estágio 1** (`VITE_APP_STAGE=1`): implementado, mas não foi testado no navegador.
-- **Alvo da Viagem ao Japão**: o briefing não define; usamos R$ 20.000 (68% de R$ 13.600 ≈ R$ 20.000).
-- **Dock flutuante no mobile**: veio da imagem de referência, não do briefing ("sem menu de abas").
-- **Contraste**: tokens escolhidos para WCAG AA (texto secundário ≥ 4.5:1 nos dois temas), mas sem auditoria automática.
+- **ESLint:** o briefing cita, mas o projeto ainda não tem configuração de lint.
+- **Modo estágio 1** (`VITE_APP_STAGE=1`): implementado, mas não testado no navegador.
+- **Receitas:** o briefing só trata de gastos. O saldo muda por *Ajustar saldo*; lançar salário como entrada ainda não existe.
+- **Conta de demonstração:** se for excluída, volta a existir no próximo acesso (é recriada de propósito).

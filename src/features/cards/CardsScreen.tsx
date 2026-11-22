@@ -1,12 +1,14 @@
 import { useState } from 'react'
-import { CalendarClock, Pencil, Plus } from 'lucide-react'
-import { pct } from '@/lib/format'
+import { CalendarClock, ChevronRight, FileText, Pencil, Plus } from 'lucide-react'
+import { pct, relativeDay } from '@/lib/format'
+import { env } from '@/config/env'
 import { useNav } from '@/app/navigation'
 import { useStore } from '@/store'
 import { Bar, Button, cx, Empty, SectionTitle } from '@/components/ui'
 import { HeaderAction, ScreenHeader } from '@/components/layout/AppChrome'
 import { TransactionRow, WalletCard, WavyPocket } from '@/components/finance'
 import { useMoney } from '@/hooks/useMoney'
+import { dueIn, dueLabel } from '@/lib/cards'
 
 const PEEK = 70 // quanto de cada cartão de trás aparece acima do próximo
 const FRONT_STRIP = 88 // quanto do cartão da frente aparece acima do bolso
@@ -43,13 +45,14 @@ export default function CardsScreen() {
   }
   const used = pct(front.invoice, front.limit)
   const available = Math.max(0, front.limit - front.invoice)
-  const upcoming = [...cards].sort((a, b) => a.dueInDays - b.dueInDays)
+  const upcoming = [...cards].sort((a, b) => dueIn(a) - dueIn(b))
+  const imports = state.imports.filter((i) => i.cardId === front.id)
   const cardTx = state.transactions.filter((t) => t.method === front.id).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4)
 
   return (
     <>
       <ScreenHeader kicker="Carteira" title="Cartões" action={add} />
-      <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-6">
           <div className="relative mx-auto max-w-[460px]" style={{ paddingTop: (order.length - 1) * PEEK + FRONT_STRIP }}>
             {order.map((c, i) => {
@@ -80,7 +83,7 @@ export default function CardsScreen() {
               <Bar value={used} tone="white" height={8} className="mt-6" />
               <div className="mt-3 flex justify-between text-[14px] text-white/75">
                 <span>Limite usado <b className="text-white num">{used}%</b></span>
-                <span>Vence em <b className="text-white">{front.dueInDays} dias</b></span>
+                <span>Vence <b className="text-white">{dueLabel(front)}</b></span>
               </div>
             </WavyPocket>
           </div>
@@ -110,7 +113,7 @@ export default function CardsScreen() {
                     <span className="grid size-11 place-items-center rounded-control bg-gm-row text-gm-primary"><CalendarClock size={20} strokeWidth={1.75} /></span>
                     <span className="flex-1">
                       <span className="block text-[16px] font-bold">{c.nickname} <span className="font-mono text-[12px] font-normal text-gm-muted">•• {c.last4}</span></span>
-                      <span className="block text-[13px] text-gm-secondary">Vence em {c.dueInDays} dias</span>
+                      <span className="block text-[13px] text-gm-secondary">Vence {dueLabel(c)} · dia {c.dueDay}</span>
                     </span>
                     <span className="text-[16px] font-bold num">{fmt(c.invoice)}</span>
                   </button>
@@ -119,6 +122,31 @@ export default function CardsScreen() {
             </ul>
             <p className="mt-3 px-1 text-[12px] text-gm-muted">Valores digitados por você. Gastos lançados no cartão somam na fatura.</p>
           </section>
+
+          {env.stage === 2 && (
+            <section>
+              <SectionTitle action={<button onClick={() => nav.go('invoice')} className="cursor-pointer text-[14px] font-bold text-gm-accent hover:underline">Ler fatura</button>}>Faturas importadas</SectionTitle>
+              {imports.length ? (
+                <ul className="overflow-hidden rounded-hero bg-gm-surface shadow-soft">
+                  {imports.map((imp, i) => (
+                    <li key={imp.id} className={cx(i > 0 && 'border-t border-gm-border')}>
+                      <button onClick={() => nav.open({ kind: 'import', id: imp.id })} className="flex w-full cursor-pointer items-center gap-3.5 px-5 py-4 text-left transition hover:bg-gm-elevated">
+                        <span className="grid size-11 place-items-center rounded-control bg-gm-row text-gm-primary"><FileText size={20} strokeWidth={1.75} /></span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate text-[15px] font-bold">{imp.fileName}</span>
+                          <span className="block text-[13px] text-gm-secondary">{relativeDay(imp.date)} · {imp.itemCount} lançamentos</span>
+                        </span>
+                        <span className="text-[15px] font-bold num">{fmt(imp.total)}</span>
+                        <ChevronRight size={18} className="text-gm-muted" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="rounded-tile border border-dashed border-gm-track px-5 py-6 text-center text-[14px] text-gm-secondary">Nenhuma fatura lida para o {front.nickname}.</p>
+              )}
+            </section>
+          )}
 
           <section>
             <SectionTitle>Compras no {front.nickname}</SectionTitle>

@@ -1,4 +1,4 @@
-import { ChevronLeft, CreditCard, FileText, House, Plus, Target } from 'lucide-react'
+import { ChevronLeft, CreditCard, FileText, House, ListOrdered, Plus, Target } from 'lucide-react'
 import { useEffect, useState, type ReactNode } from 'react'
 import { useNav, type View } from '@/app/navigation'
 import { useStore } from '@/store'
@@ -17,6 +17,8 @@ const NAV: { id: View; label: string; icon: typeof House }[] = [
   { id: 'cards', label: 'Cartões', icon: CreditCard },
   { id: 'goals', label: 'Metas', icon: Target },
 ]
+/** No desktop cabe mais um item: o extrato. No mobile ele abre pelo "Ver todas" da home. */
+const DESKTOP_NAV = [NAV[0], { id: 'transactions' as View, label: 'Extrato', icon: ListOrdered }, ...NAV.slice(1)]
 
 /** Faixa marinho do topo (mobile), atrás do cabeçalho — como na referência. */
 export function TopBand() {
@@ -58,10 +60,10 @@ export function TopBar() {
         </button>
 
         <nav className="hidden items-center gap-1 rounded-full bg-white/10 p-1.5 lg:flex" aria-label="Principal">
-          {NAV.map((n) => (
+          {DESKTOP_NAV.map((n) => (
             <button
               key={n.id} onClick={() => nav.go(n.id)} aria-current={nav.view === n.id ? 'page' : undefined}
-              className={cx('inline-flex h-10 cursor-pointer items-center gap-2 rounded-full px-5 text-[14px] font-medium transition',
+              className={cx('inline-flex h-10 cursor-pointer items-center gap-2 rounded-full px-4 xl:px-5 text-[14px] font-medium transition',
                 nav.view === n.id ? 'bg-white text-[var(--gm-band-from)]' : 'text-white/75 hover:text-white')}
             >
               <n.icon size={16} strokeWidth={2} />{n.label}
@@ -81,7 +83,7 @@ export function TopBar() {
             <ThemeToggle onBand />
           </div>
           <button onClick={() => nav.open({ kind: 'account' })} className="hidden cursor-pointer items-center gap-3 lg:flex" aria-label="Abrir conta">
-            <span className="text-right">
+            <span className="hidden whitespace-nowrap text-right xl:block">
               <span className="block text-[12px] text-white/70">{greeting()},</span>
               <span className="block text-[15px] font-bold leading-tight">Olá, {first}</span>
             </span>

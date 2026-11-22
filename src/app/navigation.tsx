@@ -1,18 +1,23 @@
 import { createContext, useContext } from 'react'
-import type { Card, CategoryId, Goal, Transaction } from '@/types/finance'
+import type { Card, CategoryId, Goal, GoalDeposit, Transaction } from '@/types/finance'
 
-/** Telas cheias. Estágio 1: home, cards, goals. Estágio 2: + invoice, assistant. */
-export type View = 'home' | 'cards' | 'goals' | 'invoice' | 'assistant'
+/** Telas cheias. Estágio 1: home, transactions (extrato), cards, goals. Estágio 2: + invoice, assistant. */
+export type View = 'home' | 'transactions' | 'cards' | 'goals' | 'invoice' | 'assistant'
 
 export type SheetState =
   | { kind: 'add'; tx?: Transaction }
   | { kind: 'tx'; id: string }
   | { kind: 'card'; card?: Card }
-  | { kind: 'deposit'; goalId: string; amount?: number }
+  | { kind: 'deposit'; goalId: string; amount?: number; deposit?: GoalDeposit } // deposit = editar
   | { kind: 'goal'; goal?: Goal }
+  | { kind: 'goalDetail'; goalId: string }
+  | { kind: 'import'; id: string }
   | { kind: 'budget'; category: CategoryId | 'cap' | 'new' }
   | { kind: 'account' }
   | { kind: 'profile' }
+  | { kind: 'balance' }
+  | { kind: 'password' }
+  | { kind: 'deleteAccount' }
 
 export interface Nav {
   view: View

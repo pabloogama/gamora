@@ -6,6 +6,10 @@
  *   signUp  → supabase.auth.signUp({ email, password, options: { data: { name } } })
  *   signOut → supabase.auth.signOut()
  *   currentSession → supabase.auth.getSession()
+ *   updateProfile  → supabase.auth.updateUser({ email }) + update em profiles (nome, avatar_url)
+ *   changePassword → supabase.auth.updateUser({ password }) (reautentica antes)
+ *   deleteAccount  → função /api/account (service role) chama auth.admin.deleteUser(id);
+ *                    as tabelas apagam em cascata (on delete cascade em auth.users)
  *
  * Aqui as contas ficam no localStorage deste navegador, com a senha em
  * SHA-256 (só para não guardar texto puro; não é segurança de produção).
@@ -22,6 +26,10 @@ export interface AuthService {
   currentSession(): User | null
   /** Atualiza nome, e-mail e foto da conta logada. Supabase: auth.updateUser + tabela profiles. */
   updateProfile(currentEmail: string, next: User): Promise<User>
+  /** Troca a senha. Confere a senha atual antes. */
+  changePassword(email: string, current: string, next: string): Promise<void>
+  /** Apaga a conta e encerra a sessão. Confere a senha antes. Os dados financeiros são apagados pelo chamador (repository.remove). */
+  deleteAccount(email: string, password: string): Promise<void>
 }
 
 interface StoredAccount { name: string; email: string; hash: string; avatar?: string }
@@ -90,6 +98,23 @@ export const localAuth: AuthService = {
     const user: User = { name: next.name.trim(), email, avatar: next.avatar }
     write(SESSION, user)
     return user
+  },
+  async changePassword(email, current, next) {
+    await wait(500)
+    const list = await accounts()
+    const acc = list.find((a) => a.email === norm(email))
+    if (!acc || acc.hash !== (await sha256(current))) throw new AuthError('A senha atual não confere.')
+    if (next.length < 6) throw new AuthError('A nova senha precisa de pelo menos 6 caracteres.')
+    const hash = await sha256(next)
+    write(USERS, list.map((a) => (a.email === acc.email ? { ...a, hash } : a)))
+  },
+  async deleteAccount(email, password) {
+    await wait(600)
+    const list = await accounts()
+    const acc = list.find((a) => a.email === norm(email))
+    if (!acc || acc.hash !== (await sha256(password))) throw new AuthError('Senha incorreta.')
+    write(USERS, list.filter((a) => a.email !== acc.email))
+    try { localStorage.removeItem(SESSION) } catch { /* ok */ }
   },
 }
 
