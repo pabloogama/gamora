@@ -38,6 +38,8 @@ node tests/e2e/fluxos.cjs   # login, cadastro, fatura, cartões, metas, assisten
 node tests/e2e/crud.cjs     # criar · ver · editar · apagar em cada entidade
 ```
 
+Esses dois rodam no modo local (`VITE_DATA_SOURCE=local`). Para o app conectado ao Supabase, use `tests/e2e/supabase.cjs` e `tests/e2e/supabase-conta.cjs` (instruções no topo de cada arquivo).
+
 Testes do banco (Postgres puro, sem Supabase): veja `supabase/tests/README.md`.
 
 ## Documentação
@@ -76,7 +78,7 @@ gamora/
 │  ├─ services/
 │  │  ├─ storage.ts          # FinanceRepository — hoje localStorage
 │  │  ├─ api/                # contratos de CRUD por entidade + mapeadores domínio ⇄ banco
-│  │  ├─ supabase/           # cliente + repositório (preparados)
+│  │  ├─ supabase/           # client, auth (Supabase Auth) e data (ler/gravar no banco)
 │  │  └─ ai/                 # cliente do estágio 2 → chama /api, nunca a OpenAI
 │  ├─ config/env.ts          # leitura tipada das variáveis de ambiente
 │  ├─ types/finance.ts       # modelo de domínio
@@ -102,7 +104,7 @@ Imports usam o alias `@/` → `src/`.
 
 ## Roteiro de integração
 
-**Supabase** (banco já criado e populado: [`docs/SUPABASE.md`](docs/SUPABASE.md))
+**Supabase**: feito. O banco está criado e populado, e o app está conectado (veja [`docs/SUPABASE.md`](docs/SUPABASE.md)). Os passos abaixo ficam como referência.
 1. `npm install @supabase/supabase-js`
 2. ~~Rodar `supabase/migrations/0001_init.sql`~~ feito no projeto Gamora
 3. Preencher `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` no `.env`

@@ -264,11 +264,11 @@ export function Chips<T extends string>({ value, options, onChange, label }: { v
 }
 
 /* ---------- Toast ---------- */
-export function Toast({ msg }: { msg: string }) {
+export function Toast({ msg, error }: { msg: string; error?: boolean }) {
   return (
-    <div role="status" aria-live="polite" className="pointer-events-none fixed inset-x-0 bottom-28 z-[60] flex justify-center px-5 md:bottom-8">
-      <div className="pointer-events-auto flex animate-pop items-center gap-2.5 rounded-full bg-gm-primary py-3 pl-3 pr-5 text-[14px] font-bold text-gm-on-primary shadow-[0_12px_40px_rgba(11,18,48,.3)]">
-        <span className="grid size-6 place-items-center rounded-full bg-gm-on-primary text-gm-primary"><Check size={14} strokeWidth={3} /></span>
+    <div role={error ? 'alert' : 'status'} aria-live={error ? 'assertive' : 'polite'} className="pointer-events-none fixed inset-x-0 bottom-28 z-[60] flex justify-center px-5 md:bottom-8">
+      <div className={cx('pointer-events-auto flex animate-pop items-center gap-2.5 rounded-full py-3 pl-3 pr-5 text-[14px] font-bold shadow-[0_12px_40px_rgba(11,18,48,.3)]', error ? 'bg-gm-lilac text-gm-on' : 'bg-gm-primary text-gm-on-primary')}>
+        <span className={cx('grid size-6 shrink-0 place-items-center rounded-full', error ? 'bg-gm-on text-gm-lilac' : 'bg-gm-on-primary text-gm-primary')}>{error ? <span className="text-[14px] font-extrabold leading-none">!</span> : <Check size={14} strokeWidth={3} />}</span>
         {msg}
       </div>
     </div>

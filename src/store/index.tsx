@@ -1,10 +1,12 @@
-import { createContext, useContext, useEffect, useMemo, useReducer, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState, type ReactNode } from 'react'
 import { emptyState, seed, DEMO_ACCOUNT } from '@/data/mocks'
 import type { Budget, Card, CategoryId, ChatEntry, Goal, GoalDeposit, InvoiceItem, State, Transaction, User } from '@/types/finance'
 import { toISODate, uid } from '@/lib/format'
 import { dueDayFromOffset } from '@/lib/cards'
 import { localRepository as repository } from '@/services/storage'
 import { auth } from '@/services/auth'
+import { useSupabase } from '@/services/supabase/client'
+import { loadRemote, syncRemote, SyncError } from '@/services/supabase/data'
 
 /**
  * Ações do store, agrupadas por entidade. Cada entidade criada pela pessoa tem
@@ -23,7 +25,7 @@ export type Action =
   | { type: 'saveTx'; tx: Transaction } // cria ou edita
   | { type: 'deleteTx'; id: string }
   // faturas importadas (estágio 2)
-  | { type: 'importInvoice'; items: InvoiceItem[]; cardId: string; total: number; fileName: string }
+  | { type: 'importInvoice'; items: InvoiceItem[]; cardId: string; total: number; fileName: string; file?: File } // file: vai para o Storage
   | { type: 'deleteImport'; id: string } // desfaz: apaga os lançamentos dela e devolve a fatura anterior
   // cartões
   | { type: 'saveCard'; card: Card }
@@ -143,13 +145,6 @@ function reducer(s: State, a: Action): State {
   }
 }
 
-/** Abre a sessão salva (se houver) e carrega os dados daquela conta. */
-function boot(): State {
-  const user = auth.currentSession()
-  if (!user) return emptyState(null)
-  return loadFor(user)
-}
-
 type Legacy = Omit<Partial<State>, 'cards' | 'goals'> & {
   cards?: (Omit<Card, 'dueDay'> & { dueDay?: number; dueInDays?: number })[]
   goals?: (Omit<Goal, 'initialSaved'> & { initialSaved?: number })[]
@@ -184,6 +179,12 @@ export function loadFor(user: User, startingBalance = 0): State {
   return emptyState(user, startingBalance)
 }
 
+/** Dados da conta que acabou de entrar: do Supabase (VITE_DATA_SOURCE=supabase) ou do aparelho. */
+export async function loadUser(user: User, startingBalance = 0): Promise<State> {
+  if (useSupabase) return derive(await loadRemote(user))
+  return loadFor(user, startingBalance)
+}
+
 interface Derived {
   balance: number
   monthTx: Transaction[]
@@ -192,16 +193,85 @@ interface Derived {
   spentIn: (c: CategoryId) => number
 }
 
-const Ctx = createContext<{ state: State; dispatch: React.Dispatch<Action>; d: Derived } | null>(null)
+export type StoreStatus = 'booting' | 'ready'
+
+const Ctx = createContext<{
+  state: State
+  dispatch: (a: Action) => void
+  d: Derived
+  /** 'booting' enquanto a sessão salva e os dados são carregados */
+  status: StoreStatus
+  /** último erro de gravação no servidor (o app mostra num toast) */
+  syncError: { msg: string; id: number } | null
+} | null>(null)
 
 export { repository }
 
-/** `initialState` e `persist` existem para o Storybook e testes; o app usa os padrões. */
+/**
+ * `initialState` e `persist` existem para o Storybook e testes; o app usa os padrões.
+ * Com o Supabase ligado, cada ação é aplicada na tela na hora e gravada no banco em
+ * seguida (em ordem). Se o banco recusar, aparece um aviso e o estado é relido do servidor.
+ */
 export function StoreProvider({ children, initialState, persist = true }: { children: ReactNode; initialState?: State; persist?: boolean }) {
-  const [state, dispatch] = useReducer(reducer, initialState, (init) => init ?? boot())
+  const remote = persist && useSupabase
+  const [state, raw] = useReducer(reducer, initialState ?? emptyState(null))
+  const [status, setStatus] = useState<StoreStatus>(initialState ? 'ready' : 'booting')
+  const [syncError, setSyncError] = useState<{ msg: string; id: number } | null>(null)
+  const ref = useRef(state)
+  const queue = useRef<Promise<unknown>>(Promise.resolve())
 
-  useEffect(() => { if (persist) repository.save(state) }, [state, persist])
+  // abre a sessão salva neste aparelho e carrega os dados dela
+  useEffect(() => {
+    if (initialState) return
+    let alive = true
+    ;(async () => {
+      try {
+        const user = await auth.currentSession()
+        if (user && alive) {
+          const loaded = await loadUser(user)
+          ref.current = loaded
+          raw({ type: 'hydrate', state: loaded })
+        }
+      } catch (e) {
+        console.error('[store] não foi possível abrir a sessão', e)
+      } finally {
+        if (alive) setStatus('ready')
+      }
+    })()
+    return () => { alive = false }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // modo local: guarda o estado inteiro no aparelho
+  useEffect(() => { if (persist && !useSupabase) repository.save(state) }, [state, persist])
+
+  const dispatch = useCallback((a: Action) => {
+    const prev = ref.current
+    const next = reducer(prev, a)
+    ref.current = next
+    raw({ type: 'hydrate', state: next })
+    if (!remote || !prev.user || a.type === 'hydrate' || a.type === 'logout') return
+    const user = prev.user
+    // grava em ordem (uma ação de cada vez), para editar logo depois de criar funcionar
+    queue.current = queue.current.then(async () => {
+      try {
+        const fresh = await syncRemote(a, prev, next)
+        if (fresh && ref.current.user?.email === user.email) {
+          const s = derive(fresh)
+          ref.current = s
+          raw({ type: 'hydrate', state: s })
+        }
+      } catch (e) {
+        console.error('[store] gravação falhou', a.type, e)
+        setSyncError({ msg: e instanceof SyncError ? e.message : 'Não foi possível salvar. Recarregamos seus dados.', id: Date.now() })
+        try {
+          if (ref.current.user?.email !== user.email) return
+          const s = derive(await loadRemote(user))
+          ref.current = s
+          raw({ type: 'hydrate', state: s })
+        } catch { /* sem conexão: fica o estado da tela */ }
+      }
+    })
+  }, [remote])
   const d = useMemo<Derived>(() => {
     const ym = toISODate(new Date()).slice(0, 7)
     const monthTx = state.transactions.filter((t) => t.date.startsWith(ym))
@@ -218,7 +288,7 @@ export function StoreProvider({ children, initialState, persist = true }: { chil
     }
   }, [state])
 
-  return <Ctx.Provider value={{ state, dispatch, d }}>{children}</Ctx.Provider>
+  return <Ctx.Provider value={{ state, dispatch, d, status, syncError }}>{children}</Ctx.Provider>
 }
 
 export function useStore() {

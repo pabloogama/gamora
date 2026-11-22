@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ChartColumn, Eye, EyeOff, Target, Users, Wallet } from 'lucide-react'
-import { useStore, loadFor } from '@/store'
-import { auth, AuthError } from '@/services/auth'
+import { useStore, loadUser } from '@/store'
+import { auth, AuthError, AuthNotice } from '@/services/auth'
 import { DEMO_ACCOUNT } from '@/data/mocks'
 import { maskMoney, parseMoney } from '@/lib/format'
 import { Button, cx, Field, inputCls, Logo, MoneyInput, ThemeToggle } from '@/components/ui'
@@ -18,6 +18,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 /** Login e cadastro por e-mail e senha (conexão direta, sem Google). */
 export default function AuthScreen() {
   const [mode, setMode] = useState<Mode>('login')
+  const [notice, setNotice] = useState('')
   return (
     <main className="grid min-h-dvh lg:grid-cols-2">
       <section className="relative hidden overflow-hidden bg-band-solid p-12 text-white lg:flex lg:flex-col lg:justify-between">
@@ -53,7 +54,7 @@ export default function AuthScreen() {
               </button>
             ))}
           </div>
-          {mode === 'login' ? <LoginForm onSwitch={() => setMode('signup')} /> : <SignupForm onSwitch={() => setMode('login')} />}
+          {mode === 'login' ? <LoginForm notice={notice} onSwitch={() => { setNotice(''); setMode('signup') }} /> : <SignupForm onSwitch={() => setMode('login')} onCreated={(msg) => { setNotice(msg); setMode('login') }} />}
         </div>
       </section>
     </main>
@@ -73,10 +74,10 @@ function PasswordInput({ value, onChange, autoComplete, id }: { value: string; o
 }
 
 function FormError({ msg }: { msg: string }) {
-  return msg ? <p role="alert" className="rounded-control border border-gm-lilac/40 bg-gm-lilac/10 px-4 py-3 text-[14px] text-gm-lilac">{msg}</p> : null
+  return msg ? <p role="alert" className="rounded-control border border-gm-lilac/50 bg-gm-lilac/15 px-4 py-3 text-[14px] text-gm-text">{msg}</p> : null
 }
 
-function LoginForm({ onSwitch }: { onSwitch: () => void }) {
+function LoginForm({ onSwitch, notice }: { onSwitch: () => void; notice?: string }) {
   const { dispatch } = useStore()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -93,7 +94,7 @@ function LoginForm({ onSwitch }: { onSwitch: () => void }) {
     setLoading(true)
     try {
       const user = await auth.signIn(email, password)
-      dispatch({ type: 'hydrate', state: loadFor(user) })
+      dispatch({ type: 'hydrate', state: await loadUser(user) })
     } catch (err) {
       setError(err instanceof AuthError ? err.message : 'Não foi possível entrar agora. Tente de novo.')
       setLoading(false)
@@ -105,6 +106,7 @@ function LoginForm({ onSwitch }: { onSwitch: () => void }) {
       <h2 className="mt-8 text-[29px] font-bold leading-[1.1] tracking-[-0.035em]">Olá de novo.</h2>
       <p className="mt-2 text-[15px] text-gm-secondary">Entre com seu e-mail e senha.</p>
       <form onSubmit={submit} className="mt-7 space-y-5" noValidate>
+        {notice && !error && <p role="status" className="rounded-control border border-gm-teal/50 bg-gm-teal/10 px-4 py-3 text-[14px] text-gm-text">{notice}</p>}
         <FormError msg={error} />
         <Field label="E-mail" error={tried ? errs.email : undefined}>
           <input id="login-email" className={inputCls} type="email" autoComplete="email" inputMode="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="voce@email.com" />
@@ -123,7 +125,7 @@ function LoginForm({ onSwitch }: { onSwitch: () => void }) {
   )
 }
 
-function SignupForm({ onSwitch }: { onSwitch: () => void }) {
+function SignupForm({ onSwitch, onCreated }: { onSwitch: () => void; onCreated: (msg: string) => void }) {
   const { dispatch } = useStore()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -145,9 +147,11 @@ function SignupForm({ onSwitch }: { onSwitch: () => void }) {
     if (Object.values(errs).some(Boolean)) return
     setLoading(true)
     try {
-      const user = await auth.signUp(name, email, password)
-      dispatch({ type: 'hydrate', state: loadFor(user, parseMoney(balance) || 0) })
+      const start = parseMoney(balance) || 0
+      const user = await auth.signUp(name, email, password, start)
+      dispatch({ type: 'hydrate', state: await loadUser(user, start) })
     } catch (err) {
+      if (err instanceof AuthNotice) { onCreated(err.message); return }
       setError(err instanceof AuthError ? err.message : 'Não foi possível criar a conta agora. Tente de novo.')
       setLoading(false)
     }

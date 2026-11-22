@@ -11,8 +11,49 @@ URL: `https://uwthinqxfdmfunzbcyti.supabase.co`
 | `supabase/tests/api-crud.test.mjs` | Validação pela API real: CRUD, RLS, Storage e RPCs (61 verificações) |
 | `supabase/tests/crud_rls.test.sql` | Os mesmos testes num Postgres puro, sem Supabase |
 | `docs/CRUD.md` | Cada operação: tela → ação do store → contrato → tabela → política |
+| `src/services/supabase/` | O app conectado: `client.ts`, `auth.ts` (Supabase Auth) e `data.ts` (ler e gravar) |
+| `supabase/migrations/0002_app_rpcs.sql` | RPCs do app: `import_invoice` com arquivo, `delete_my_account`, `reset_demo` |
+| `tests/e2e/supabase.cjs` · `supabase-conta.cjs` | O app no navegador, conferindo cada gravação no banco (28 + 14 verificações) |
 
-No Supabase, a migração foi aplicada em 4 passos (`list_migrations`): `gamora_schema`, `gamora_rls_storage`, `gamora_fk_indexes` e `gamora_grants`. O arquivo `0001_init.sql` contém tudo isso junto.
+No Supabase, as migrações aparecem em 5 passos (`list_migrations`): `gamora_schema`, `gamora_rls_storage`, `gamora_fk_indexes` e `gamora_grants` (que juntos são o `0001_init.sql`), mais `gamora_app_rpcs` (o `0002_app_rpcs.sql`).
+
+## Como o app usa o banco
+
+Com `VITE_DATA_SOURCE=supabase`, o app lê e grava tudo no Supabase:
+
+| Momento | O que acontece |
+|---|---|
+| Abrir o app | O supabase-js recupera a sessão salva e `loadRemote` lê os dados da conta. O RLS garante que só voltam os dados dela |
+| Entrar | `signInWithPassword` e depois os dados do banco |
+| Criar conta | `signUp` com nome e saldo inicial; o trigger cria o profile |
+| Qualquer ação (criar, editar, apagar) | A tela muda na hora e `syncRemote` grava no banco, uma ação de cada vez |
+| O banco recusa ou cai a conexão | Aviso em destaque, e os dados são relidos do servidor |
+| Editar perfil | Nome e foto vão para `profiles` + `avatars/<uid>/`. Trocar o e-mail manda um link de confirmação |
+| Ler fatura | O arquivo vai para `invoices/<uid>/` e a RPC `import_invoice` grava a importação e os lançamentos |
+| Excluir conta | Confere a senha, apaga os arquivos do Storage e chama a RPC `delete_my_account` (cascata) |
+| Restaurar dados de exemplo | Na demo, a RPC `reset_demo` recria o seed. Numa conta comum, apaga os dados e mantém o perfil |
+
+Com `VITE_DATA_SOURCE=local`, o app volta ao protótipo offline: contas e dados no navegador. Esse modo é o usado pelo Storybook e pelos testes de interface.
+
+**Na Vercel**, cadastre em *Settings → Environment Variables*:
+
+| Variável | Valor |
+|---|---|
+| `VITE_DATA_SOURCE` | `supabase` |
+| `VITE_SUPABASE_URL` | `https://uwthinqxfdmfunzbcyti.supabase.co` |
+| `VITE_SUPABASE_ANON_KEY` | a chave **publicável** (`sb_publishable_…`), em Supabase → Project Settings → API Keys |
+
+Depois do deploy, ajuste o Supabase em Authentication → URL Configuration:
+
+- **Site URL:** coloque a URL da Vercel.
+- **Redirect URLs:** coloque a URL da Vercel. Assim, os links de confirmação de e-mail voltam para o app.
+
+**Cadastro e e-mail:** o Supabase vem com *Confirm email* ligado.
+
+- Quem se cadastra recebe um link e só entra depois de confirmar. O app mostra esse aviso na tela de login.
+- O envio padrão do Supabase tem limite baixo de e-mails por hora.
+- Para testes, desligue em Authentication → Sign In / Providers → Email → *Confirm email*.
+- Para produção, configure um SMTP próprio.
 
 ## Modelo
 
@@ -59,7 +100,9 @@ auth.users ─┬─ profiles (1:1)           saldo = base_balance − gastos �
 **Avisos do Supabase (advisors)**
 
 - Desempenho: nenhum aviso.
-- Segurança: um aviso, *Leaked password protection*. Ligue em Authentication → Sign In / Providers → Password. Pode depender do plano.
+- Segurança: dois avisos.
+  - `delete_my_account` roda como `security definer`. É intencional: apagar em `auth.users` exige isso, e a função só apaga a conta de quem chama.
+  - *Leaked password protection*. Ligue em Authentication → Sign In / Providers → Password. Pode depender do plano.
 
 ## Storage
 
@@ -164,10 +207,16 @@ delete from auth.users where email = 'teste-rls@gamora.app';
 - [x] `.env` local com URL e chave publicável; `.env.example` com `DATABASE_URL` e `DIRECT_URL`
 - [x] Seed da demo versionado e reaplicável, com instrução para apagar
 
-**Próximo passo (ainda não feito): ligar o app ao banco**
+**App conectado (testado no navegador)**
 
-- [ ] `npm install @supabase/supabase-js` e ativar `src/services/supabase/client.ts`
-- [ ] Implementar `DataApi` (`src/services/api/contracts.ts`) com os mapeadores prontos
-- [ ] Trocar `localAuth` por Supabase Auth; enviar a foto para `avatars/<uid>/` no Editar perfil
-- [ ] Criar `/api/account` (service role) para excluir conta
-- [ ] Na Vercel: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` e `VITE_DATA_SOURCE=supabase`
+- [x] Login, sessão salva (continua logado ao recarregar) e sair
+- [x] Dados da demo carregados do banco: saldo, −12% vs. mês anterior, cartões, metas, tetos, foto
+- [x] Gastos, cartões, metas, depósitos e tetos: cada criar, editar e apagar conferido no banco
+- [x] Fatura: importação, 34 lançamentos e arquivo no Storage; desfazer apaga os três
+- [x] Assistente: conversa gravada e apagada
+- [x] Perfil: ocultar valores, ajustar saldo, nome e foto (Storage)
+- [x] Alterar senha (a antiga para de funcionar) e excluir conta (login, dados e foto somem)
+- [x] Restaurar dados de exemplo (RPC `reset_demo`)
+- [x] Saldo inicial do cadastro chega ao profile (conferido pelo trigger, com uma conta criada no SQL)
+- [ ] Cadastro pela tela com e-mail real: não testado, para não enviar e-mail a endereços falsos
+- [ ] Variáveis na Vercel e URLs do Auth (você, no deploy)

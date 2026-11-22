@@ -3,7 +3,7 @@ import { NavCtx, type Nav, type SheetState, type View } from '@/app/navigation'
 import { useStore } from '@/store'
 import { env } from '@/config/env'
 import { Dock, TopBand, TopBar } from '@/components/layout/AppChrome'
-import { Toast } from '@/components/ui'
+import { Logo, Toast } from '@/components/ui'
 import HomeScreen from '@/features/home/HomeScreen'
 import AuthScreen from '@/features/auth/AuthScreen'
 
@@ -18,10 +18,10 @@ const STAGE2: View[] = ['invoice', 'assistant']
 
 /** Navegação: pilha de telas + uma folha por cima. Integra com o botão voltar do navegador. */
 export default function App() {
-  const { state } = useStore()
+  const { state, status, syncError } = useStore()
   const [stack, setStack] = useState<View[]>(['home'])
   const [sheet, setSheet] = useState<SheetState | null>(null)
-  const [toastMsg, setToastMsg] = useState<{ msg: string; id: number } | null>(null)
+  const [toastMsg, setToastMsg] = useState<{ msg: string; id: number; error?: boolean } | null>(null)
   const toastTimer = useRef<number>(undefined)
   const view = stack[stack.length - 1]
 
@@ -73,7 +73,25 @@ export default function App() {
     },
   }), [view, go, push, stack.length])
 
-  if (!state.user) return <AuthScreen />
+  // erro ao gravar no servidor: aviso em destaque (o store já recarregou os dados)
+  useEffect(() => {
+    if (!syncError) return
+    setToastMsg({ msg: syncError.msg, id: syncError.id, error: true })
+    window.clearTimeout(toastTimer.current)
+    toastTimer.current = window.setTimeout(() => setToastMsg(null), 4500)
+  }, [syncError])
+
+  if (status === 'booting') {
+    return (
+      <div className="grid min-h-dvh place-items-center bg-gm-bg" aria-busy="true" aria-label="Carregando seus dados">
+        <div className="flex flex-col items-center gap-5">
+          <Logo className="text-[26px] text-gm-text" />
+          <span className="h-1 w-28 overflow-hidden rounded-full bg-gm-track"><span className="block h-full w-1/2 animate-pulse rounded-full bg-gm-accent" /></span>
+        </div>
+      </div>
+    )
+  }
+  if (!state.user) return <>{toastMsg && <Toast key={toastMsg.id} msg={toastMsg.msg} error={toastMsg.error} />}<AuthScreen /></>
 
   return (
     <NavCtx.Provider value={nav}>
@@ -95,7 +113,7 @@ export default function App() {
       </div>
       <Dock />
       <Suspense fallback={null}>{sheet && <SheetHost key={JSON.stringify(sheet).slice(0, 60)} sheet={sheet} />}</Suspense>
-      {toastMsg && <Toast key={toastMsg.id} msg={toastMsg.msg} />}
+      {toastMsg && <Toast key={toastMsg.id} msg={toastMsg.msg} error={toastMsg.error} />}
     </NavCtx.Provider>
   )
 }

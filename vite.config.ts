@@ -4,6 +4,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+  // o pacote principal inclui o supabase-js (~150 KB gzip)
+  build: { chunkSizeWarningLimit: 600 },
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },

@@ -12,7 +12,7 @@ import { useMoney } from '@/hooks/useMoney'
 type Phase =
   | { name: 'pick'; error?: string }
   | { name: 'reading'; file: File; step: number }
-  | { name: 'review'; result: InvoiceResult }
+  | { name: 'review'; result: InvoiceResult; file: File }
 
 const STEPS = ['Enviando o arquivo', 'Lendo as compras', 'Achando assinaturas', 'Somando por categoria']
 
@@ -32,7 +32,7 @@ export default function InvoiceScreen() {
     setPhase({ name: 'reading', file, step: 0 })
     try {
       const result = await readInvoice(file, (step) => setPhase({ name: 'reading', file, step }), abort.current.signal)
-      setPhase({ name: 'review', result })
+      setPhase({ name: 'review', result, file })
     } catch (e) {
       if ((e as Error).name === 'AbortError') return setPhase({ name: 'pick' })
       setPhase({ name: 'pick', error: 'Não conseguimos ler essa fatura. Confira se o arquivo está legível e tente de novo.' })
@@ -53,7 +53,7 @@ export default function InvoiceScreen() {
       <ScreenHeader kicker="Estágio 2 · IA" title="Fatura" />
       {phase.name === 'pick' && <Pick cardId={cardId} setCardId={setCardId} error={phase.error} onFile={start} />}
       {phase.name === 'reading' && <Reading file={phase.file} step={phase.step} onCancel={() => abort.current?.abort()} />}
-      {phase.name === 'review' && <Review result={phase.result} cardId={cardId} onRestart={() => setPhase({ name: 'pick' })} />}
+      {phase.name === 'review' && <Review result={phase.result} file={phase.file} cardId={cardId} onRestart={() => setPhase({ name: 'pick' })} />}
     </>
   )
 }
@@ -149,7 +149,7 @@ function Reading({ file, step, onCancel }: { file: File; step: number; onCancel:
 }
 
 /* ---------------- 3. Encontramos → confirmar ---------------- */
-function Review({ result, cardId, onRestart }: { result: InvoiceResult; cardId: string; onRestart: () => void }) {
+function Review({ result, file, cardId, onRestart }: { result: InvoiceResult; file?: File; cardId: string; onRestart: () => void }) {
   const fmt = useMoney()
   const { state, dispatch } = useStore()
   const nav = useNav()
@@ -166,7 +166,7 @@ function Review({ result, cardId, onRestart }: { result: InvoiceResult; cardId: 
   const cats = [...byCat.entries()].sort((a, b) => b[1] - a[1])
 
   const confirm = () => {
-    dispatch({ type: 'importInvoice', items: chosen, cardId, total: chosenTotal, fileName: result.fileName })
+    dispatch({ type: 'importInvoice', items: chosen, cardId, total: chosenTotal, fileName: result.fileName, file })
     nav.toast(`${chosen.length} lançamentos adicionados · desfaça em Cartões`)
     nav.go('home')
   }

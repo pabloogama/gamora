@@ -1,36 +1,18 @@
 /**
- * Autenticação por e-mail e senha — implementação LOCAL (protótipo).
+ * Autenticação por e-mail e senha.
+ *   • supabaseAuth (services/supabase/auth.ts) — quando VITE_DATA_SOURCE=supabase
+ *   • localAuth (abaixo) — protótipo offline, Storybook e testes
  *
- * Mesmo contrato que o Supabase vai cumprir:
- *   signIn  → supabase.auth.signInWithPassword({ email, password })
- *   signUp  → supabase.auth.signUp({ email, password, options: { data: { name } } })
- *   signOut → supabase.auth.signOut()
- *   currentSession → supabase.auth.getSession()
- *   updateProfile  → supabase.auth.updateUser({ email }) + update em profiles (nome, avatar_url)
- *   changePassword → supabase.auth.updateUser({ password }) (reautentica antes)
- *   deleteAccount  → função /api/account (service role) chama auth.admin.deleteUser(id);
- *                    as tabelas apagam em cascata (on delete cascade em auth.users)
- *
- * Aqui as contas ficam no localStorage deste navegador, com a senha em
+ * localAuth: as contas ficam no localStorage deste navegador, com a senha em
  * SHA-256 (só para não guardar texto puro; não é segurança de produção).
  */
 import { DEMO_ACCOUNT } from '@/data/mocks'
 import type { User } from '@/types/finance'
 
-export class AuthError extends Error {}
-
-export interface AuthService {
-  signIn(email: string, password: string): Promise<User>
-  signUp(name: string, email: string, password: string): Promise<User>
-  signOut(): Promise<void>
-  currentSession(): User | null
-  /** Atualiza nome, e-mail e foto da conta logada. Supabase: auth.updateUser + tabela profiles. */
-  updateProfile(currentEmail: string, next: User): Promise<User>
-  /** Troca a senha. Confere a senha atual antes. */
-  changePassword(email: string, current: string, next: string): Promise<void>
-  /** Apaga a conta e encerra a sessão. Confere a senha antes. Os dados financeiros são apagados pelo chamador (repository.remove). */
-  deleteAccount(email: string, password: string): Promise<void>
-}
+import { AuthError, type AuthService } from './auth-types'
+import { supabaseAuth } from './supabase/auth'
+import { useSupabase } from './supabase/client'
+export { AuthError, AuthNotice, type AuthService } from './auth-types'
 
 interface StoredAccount { name: string; email: string; hash: string; avatar?: string }
 const USERS = 'gamora:accounts'
@@ -72,7 +54,7 @@ export const localAuth: AuthService = {
     write(SESSION, user)
     return user
   },
-  async signUp(name, email, password) {
+  async signUp(name, email, password) { // saldo inicial: o store aplica no estado local
     await wait(800)
     const list = await accounts()
     if (list.some((a) => a.email === norm(email))) throw new AuthError('Este e-mail já tem uma conta. Entre com ele.')
@@ -85,7 +67,7 @@ export const localAuth: AuthService = {
   async signOut() {
     try { localStorage.removeItem(SESSION) } catch { /* ok */ }
   },
-  currentSession() {
+  async currentSession() {
     return read<User | null>(SESSION, null)
   },
   async updateProfile(currentEmail, next) {
@@ -118,4 +100,5 @@ export const localAuth: AuthService = {
   },
 }
 
-export const auth: AuthService = localAuth
+/** VITE_DATA_SOURCE=supabase → Supabase Auth; senão, contas locais (protótipo, Storybook, testes). */
+export const auth: AuthService = useSupabase ? supabaseAuth : localAuth

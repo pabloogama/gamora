@@ -1,9 +1,9 @@
 /**
  * Contratos de dados por entidade — o que o backend precisa oferecer.
  *
- * Hoje o app guarda o State inteiro no localStorage (services/storage.ts) e as
- * operações acontecem no reducer (store/index.tsx). Na integração com o Supabase,
- * cada ação do reducer vira uma chamada destes repositórios (ver docs/CRUD.md):
+ * IMPLEMENTADO em src/services/supabase/data.ts (syncRemote/loadRemote): o reducer
+ * aplica a ação na tela e cada ação vira a chamada correspondente ao banco.
+ * Estes contratos documentam o mapa (ver docs/CRUD.md):
  *
  *   saveCard     → cards.create | cards.update     deleteCard    → cards.remove
  *   saveTx       → transactions.create | update    deleteTx      → transactions.remove

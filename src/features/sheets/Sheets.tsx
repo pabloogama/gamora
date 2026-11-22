@@ -629,10 +629,10 @@ function ProfileForm() {
     if (errs.name || errs.email) return
     setSaving(true)
     try {
-      const updated = await auth.updateProfile(user.email, { name, email, avatar })
+      const { pendingEmail, ...updated } = await auth.updateProfile(user.email, { name, email, avatar })
       if (updated.email !== user.email) repository.remove(user.email)
       dispatch({ type: 'updateUser', user: updated })
-      nav.close(); nav.toast('Perfil atualizado')
+      nav.close(); nav.toast(pendingEmail ? `Perfil salvo · confirme o novo e-mail em ${pendingEmail}` : 'Perfil atualizado')
     } catch (err) {
       setError(err instanceof AuthError ? err.message : 'Não foi possível salvar agora. Tente de novo.')
       setSaving(false)

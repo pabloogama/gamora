@@ -8,7 +8,7 @@ export const env = {
   appName: raw.VITE_APP_NAME || 'Gamora',
   appUrl: raw.VITE_APP_URL || 'http://localhost:5173',
 
-  /** 'local' = mocks + localStorage (hoje). 'supabase' = banco real (integração futura). */
+  /** 'supabase' = banco real (login, dados e Storage). 'local' = protótipo offline (mocks + localStorage), usado no Storybook e nos testes de interface. */
   dataSource: raw.VITE_DATA_SOURCE === 'supabase' ? 'supabase' : 'local',
 
   supabase: {

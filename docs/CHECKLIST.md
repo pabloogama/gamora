@@ -90,9 +90,9 @@ Revisão completa contra o briefing, com **CRUD completo** para tudo que a pesso
 | Cascatas: excluir conta apaga tudo; apagar meta apaga depósitos; apagar cartão mantém os gastos | ✅ testado |
 | Tipos das linhas (`src/types/database.ts`) e mapeadores domínio ⇄ banco | ✅ |
 | Contratos de repositório por entidade (`src/services/api/contracts.ts`) | ✅ |
-| Contrato de auth com alterar senha e excluir conta | ✅ local · ⏳ Supabase |
+| Contrato de auth com alterar senha e excluir conta | ✅ local e Supabase |
 | `.env` / `.env.example` / `.gitignore` · rotas de exemplo da OpenAI | ✅ |
-| App lendo e gravando no Supabase | ⏳ banco pronto; o front ainda usa localStorage |
+| **App lendo e gravando no Supabase** (login, dados, Storage) | ✅ `tests/e2e/supabase.cjs` (28/28) e `supabase-conta.cjs` (14/14) |
 | OpenAI real (fatura e assistente) | ⏳ hoje: simulado |
 
 ## 6. Visual e acessibilidade
