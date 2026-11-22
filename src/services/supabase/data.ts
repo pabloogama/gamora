@@ -48,7 +48,7 @@ export async function loadRemote(user: User): Promise<State> {
   const uid = await currentUserId()
   const [profile, cards, txs, imports, budgets, goals, deposits, chat] = await Promise.all([
     db.from('profiles').select('*').eq('id', uid).single(),
-    db.from('cards').select('*').eq('user_id', uid).order('created_at'),
+    db.from('cards').select('*').eq('user_id', uid).order('created_at').order('id'), // id desempata cartões criados juntos
     db.from('transactions').select('*').eq('user_id', uid).order('date', { ascending: false }).order('created_at', { ascending: false }),
     db.from('invoice_imports').select('*').eq('user_id', uid).order('imported_at', { ascending: false }),
     db.from('budgets').select('*').eq('user_id', uid).order('created_at'),
