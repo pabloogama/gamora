@@ -1,7 +1,9 @@
 /**
  * Dados no Supabase.
  *
- *   load(user)            → lê tudo da pessoa (o RLS só devolve o que é dela) e monta o State
+ *   load(user)            → lê os dados da pessoa e monta o State. Sempre filtra por user_id:
+ *                           o RLS protege, mas um admin enxerga todas as contas e a tela dele
+ *                           precisa mostrar só as dele.
  *   sync(action, prev, next) → grava no banco o efeito de cada ação do store (write-through)
  *
  * O store aplica a ação na tela na hora (otimista) e chama sync. Se o banco recusar,
@@ -46,20 +48,20 @@ export async function loadRemote(user: User): Promise<State> {
   const uid = await currentUserId()
   const [profile, cards, txs, imports, budgets, goals, deposits, chat] = await Promise.all([
     db.from('profiles').select('*').eq('id', uid).single(),
-    db.from('cards').select('*').order('created_at'),
-    db.from('transactions').select('*').order('date', { ascending: false }).order('created_at', { ascending: false }),
-    db.from('invoice_imports').select('*').order('imported_at', { ascending: false }),
-    db.from('budgets').select('*').order('created_at'),
-    db.from('goal_progress').select('*').order('created_at'),
-    db.from('goal_deposits').select('*').order('date', { ascending: false }),
-    db.from('assistant_messages').select('*').order('created_at'),
+    db.from('cards').select('*').eq('user_id', uid).order('created_at'),
+    db.from('transactions').select('*').eq('user_id', uid).order('date', { ascending: false }).order('created_at', { ascending: false }),
+    db.from('invoice_imports').select('*').eq('user_id', uid).order('imported_at', { ascending: false }),
+    db.from('budgets').select('*').eq('user_id', uid).order('created_at'),
+    db.from('goal_progress').select('*').eq('user_id', uid).order('created_at'),
+    db.from('goal_deposits').select('*').eq('user_id', uid).order('date', { ascending: false }),
+    db.from('assistant_messages').select('*').eq('user_id', uid).order('created_at'),
   ])
   const p = check(profile, 'perfil') as ProfileRow
   const transactions = (check(txs, 'lançamentos') as TransactionRow[]).map(txFromRow).map(numbers)
   const last = prevMonth()
   return {
     version: 2,
-    user: { name: p.name, email: user.email, avatar: p.avatar_url ?? undefined },
+    user: { name: p.name, email: user.email, avatar: p.avatar_url ?? undefined, ...(user.isAdmin ? { isAdmin: true } : {}) },
     hideBalance: p.hide_balance,
     baseBalance: Number(p.base_balance),
     movedToGoals: 0, // o store recalcula a partir dos depósitos
@@ -162,7 +164,7 @@ export async function syncRemote(a: Action, prev: State, next: State): Promise<S
       check(await db.from('budgets').upsert(budgetToRow(a.budget), { onConflict: 'user_id,category' }), 'teto')
       return
     case 'deleteBudget':
-      check(await db.from('budgets').delete().eq('category', a.category), 'remover teto')
+      check(await db.from('budgets').delete().eq('user_id', await currentUserId()).eq('category', a.category), 'remover teto')
       return
 
     case 'importInvoice': {
@@ -206,8 +208,9 @@ export async function syncRemote(a: Action, prev: State, next: State): Promise<S
         check(await db.rpc('reset_demo'), 'restaurar dados de exemplo')
       } else {
         // conta comum: "restaurar" = começar do zero (mantém perfil e saldo inicial)
+        const uid = await currentUserId()
         for (const t of ['assistant_messages', 'goal_deposits', 'goals', 'budgets', 'transactions', 'invoice_imports', 'cards'] as const) {
-          check(await db.from(t).delete().not('id', 'is', null), 'restaurar')
+          check(await db.from(t).delete().eq('user_id', uid), 'restaurar')
         }
         check(await db.from('profiles').update({ month_cap: 0 }).eq('id', await currentUserId()), 'restaurar')
       }

@@ -13,6 +13,8 @@ URL: `https://uwthinqxfdmfunzbcyti.supabase.co`
 | `docs/CRUD.md` | Cada operação: tela → ação do store → contrato → tabela → política |
 | `src/services/supabase/` | O app conectado: `client.ts`, `auth.ts` (Supabase Auth) e `data.ts` (ler e gravar) |
 | `supabase/migrations/0002_app_rpcs.sql` | RPCs do app: `import_invoice` com arquivo, `delete_my_account`, `reset_demo` |
+| `supabase/migrations/0003_admin_role.sql` | Papel de administrador (`is_admin()` e políticas dono-ou-admin) |
+| `tests/e2e/supabase-admin.cjs` | Admin: acesso a todas as contas pela API, tela só com os próprios dados (11 verificações) |
 | `tests/e2e/supabase.cjs` · `supabase-conta.cjs` | O app no navegador, conferindo cada gravação no banco (28 + 14 verificações) |
 
 No Supabase, as migrações aparecem em 5 passos (`list_migrations`): `gamora_schema`, `gamora_rls_storage`, `gamora_fk_indexes` e `gamora_grants` (que juntos são o `0001_init.sql`), mais `gamora_app_rpcs` (o `0002_app_rpcs.sql`).
@@ -54,6 +56,16 @@ Depois do deploy, ajuste o Supabase em Authentication → URL Configuration:
 - O envio padrão do Supabase tem limite baixo de e-mails por hora.
 - Para testes, desligue em Authentication → Sign In / Providers → Email → *Confirm email*.
 - Para produção, configure um SMTP próprio.
+
+## Acesso e administrador
+
+- **Quem entra:** só quem se cadastra ou já tem login e senha. No modo conectado, a tela de login não mostra mais o atalho da conta demo. A conta demo continua no banco.
+- **Administrador:** `app_metadata.app_role = 'admin'`, um campo que só o SQL ou o servidor altera.
+  - **No banco:** as políticas valem para o dono **ou** para o admin (`public.is_admin()`). Então o admin vê, edita e apaga dados de todas as contas, e vê e apaga arquivos do Storage.
+  - **Na tela:** o app sempre filtra por `user_id`. O admin vê só os dados dele e um selo "Administrador" na folha Conta.
+  - **Conta admin atual:** a conta pessoal do dono do projeto (criada já confirmada, com cópia dos dados de exemplo). O e-mail e a senha provisória **não** estão no repositório. Troque a senha em Conta → Alterar senha.
+  - **Promover ou rebaixar:** comandos em `supabase/migrations/0003_admin_role.sql`. A mudança vale no próximo login.
+- **"Restaurar dados de exemplo"** só aparece na demo. Nas outras contas, o botão se chama **"Começar do zero"** e pede confirmação antes de apagar os lançamentos.
 
 ## Modelo
 
@@ -216,7 +228,9 @@ delete from auth.users where email = 'teste-rls@gamora.app';
 - [x] Assistente: conversa gravada e apagada
 - [x] Perfil: ocultar valores, ajustar saldo, nome e foto (Storage)
 - [x] Alterar senha (a antiga para de funcionar) e excluir conta (login, dados e foto somem)
-- [x] Restaurar dados de exemplo (RPC `reset_demo`)
+- [x] Restaurar dados de exemplo (RPC `reset_demo`); "Começar do zero" com confirmação nas outras contas
+- [x] Login sem atalho da demo: só entra quem tem conta
+- [x] Admin: acessa todas as contas pela API, conta comum continua isolada, tela do admin só com os dados dele
 - [x] Saldo inicial do cadastro chega ao profile (conferido pelo trigger, com uma conta criada no SQL)
 - [ ] Cadastro pela tela com e-mail real: não testado, para não enviar e-mail a endereços falsos
 - [ ] Variáveis na Vercel e URLs do Auth (você, no deploy)

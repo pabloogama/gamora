@@ -46,7 +46,8 @@ const until = async (fn, ms = 6000) => { const t = Date.now(); while (Date.now()
 
   try {
     await p.goto(APP); await wait(1500);
-    await p.getByText('Conta de demonstração').click();
+    ok('login não mostra atalho da conta demo (só entra quem tem login)', (await p.getByText('Conta de demonstração').count()) === 0);
+    await p.fill('#login-email', 'pablo@gamora.app'); await p.fill('#login-password', 'gamora123');
     await p.getByRole('button', { name: 'Entrar', exact: true }).last().click();
     await p.getByText('R$ 14.500').first().waitFor({ timeout: 15000 });
     const me = (await db('profiles?select=id'))[0].id;

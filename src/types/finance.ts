@@ -77,6 +77,8 @@ export interface User {
   email: string
   /** foto de perfil: caminho público (ex.: avatars/pablo.webp) ou data URL enviada pela pessoa */
   avatar?: string
+  /** administrador (Supabase: app_metadata.app_role = 'admin'; só o servidor altera) */
+  isAdmin?: boolean
 }
 
 /** Item que a leitura de fatura devolve para a pessoa confirmar */

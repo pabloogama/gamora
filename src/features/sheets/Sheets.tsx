@@ -11,6 +11,7 @@ import { useStore } from '@/store'
 import { auth } from '@/services/auth'
 import { Avatar, Bar, Button, Chips, CategoryIcon, Field, inputCls, MethodIcon, MoneyInput, Ring, Sheet, cx } from '@/components/ui'
 import { useMethodLabel } from '@/components/finance'
+import { DEMO_ACCOUNT } from '@/data/mocks'
 import { formatGoalDate, toMonthInput } from '@/lib/goals'
 import { dueLabel } from '@/lib/cards'
 import { useMoney } from '@/hooks/useMoney'
@@ -372,14 +373,20 @@ function Account() {
   const { theme, setTheme } = useTheme()
   const nav = useNav()
   const [confirm, setConfirm] = useState(false)
+  const [askReset, setAskReset] = useState(false)
   if (!state.user) return null
+  const isDemo = state.user.email === DEMO_ACCOUNT.email
+  const reset = () => { dispatch({ type: 'reset' }); nav.close(); nav.toast(isDemo ? 'Dados de exemplo restaurados' : 'Pronto: você começou do zero') }
   const row = 'flex w-full cursor-pointer items-center gap-3 px-5 py-4 text-left text-[15px] font-medium hover:bg-gm-elevated'
   return (
     <Sheet title="Conta" kicker="Gamora" onClose={nav.close}>
       <div className="flex items-center gap-4">
         <Avatar name={state.user.name} src={state.user.avatar} size={64} />
         <div className="min-w-0 flex-1">
-          <p className="truncate text-[20px] font-bold">{state.user.name}</p>
+          <p className="flex items-center gap-2 text-[20px] font-bold">
+            <span className="truncate">{state.user.name}</span>
+            {state.user.isAdmin && <span className="shrink-0 rounded-full bg-gm-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gm-on-primary">Administrador</span>}
+          </p>
           <p className="truncate text-[14px] text-gm-secondary">{state.user.email}</p>
         </div>
       </div>
@@ -405,10 +412,20 @@ function Account() {
         <button onClick={() => nav.open({ kind: 'password' })} className={row}>
           <KeyRound size={18} className="text-gm-secondary" /> <span className="flex-1">Alterar senha</span><ChevronRight size={18} className="text-gm-muted" />
         </button>
-        <button onClick={() => { dispatch({ type: 'reset' }); nav.close(); nav.toast('Dados de exemplo restaurados') }} className={row}>
-          <RotateCcw size={18} className="text-gm-secondary" /> Restaurar dados de exemplo
+        <button onClick={() => (isDemo ? reset() : setAskReset(true))} className={row}>
+          <RotateCcw size={18} className="text-gm-secondary" /> {isDemo ? 'Restaurar dados de exemplo' : 'Começar do zero'}
         </button>
       </div>
+      {askReset && (
+        <div className="mt-4 rounded-tile border border-gm-track p-5">
+          <p className="text-[16px] font-bold">Apagar todos os seus lançamentos?</p>
+          <p className="mt-1 text-[14px] text-gm-secondary">Gastos, cartões, metas, depósitos, tetos e faturas importadas saem. Seu perfil e o saldo inicial ficam. Não dá para desfazer.</p>
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <Button variant="secondary" size="md" onClick={() => setAskReset(false)}>Cancelar</Button>
+            <Button variant="primary" size="md" onClick={reset}>Apagar tudo</Button>
+          </div>
+        </div>
+      )}
       {confirm ? (
         <div className="mt-6 rounded-tile border border-gm-track p-5">
           <p className="text-[16px] font-bold">Deseja sair?</p>
@@ -629,7 +646,7 @@ function ProfileForm() {
     if (errs.name || errs.email) return
     setSaving(true)
     try {
-      const { pendingEmail, ...updated } = await auth.updateProfile(user.email, { name, email, avatar })
+      const { pendingEmail, ...updated } = await auth.updateProfile(user.email, { name, email, avatar, isAdmin: user.isAdmin })
       if (updated.email !== user.email) repository.remove(user.email)
       dispatch({ type: 'updateUser', user: updated })
       nav.close(); nav.toast(pendingEmail ? `Perfil salvo · confirme o novo e-mail em ${pendingEmail}` : 'Perfil atualizado')

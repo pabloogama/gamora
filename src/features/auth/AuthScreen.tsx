@@ -3,6 +3,7 @@ import { ChartColumn, Eye, EyeOff, Target, Users, Wallet } from 'lucide-react'
 import { useStore, loadUser } from '@/store'
 import { auth, AuthError, AuthNotice } from '@/services/auth'
 import { DEMO_ACCOUNT } from '@/data/mocks'
+import { useSupabase } from '@/services/supabase/client'
 import { maskMoney, parseMoney } from '@/lib/format'
 import { Button, cx, Field, inputCls, Logo, MoneyInput, ThemeToggle } from '@/components/ui'
 
@@ -100,6 +101,7 @@ function LoginForm({ onSwitch, notice }: { onSwitch: () => void; notice?: string
       setLoading(false)
     }
   }
+  // atalho da conta demo só no protótipo offline; conectado ao Supabase, só entra quem tem login
   const useDemo = () => { setEmail(DEMO_ACCOUNT.email); setPassword(DEMO_ACCOUNT.password); setError('') }
   return (
     <>
@@ -116,10 +118,10 @@ function LoginForm({ onSwitch, notice }: { onSwitch: () => void; notice?: string
         </Field>
         <Button type="submit" className="w-full" disabled={loading}>{loading ? 'Entrando…' : 'Entrar'}</Button>
       </form>
-      <button onClick={useDemo} className="mt-4 w-full cursor-pointer rounded-tile border border-dashed border-gm-track px-4 py-3 text-left text-[13px] text-gm-secondary transition hover:border-gm-accent">
+      {!useSupabase && <button onClick={useDemo} className="mt-4 w-full cursor-pointer rounded-tile border border-dashed border-gm-track px-4 py-3 text-left text-[13px] text-gm-secondary transition hover:border-gm-accent">
         <span className="kicker block text-gm-muted">Conta de demonstração</span>
         <span className="font-mono text-gm-text">{DEMO_ACCOUNT.email}</span> · <span className="font-mono text-gm-text">{DEMO_ACCOUNT.password}</span> <span className="text-gm-accent">· preencher</span>
-      </button>
+      </button>}
       <p className="mt-6 text-center text-[14px] text-gm-secondary">Ainda não tem conta? <button onClick={onSwitch} className="cursor-pointer font-bold text-gm-accent hover:underline">Criar conta</button></p>
     </>
   )

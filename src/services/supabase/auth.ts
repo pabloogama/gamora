@@ -27,10 +27,13 @@ function translate(message: string): string {
   return 'Não foi possível concluir agora. Tente de novo.'
 }
 
-async function profileUser(id: string, email: string): Promise<User> {
-  const { data, error } = await sb().from('profiles').select('name, avatar_url').eq('id', id).single()
+type AuthUser = { id: string; email?: string; app_metadata?: Record<string, unknown> }
+
+async function profileUser(u: AuthUser, fallbackEmail = ''): Promise<User> {
+  const { data, error } = await sb().from('profiles').select('name, avatar_url').eq('id', u.id).single()
   if (error || !data) throw new AuthError('Não encontramos o perfil desta conta.')
-  return { name: data.name, email, avatar: data.avatar_url ?? undefined }
+  const isAdmin = u.app_metadata?.app_role === 'admin'
+  return { name: data.name, email: u.email ?? fallbackEmail, avatar: data.avatar_url ?? undefined, ...(isAdmin ? { isAdmin } : {}) }
 }
 
 async function confirmPassword(email: string, password: string, wrong: string) {
@@ -47,7 +50,7 @@ export const supabaseAuth: AuthService = {
   async signIn(email, password) {
     const { data, error } = await sb().auth.signInWithPassword({ email: norm(email), password })
     if (error || !data.user) throw new AuthError(translate(error?.message ?? ''))
-    return profileUser(data.user.id, data.user.email ?? norm(email))
+    return profileUser(data.user, norm(email))
   },
 
   async signUp(name, email, password, startingBalance = 0) {
@@ -60,7 +63,7 @@ export const supabaseAuth: AuthService = {
     // com confirmação de e-mail ligada, um e-mail já cadastrado volta sem identidades
     if (data.user && data.user.identities?.length === 0) throw new AuthError('Este e-mail já tem uma conta. Entre com ele.')
     if (!data.session || !data.user) throw new AuthNotice(`Conta criada! Enviamos um link para ${norm(email)}. Confirme e depois entre.`)
-    return profileUser(data.user.id, data.user.email ?? norm(email))
+    return profileUser(data.user, norm(email))
   },
 
   async signOut() {
@@ -72,7 +75,7 @@ export const supabaseAuth: AuthService = {
     const u = data.session?.user
     if (!u) return null
     try {
-      return await profileUser(u.id, u.email ?? '')
+      return await profileUser(u)
     } catch {
       await sb().auth.signOut({ scope: 'local' }) // conta apagada em outro aparelho
       return null
@@ -105,7 +108,7 @@ export const supabaseAuth: AuthService = {
       pendingEmail = norm(next.email)
     }
     // o e-mail só muda depois que a pessoa confirma o link
-    return { name: next.name.trim(), email: norm(currentEmail), avatar, pendingEmail }
+    return { name: next.name.trim(), email: norm(currentEmail), avatar, isAdmin: next.isAdmin, pendingEmail }
   },
 
   async changePassword(email, current, next) {
