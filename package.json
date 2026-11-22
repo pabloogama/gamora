@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc --noEmit -p . && vite build",
+    "build": "tsc --noEmit -p . && tsc --noEmit -p tsconfig.api.json && vite build",
     "preview": "vite preview --host",
-    "typecheck": "tsc --noEmit -p .",
+    "typecheck": "tsc --noEmit -p . && tsc --noEmit -p tsconfig.api.json",
     "tokens": "node scripts/build-tokens.mjs",
     "storybook": "storybook dev -p 6006 --host 0.0.0.0",
     "build-storybook": "storybook build -o storybook-static"
@@ -22,6 +22,7 @@
     "@storybook/addon-docs": "^10.6.8",
     "@storybook/react-vite": "^10.6.8",
     "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^22.20.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.3.0",

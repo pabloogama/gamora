@@ -25,17 +25,17 @@ export default function InvoiceScreen() {
   const abort = useRef<AbortController | null>(null)
   useEffect(() => () => abort.current?.abort(), [])
 
-  const start = async (file: File) => {
+  const start = async (file: File, sample = false) => {
     const err = validateInvoiceFile(file)
     if (err) return setPhase({ name: 'pick', error: err })
     abort.current = new AbortController()
     setPhase({ name: 'reading', file, step: 0 })
     try {
-      const result = await readInvoice(file, (step) => setPhase({ name: 'reading', file, step }), abort.current.signal)
+      const result = await readInvoice(file, (step) => setPhase({ name: 'reading', file, step }), abort.current.signal, sample)
       setPhase({ name: 'review', result, file })
     } catch (e) {
       if ((e as Error).name === 'AbortError') return setPhase({ name: 'pick' })
-      setPhase({ name: 'pick', error: 'Não conseguimos ler essa fatura. Confira se o arquivo está legível e tente de novo.' })
+      setPhase({ name: 'pick', error: (e as Error).message && !/fetch|network/i.test((e as Error).message) ? (e as Error).message : 'Não conseguimos ler essa fatura. Confira se o arquivo está legível e tente de novo.' })
     }
   }
 
@@ -51,7 +51,7 @@ export default function InvoiceScreen() {
   return (
     <>
       <ScreenHeader kicker="Estágio 2 · IA" title="Fatura" />
-      {phase.name === 'pick' && <Pick cardId={cardId} setCardId={setCardId} error={phase.error} onFile={start} />}
+      {phase.name === 'pick' && <Pick cardId={cardId} setCardId={setCardId} error={phase.error} onFile={(f) => start(f)} onSample={(f) => start(f, true)} />}
       {phase.name === 'reading' && <Reading file={phase.file} step={phase.step} onCancel={() => abort.current?.abort()} />}
       {phase.name === 'review' && <Review result={phase.result} file={phase.file} cardId={cardId} onRestart={() => setPhase({ name: 'pick' })} />}
     </>
@@ -59,13 +59,13 @@ export default function InvoiceScreen() {
 }
 
 /* ---------------- 1. Escolher PDF ou foto ---------------- */
-function Pick({ cardId, setCardId, error, onFile }: { cardId: string; setCardId: (v: string) => void; error?: string; onFile: (f: File) => void }) {
+function Pick({ cardId, setCardId, error, onFile, onSample }: { cardId: string; setCardId: (v: string) => void; error?: string; onFile: (f: File) => void; onSample: (f: File) => void }) {
   const { state } = useStore()
   const pdfRef = useRef<HTMLInputElement>(null)
   const photoRef = useRef<HTMLInputElement>(null)
   const [drag, setDrag] = useState(false)
   const pick = (files: FileList | null) => { const f = files?.[0]; if (f) onFile(f) }
-  const sample = () => onFile(new File(['%PDF-1.4 exemplo'], 'fatura-novembro.pdf', { type: 'application/pdf' }))
+  const sample = () => onSample(new File(['%PDF-1.4 exemplo'], 'fatura-novembro.pdf', { type: 'application/pdf' }))
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10">

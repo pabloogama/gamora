@@ -13,6 +13,7 @@ URL: `https://uwthinqxfdmfunzbcyti.supabase.co`
 | `docs/CRUD.md` | Cada operação: tela → ação do store → contrato → tabela → política |
 | `src/services/supabase/` | O app conectado: `client.ts`, `auth.ts` (Supabase Auth) e `data.ts` (ler e gravar) |
 | `supabase/migrations/0002_app_rpcs.sql` | RPCs do app: `import_invoice` com arquivo, `delete_my_account`, `reset_demo` |
+| `api/assistant.ts` · `api/invoice.ts` | IA no servidor (OpenAI), só com login; o assistente lê o contexto do banco ([`api/README.md`](../api/README.md)) |
 | `supabase/migrations/0003_admin_role.sql` | Papel de administrador (`is_admin()` e políticas dono-ou-admin) |
 | `tests/e2e/supabase-admin.cjs` | Admin: acesso a todas as contas pela API, tela só com os próprios dados (11 verificações) |
 | `tests/e2e/supabase.cjs` · `supabase-conta.cjs` | O app no navegador, conferindo cada gravação no banco (28 + 14 verificações) |

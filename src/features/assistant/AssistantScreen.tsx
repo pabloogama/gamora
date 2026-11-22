@@ -51,7 +51,7 @@ export default function AssistantScreen() {
       dispatch({ type: 'chatAdd', entry: { id, role: 'assistant', content: reply, createdAt: new Date().toISOString() } })
       setStreaming({ id, shown: 0 })
     } catch (e) {
-      if ((e as Error).name !== 'AbortError') setMsgs((m) => [...m, { id: uid(), role: 'assistant', content: 'Não consegui responder agora. Tente de novo em instantes.', error: true }])
+      if ((e as Error).name !== 'AbortError') setMsgs((m) => [...m, { id: uid(), role: 'assistant', content: (e as Error).message && !/fetch|network/i.test((e as Error).message) ? (e as Error).message : 'Não consegui responder agora. Tente de novo em instantes.', error: true }])
     } finally {
       setWaiting(false)
     }

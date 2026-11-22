@@ -54,7 +54,8 @@ Testes do banco (Postgres puro, sem Supabase): veja `supabase/tests/README.md`.
 ```
 gamora/
 ├─ api/                      # Vercel Functions (SERVIDOR — segredos ficam aqui)
-│  └─ _examples/             # rotas OpenAI de exemplo, desligadas (prefixo _)
+│  ├─ assistant.ts · invoice.ts  # IA (OpenAI) com login obrigatório
+│  └─ _lib/                  # código comum das rotas
 ├─ public/                   # arquivos estáticos (favicon)
 ├─ tokens/                   # design tokens: source.mjs (fonte) → primitives/semantic/figma-variables.json
 ├─ docs/                     # CHECKLIST.md, CRUD.md, TOKENS.md (gerado)
@@ -117,7 +118,6 @@ Imports usam o alias `@/` → `src/`.
 2. Importar o repositório na Vercel (framework: Vite — já em `vercel.json`)
 3. Cadastrar as variáveis de ambiente
 
-**Estágio 2 · OpenAI**
-1. Copiar `api/_examples/*.example.ts` para `api/assistant.ts` e `api/invoice.ts`
-2. `OPENAI_API_KEY` na Vercel · `VITE_FEATURE_AI=true`
-3. Construir as telas Fatura e Assistente usando `src/services/ai/client.ts`
+**Estágio 2 · OpenAI** (rotas prontas: [`api/README.md`](api/README.md))
+1. Cadastrar `OPENAI_API_KEY` na Vercel, sem o prefixo `VITE_`.
+2. Trocar `VITE_FEATURE_AI` para `true` e fazer Redeploy.
