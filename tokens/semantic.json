@@ -1,0 +1,1873 @@
+{
+  "color": {
+    "background": {
+      "color-bg-page": {
+        "$value": "{color.gray.gray-100}",
+        "$description": "Fundo da página.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.gray.gray-100}",
+              "dark": "{color.blue.blue-950}"
+            },
+            "css": "--gm-bg"
+          }
+        }
+      },
+      "color-bg-surface": {
+        "$value": "{color.base.white}",
+        "$description": "Cards, atalhos, linhas, campos.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.base.white}",
+              "dark": "{color.slate.slate-925}"
+            },
+            "css": "--gm-surface"
+          }
+        }
+      },
+      "color-bg-elevated": {
+        "$value": "{color.gray.gray-50}",
+        "$description": "Hover/pressionado sobre surface.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.gray.gray-50}",
+              "dark": "{color.slate.slate-850}"
+            },
+            "css": "--gm-elevated"
+          }
+        }
+      },
+      "color-bg-sheet": {
+        "$value": "{color.base.white}",
+        "$description": "Folhas que sobem por cima da tela.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.base.white}",
+              "dark": "{color.slate.slate-900}"
+            },
+            "css": "--gm-sheet"
+          }
+        }
+      },
+      "color-bg-subtle": {
+        "$value": "{color.gray.gray-150}",
+        "$description": "Quadrado do ícone, chip inativo, botão secundário.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.gray.gray-150}",
+              "dark": "{color.slate.slate-800}"
+            },
+            "css": "--gm-row"
+          }
+        }
+      },
+      "color-bg-card": {
+        "$value": "{color.base.white}",
+        "$description": "Tiles de destaque.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.base.white}",
+              "dark": "{color.slate.slate-875}"
+            },
+            "css": "--gm-card"
+          }
+        }
+      },
+      "color-bg-dock": {
+        "$value": "{color.blue.blue-700}",
+        "$description": "Dock flutuante do mobile.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-700}",
+              "dark": "{color.blue.blue-800}"
+            },
+            "css": "--gm-dock"
+          }
+        }
+      },
+      "color-bg-overlay": {
+        "$value": "{color.alpha.blue-950-alpha-55}",
+        "$description": "Véu atrás das folhas.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.alpha.blue-950-alpha-55}",
+              "dark": "{color.alpha.blue-950-alpha-55}"
+            },
+            "css": null
+          }
+        }
+      }
+    },
+    "band": {
+      "color-band-start": {
+        "$value": "{color.blue.blue-750}",
+        "$description": "Topo da faixa marinho / barra do desktop.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-750}",
+              "dark": "{color.blue.blue-850}"
+            },
+            "css": "--gm-band-from"
+          }
+        }
+      },
+      "color-band-end": {
+        "$value": "{color.blue.blue-600}",
+        "$description": "Fim da faixa e base do bolso sólido.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-600}",
+              "dark": "{color.blue.blue-775}"
+            },
+            "css": "--gm-band-to"
+          }
+        }
+      }
+    },
+    "text": {
+      "color-text-default": {
+        "$value": "{color.blue.blue-900}",
+        "$description": "Texto e números principais.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-900}",
+              "dark": "{color.gray.gray-75}"
+            },
+            "css": "--gm-text"
+          }
+        }
+      },
+      "color-text-emphasis": {
+        "$value": "{color.slate.slate-775}",
+        "$description": "Texto de chips e rótulos fortes.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.slate.slate-775}",
+              "dark": "{color.gray.gray-300}"
+            },
+            "css": "--gm-text-2"
+          }
+        }
+      },
+      "color-text-secondary": {
+        "$value": "{color.gray.gray-700}",
+        "$description": "Texto de apoio.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.gray.gray-700}",
+              "dark": "{color.gray.gray-400}"
+            },
+            "css": "--gm-secondary"
+          }
+        }
+      },
+      "color-text-muted": {
+        "$value": "{color.gray.gray-600}",
+        "$description": "Datas, dicas, kickers (em surface).",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.gray.gray-600}",
+              "dark": "{color.gray.gray-500}"
+            },
+            "css": "--gm-muted"
+          }
+        }
+      },
+      "color-text-link": {
+        "$value": "{color.blue.blue-500}",
+        "$description": "Links e destaque dentro de frase.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-500}",
+              "dark": "{color.blue.blue-300}"
+            },
+            "css": "--gm-accent"
+          }
+        }
+      },
+      "color-text-on-action": {
+        "$value": "{color.base.white}",
+        "$description": "Texto sobre color-action-primary.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.base.white}",
+              "dark": "{color.blue.blue-950}"
+            },
+            "css": "--gm-on-primary"
+          }
+        }
+      },
+      "color-text-on-card": {
+        "$value": "{color.blue.blue-900}",
+        "$description": "Texto sobre color-bg-card.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-900}",
+              "dark": "{color.gray.gray-75}"
+            },
+            "css": "--gm-on-card"
+          }
+        }
+      },
+      "color-text-on-brand": {
+        "$value": "{color.blue.blue-900}",
+        "$description": "Texto sobre lilás e cartões claros.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-900}",
+              "dark": "{color.blue.blue-900}"
+            },
+            "css": "--gm-on"
+          }
+        }
+      },
+      "color-text-on-band": {
+        "$value": "{color.base.white}",
+        "$description": "Texto sobre a faixa marinho e o bolso.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.base.white}",
+              "dark": "{color.base.white}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-text-on-band-muted": {
+        "$value": "{color.alpha.white-alpha-70}",
+        "$description": "Texto secundário sobre a faixa.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.alpha.white-alpha-70}",
+              "dark": "{color.alpha.white-alpha-70}"
+            },
+            "css": null
+          }
+        }
+      }
+    },
+    "action": {
+      "color-action-primary": {
+        "$value": "{color.blue.blue-700}",
+        "$description": "Ação principal, chip selecionado, progresso.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-700}",
+              "dark": "{color.blue.blue-200}"
+            },
+            "css": "--gm-primary"
+          }
+        }
+      },
+      "color-action-brand": {
+        "$value": "{color.lilac.lilac-300}",
+        "$description": "Botão + do dock, Pergunte ao Gamora, Adicionar (desktop).",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.lilac.lilac-300}",
+              "dark": "{color.lilac.lilac-300}"
+            },
+            "css": "--gm-lilac"
+          }
+        }
+      }
+    },
+    "border": {
+      "color-border-default": {
+        "$value": "{color.gray.gray-200}",
+        "$description": "Divisórias.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.gray.gray-200}",
+              "dark": "{color.slate.slate-750}"
+            },
+            "css": "--gm-border"
+          }
+        }
+      },
+      "color-border-control": {
+        "$value": "{color.gray.gray-250}",
+        "$description": "Borda de campos; trilho de progresso.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.gray.gray-250}",
+              "dark": "{color.slate.slate-700}"
+            },
+            "css": "--gm-track"
+          }
+        }
+      },
+      "color-border-focus": {
+        "$value": "{color.blue.blue-500}",
+        "$description": "Anel de foco e campo ativo.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-500}",
+              "dark": "{color.blue.blue-300}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-border-glass": {
+        "$value": "{color.alpha.white-alpha-28}",
+        "$description": "Borda do vidro.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.alpha.white-alpha-28}",
+              "dark": "{color.alpha.white-alpha-28}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-border-stitch": {
+        "$value": "{color.alpha.white-alpha-35}",
+        "$description": "Costura tracejada do bolso.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.alpha.white-alpha-35}",
+              "dark": "{color.alpha.white-alpha-35}"
+            },
+            "css": null
+          }
+        }
+      }
+    },
+    "brand": {
+      "color-brand-lilac": {
+        "$value": "{color.lilac.lilac-300}",
+        "$description": "Cor da marca.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.lilac.lilac-300}",
+              "dark": "{color.lilac.lilac-300}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-brand-lilac-strong": {
+        "$value": "{color.lilac.lilac-600}",
+        "$description": "Assinaturas, limite atingido, 3ª série.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.lilac.lilac-600}",
+              "dark": "{color.lilac.lilac-500}"
+            },
+            "css": "--gm-lilac-strong"
+          }
+        }
+      }
+    },
+    "glass": {
+      "color-glass-fill-start": {
+        "$value": "{color.alpha.white-alpha-20}",
+        "$description": "Vidro: topo.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.alpha.white-alpha-20}",
+              "dark": "{color.alpha.white-alpha-20}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-glass-fill-end": {
+        "$value": "{color.alpha.white-alpha-8}",
+        "$description": "Vidro: base.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.alpha.white-alpha-8}",
+              "dark": "{color.alpha.white-alpha-8}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-glass-highlight": {
+        "$value": "{color.alpha.white-alpha-70}",
+        "$description": "Reflexo de 1px na borda de cima do bolso.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.alpha.white-alpha-70}",
+              "dark": "{color.alpha.white-alpha-70}"
+            },
+            "css": null
+          }
+        }
+      }
+    },
+    "card": {
+      "color-card-lilac-start": {
+        "$value": "{color.lilac.lilac-400}",
+        "$description": "Cartão lilás (gradiente 128°).",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.lilac.lilac-400}",
+              "dark": "{color.lilac.lilac-400}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-card-lilac-end": {
+        "$value": "{color.lilac.lilac-100}",
+        "$description": "Cartão lilás, fim.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.lilac.lilac-100}",
+              "dark": "{color.lilac.lilac-100}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-card-periwinkle-start": {
+        "$value": "{color.blue.blue-250}",
+        "$description": "Cartão lavanda.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-250}",
+              "dark": "{color.blue.blue-250}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-card-periwinkle-end": {
+        "$value": "{color.blue.blue-100}",
+        "$description": "Cartão lavanda, fim.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-100}",
+              "dark": "{color.blue.blue-100}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-card-silver-start": {
+        "$value": "{color.gray.gray-250}",
+        "$description": "Cartão prata.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.gray.gray-250}",
+              "dark": "{color.gray.gray-250}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-card-silver-end": {
+        "$value": "{color.gray.gray-25}",
+        "$description": "Cartão prata, fim.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.gray.gray-25}",
+              "dark": "{color.gray.gray-25}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-hero-start": {
+        "$value": "{color.lilac.lilac-400}",
+        "$description": "Bolha do assistente/avatar: início.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.lilac.lilac-400}",
+              "dark": "{color.lilac.lilac-400}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-hero-middle": {
+        "$value": "{color.lilac.lilac-200}",
+        "$description": "Meio.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.lilac.lilac-200}",
+              "dark": "{color.lilac.lilac-200}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-hero-end": {
+        "$value": "{color.lilac.lilac-50}",
+        "$description": "Fim.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.lilac.lilac-50}",
+              "dark": "{color.lilac.lilac-50}"
+            },
+            "css": null
+          }
+        }
+      }
+    },
+    "chart": {
+      "color-chart-1": {
+        "$value": "{color.blue.blue-700}",
+        "$description": "1ª série.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-700}",
+              "dark": "{color.blue.blue-200}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-chart-2": {
+        "$value": "{color.blue.blue-500}",
+        "$description": "2ª série.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-500}",
+              "dark": "{color.blue.blue-300}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-chart-3": {
+        "$value": "{color.lilac.lilac-600}",
+        "$description": "3ª série.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.lilac.lilac-600}",
+              "dark": "{color.lilac.lilac-500}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-chart-rest": {
+        "$value": "{color.gray.gray-250}",
+        "$description": "Restante.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.gray.gray-250}",
+              "dark": "{color.slate.slate-700}"
+            },
+            "css": null
+          }
+        }
+      }
+    }
+  },
+  "typography": {
+    "font-family-body": {
+      "$value": "{font.family.font-family-satoshi}",
+      "$description": "Toda a interface (fallback Manrope).",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.family.font-family-satoshi}",
+            "dark": "{font.family.font-family-satoshi}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-family-body-fallback": {
+      "$value": "{font.family.font-family-manrope}",
+      "$description": "Quando a Satoshi não carrega.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.family.font-family-manrope}",
+            "dark": "{font.family.font-family-manrope}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-family-code": {
+      "$value": "{font.family.font-family-ibm-plex-mono}",
+      "$description": "Kickers e número do cartão.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.family.font-family-ibm-plex-mono}",
+            "dark": "{font.family.font-family-ibm-plex-mono}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-balance": {
+      "$value": "{font.size.font-size-40}",
+      "$description": "Saldo no mobile.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-40}",
+            "dark": "{font.size.font-size-40}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-balance-desktop": {
+      "$value": "{font.size.font-size-52}",
+      "$description": "Saldo no desktop.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-52}",
+            "dark": "{font.size.font-size-52}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-display": {
+      "$value": "{font.size.font-size-46}",
+      "$description": "Números de destaque (Ainda pode gastar).",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-46}",
+            "dark": "{font.size.font-size-46}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-figure": {
+      "$value": "{font.size.font-size-28}",
+      "$description": "Números em cards.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-28}",
+            "dark": "{font.size.font-size-28}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-screen-title": {
+      "$value": "{font.size.font-size-29}",
+      "$description": "Título de tela (mobile).",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-29}",
+            "dark": "{font.size.font-size-29}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-screen-title-desktop": {
+      "$value": "{font.size.font-size-36}",
+      "$description": "Título de tela (desktop).",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-36}",
+            "dark": "{font.size.font-size-36}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-sheet-title": {
+      "$value": "{font.size.font-size-24}",
+      "$description": "Título de folha.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-24}",
+            "dark": "{font.size.font-size-24}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-section": {
+      "$value": "{font.size.font-size-18}",
+      "$description": "Título de seção.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-18}",
+            "dark": "{font.size.font-size-18}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-body-lg": {
+      "$value": "{font.size.font-size-16}",
+      "$description": "Nome na linha, campos.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-16}",
+            "dark": "{font.size.font-size-16}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-body": {
+      "$value": "{font.size.font-size-15}",
+      "$description": "Texto corrido.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-15}",
+            "dark": "{font.size.font-size-15}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-label": {
+      "$value": "{font.size.font-size-13}",
+      "$description": "Rótulos.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-13}",
+            "dark": "{font.size.font-size-13}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-caption": {
+      "$value": "{font.size.font-size-12}",
+      "$description": "Legendas e datas.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-12}",
+            "dark": "{font.size.font-size-12}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-size-kicker": {
+      "$value": "{font.size.font-size-11}",
+      "$description": "Kicker mono maiúsculo.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.size.font-size-11}",
+            "dark": "{font.size.font-size-11}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-weight-body": {
+      "$value": "{font.weight.font-weight-500}",
+      "$description": "Corpo.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.weight.font-weight-500}",
+            "dark": "{font.weight.font-weight-500}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-weight-strong": {
+      "$value": "{font.weight.font-weight-700}",
+      "$description": "Títulos, números, botões.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.weight.font-weight-700}",
+            "dark": "{font.weight.font-weight-700}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-weight-wordmark": {
+      "$value": "{font.weight.font-weight-900}",
+      "$description": "Palavra gamora.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.weight.font-weight-900}",
+            "dark": "{font.weight.font-weight-900}"
+          },
+          "css": null
+        }
+      }
+    },
+    "font-weight-code": {
+      "$value": "{font.weight.font-weight-400}",
+      "$description": "Mono.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.weight.font-weight-400}",
+            "dark": "{font.weight.font-weight-400}"
+          },
+          "css": null
+        }
+      }
+    },
+    "line-height-body": {
+      "$value": "{font.line-height.line-height-22}",
+      "$description": "Corpo 15px.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.line-height.line-height-22}",
+            "dark": "{font.line-height.line-height-22}"
+          },
+          "css": null
+        }
+      }
+    },
+    "line-height-caption": {
+      "$value": "{font.line-height.line-height-16}",
+      "$description": "Legenda e kicker.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.line-height.line-height-16}",
+            "dark": "{font.line-height.line-height-16}"
+          },
+          "css": null
+        }
+      }
+    },
+    "line-height-section": {
+      "$value": "{font.line-height.line-height-24}",
+      "$description": "Seção 18px.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.line-height.line-height-24}",
+            "dark": "{font.line-height.line-height-24}"
+          },
+          "css": null
+        }
+      }
+    },
+    "letter-spacing-number": {
+      "$value": "{font.letter-spacing.letter-spacing-neg-45}",
+      "$description": "Números (saldo, valores).",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.letter-spacing.letter-spacing-neg-45}",
+            "dark": "{font.letter-spacing.letter-spacing-neg-45}"
+          },
+          "css": null
+        }
+      }
+    },
+    "letter-spacing-title": {
+      "$value": "{font.letter-spacing.letter-spacing-neg-35}",
+      "$description": "Títulos de tela.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.letter-spacing.letter-spacing-neg-35}",
+            "dark": "{font.letter-spacing.letter-spacing-neg-35}"
+          },
+          "css": null
+        }
+      }
+    },
+    "letter-spacing-wordmark": {
+      "$value": "{font.letter-spacing.letter-spacing-neg-40}",
+      "$description": "Palavra gamora.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.letter-spacing.letter-spacing-neg-40}",
+            "dark": "{font.letter-spacing.letter-spacing-neg-40}"
+          },
+          "css": null
+        }
+      }
+    },
+    "letter-spacing-kicker": {
+      "$value": "{font.letter-spacing.letter-spacing-80}",
+      "$description": "Kicker.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.letter-spacing.letter-spacing-80}",
+            "dark": "{font.letter-spacing.letter-spacing-80}"
+          },
+          "css": null
+        }
+      }
+    },
+    "letter-spacing-card-number": {
+      "$value": "{font.letter-spacing.letter-spacing-120}",
+      "$description": "•••• 4552.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{font.letter-spacing.letter-spacing-120}",
+            "dark": "{font.letter-spacing.letter-spacing-120}"
+          },
+          "css": null
+        }
+      }
+    }
+  },
+  "spacing": {
+    "space-gutter-mobile": {
+      "$value": "{space.positive.space-20}",
+      "$description": "Margem lateral < 800px.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-20}",
+            "dark": "{space.positive.space-20}"
+          },
+          "css": null
+        }
+      }
+    },
+    "space-gutter-desktop": {
+      "$value": "{space.positive.space-32}",
+      "$description": "Margem lateral ≥ 800px.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-32}",
+            "dark": "{space.positive.space-32}"
+          },
+          "css": null
+        }
+      }
+    },
+    "space-inset-card": {
+      "$value": "{space.positive.space-24}",
+      "$description": "Padding de cards e bolso.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-24}",
+            "dark": "{space.positive.space-24}"
+          },
+          "css": null
+        }
+      }
+    },
+    "space-inset-tile": {
+      "$value": "{space.positive.space-20}",
+      "$description": "Padding de tiles.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-20}",
+            "dark": "{space.positive.space-20}"
+          },
+          "css": null
+        }
+      }
+    },
+    "space-inset-row": {
+      "$value": "{space.positive.space-16}",
+      "$description": "Padding horizontal da linha.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-16}",
+            "dark": "{space.positive.space-16}"
+          },
+          "css": null
+        }
+      }
+    },
+    "space-inset-stitch": {
+      "$value": "{space.positive.space-7}",
+      "$description": "Recuo da costura do bolso.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-7}",
+            "dark": "{space.positive.space-7}"
+          },
+          "css": null
+        }
+      }
+    },
+    "gap-inline-xs": {
+      "$value": "{space.positive.space-6}",
+      "$description": "Ícone + texto em chip.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-6}",
+            "dark": "{space.positive.space-6}"
+          },
+          "css": null
+        }
+      }
+    },
+    "gap-inline-sm": {
+      "$value": "{space.positive.space-8}",
+      "$description": "Ícone + texto em botão.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-8}",
+            "dark": "{space.positive.space-8}"
+          },
+          "css": null
+        }
+      }
+    },
+    "gap-inline-md": {
+      "$value": "{space.positive.space-12}",
+      "$description": "Avatar + saudação; atalhos.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-12}",
+            "dark": "{space.positive.space-12}"
+          },
+          "css": null
+        }
+      }
+    },
+    "gap-stack-list": {
+      "$value": "{space.positive.space-8}",
+      "$description": "Entre linhas de transação.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-8}",
+            "dark": "{space.positive.space-8}"
+          },
+          "css": null
+        }
+      }
+    },
+    "gap-stack-form": {
+      "$value": "{space.positive.space-20}",
+      "$description": "Entre campos.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-20}",
+            "dark": "{space.positive.space-20}"
+          },
+          "css": null
+        }
+      }
+    },
+    "gap-stack-section": {
+      "$value": "{space.positive.space-24}",
+      "$description": "Entre seções.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-24}",
+            "dark": "{space.positive.space-24}"
+          },
+          "css": null
+        }
+      }
+    },
+    "gap-grid-tiles": {
+      "$value": "{space.positive.space-12}",
+      "$description": "Grade de tiles e atalhos.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-12}",
+            "dark": "{space.positive.space-12}"
+          },
+          "css": null
+        }
+      }
+    },
+    "gap-columns-desktop": {
+      "$value": "{space.positive.space-32}",
+      "$description": "Colunas no desktop.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-32}",
+            "dark": "{space.positive.space-32}"
+          },
+          "css": null
+        }
+      }
+    },
+    "wallet-peek": {
+      "$value": "{space.positive.space-44}",
+      "$description": "Quanto o cartão de trás aparece na Home.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.positive.space-44}",
+            "dark": "{space.positive.space-44}"
+          },
+          "css": null
+        }
+      }
+    },
+    "offset-lift-hover": {
+      "$value": "{space.negative.space-neg-6}",
+      "$description": "Cartão sobe ao passar o mouse.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.negative.space-neg-6}",
+            "dark": "{space.negative.space-neg-6}"
+          },
+          "css": null
+        }
+      }
+    },
+    "offset-dock-active": {
+      "$value": "{space.negative.space-neg-6}",
+      "$description": "Círculo ativo do dock sobressai.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.negative.space-neg-6}",
+            "dark": "{space.negative.space-neg-6}"
+          },
+          "css": null
+        }
+      }
+    },
+    "offset-bleed-list": {
+      "$value": "{space.negative.space-neg-12}",
+      "$description": "Lista sangra até a borda.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{space.negative.space-neg-12}",
+            "dark": "{space.negative.space-neg-12}"
+          },
+          "css": null
+        }
+      }
+    }
+  },
+  "radius": {
+    "radius-control": {
+      "$value": "{radius.radius-12}",
+      "$description": "Campos; ícone de categoria.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{radius.radius-12}",
+            "dark": "{radius.radius-12}"
+          },
+          "css": null
+        }
+      }
+    },
+    "radius-checkbox": {
+      "$value": "{radius.radius-8}",
+      "$description": "Checkbox da fatura.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{radius.radius-8}",
+            "dark": "{radius.radius-8}"
+          },
+          "css": null
+        }
+      }
+    },
+    "radius-chart-segment": {
+      "$value": "{radius.radius-14}",
+      "$description": "Segmento do mês.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{radius.radius-14}",
+            "dark": "{radius.radius-14}"
+          },
+          "css": null
+        }
+      }
+    },
+    "radius-row": {
+      "$value": "{radius.radius-22}",
+      "$description": "Linha de transação, bolhas.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{radius.radius-22}",
+            "dark": "{radius.radius-22}"
+          },
+          "css": null
+        }
+      }
+    },
+    "radius-stitch": {
+      "$value": "{radius.radius-24}",
+      "$description": "Costura do bolso.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{radius.radius-24}",
+            "dark": "{radius.radius-24}"
+          },
+          "css": null
+        }
+      }
+    },
+    "radius-tile": {
+      "$value": "{radius.radius-26}",
+      "$description": "Atalhos, tiles, botões grandes.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{radius.radius-26}",
+            "dark": "{radius.radius-26}"
+          },
+          "css": null
+        }
+      }
+    },
+    "radius-pocket": {
+      "$value": "{radius.radius-30}",
+      "$description": "Bolso da carteira.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{radius.radius-30}",
+            "dark": "{radius.radius-30}"
+          },
+          "css": null
+        }
+      }
+    },
+    "radius-wallet-card": {
+      "$value": "{radius.radius-32}",
+      "$description": "Cartões.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{radius.radius-32}",
+            "dark": "{radius.radius-32}"
+          },
+          "css": null
+        }
+      }
+    },
+    "radius-section": {
+      "$value": "{radius.radius-34}",
+      "$description": "Cards de seção, folhas.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{radius.radius-34}",
+            "dark": "{radius.radius-34}"
+          },
+          "css": null
+        }
+      }
+    },
+    "radius-pill": {
+      "$value": "{radius.radius-full}",
+      "$description": "Chips, botões redondos, dock.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{radius.radius-full}",
+            "dark": "{radius.radius-full}"
+          },
+          "css": null
+        }
+      }
+    }
+  },
+  "stroke": {
+    "stroke-border": {
+      "$value": "{stroke.stroke-width-1}",
+      "$description": "Bordas e divisórias.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{stroke.stroke-width-1}",
+            "dark": "{stroke.stroke-width-1}"
+          },
+          "css": null
+        }
+      }
+    },
+    "stroke-focus": {
+      "$value": "{stroke.stroke-width-2}",
+      "$description": "Anel de foco.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{stroke.stroke-width-2}",
+            "dark": "{stroke.stroke-width-2}"
+          },
+          "css": null
+        }
+      }
+    },
+    "stroke-icon": {
+      "$value": "{stroke.stroke-width-1-75}",
+      "$description": "Ícones de linha.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{stroke.stroke-width-1-75}",
+            "dark": "{stroke.stroke-width-1-75}"
+          },
+          "css": null
+        }
+      }
+    },
+    "stroke-icon-strong": {
+      "$value": "{stroke.stroke-width-2-5}",
+      "$description": "Ícone + e seta.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{stroke.stroke-width-2-5}",
+            "dark": "{stroke.stroke-width-2-5}"
+          },
+          "css": null
+        }
+      }
+    },
+    "stroke-stitch": {
+      "$value": "{stroke.stroke-width-1}",
+      "$description": "Costura tracejada.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{stroke.stroke-width-1}",
+            "dark": "{stroke.stroke-width-1}"
+          },
+          "css": null
+        }
+      }
+    },
+    "stroke-dock-ring": {
+      "$value": "{stroke.stroke-width-4}",
+      "$description": "Anel do item ativo no dock.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{stroke.stroke-width-4}",
+            "dark": "{stroke.stroke-width-4}"
+          },
+          "css": null
+        }
+      }
+    }
+  },
+  "size": {
+    "size-control": {
+      "$value": "{size.size-44}",
+      "$description": "Botão redondo, campo.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{size.size-44}",
+            "dark": "{size.size-44}"
+          },
+          "css": null
+        }
+      }
+    },
+    "size-control-sm": {
+      "$value": "{size.size-40}",
+      "$description": "Botão redondo compacto.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{size.size-40}",
+            "dark": "{size.size-40}"
+          },
+          "css": null
+        }
+      }
+    },
+    "size-dock-item": {
+      "$value": "{size.size-48}",
+      "$description": "Item do dock.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{size.size-48}",
+            "dark": "{size.size-48}"
+          },
+          "css": null
+        }
+      }
+    },
+    "size-dock-active": {
+      "$value": "{size.size-56}",
+      "$description": "Item ativo do dock.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{size.size-56}",
+            "dark": "{size.size-56}"
+          },
+          "css": null
+        }
+      }
+    },
+    "size-category-icon": {
+      "$value": "{size.size-44}",
+      "$description": "Quadrado do ícone de categoria.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{size.size-44}",
+            "dark": "{size.size-44}"
+          },
+          "css": null
+        }
+      }
+    },
+    "size-avatar": {
+      "$value": "{size.size-44}",
+      "$description": "Avatar no topo.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{size.size-44}",
+            "dark": "{size.size-44}"
+          },
+          "css": null
+        }
+      }
+    },
+    "size-icon": {
+      "$value": "{size.size-20}",
+      "$description": "Ícone padrão.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{size.size-20}",
+            "dark": "{size.size-20}"
+          },
+          "css": null
+        }
+      }
+    },
+    "size-icon-sm": {
+      "$value": "{size.size-16}",
+      "$description": "Ícone em chips e botões pequenos.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{size.size-16}",
+            "dark": "{size.size-16}"
+          },
+          "css": null
+        }
+      }
+    },
+    "size-progress-sm": {
+      "$value": "{size.size-4}",
+      "$description": "Barra fina.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{size.size-4}",
+            "dark": "{size.size-4}"
+          },
+          "css": null
+        }
+      }
+    },
+    "size-progress-md": {
+      "$value": "{size.size-8}",
+      "$description": "Barra média.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{size.size-8}",
+            "dark": "{size.size-8}"
+          },
+          "css": null
+        }
+      }
+    }
+  },
+  "effect": {
+    "opacity-disabled": {
+      "$value": "{opacity.opacity-40}",
+      "$description": "Controle desabilitado.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{opacity.opacity-40}",
+            "dark": "{opacity.opacity-40}"
+          },
+          "css": null
+        }
+      }
+    },
+    "opacity-deselected": {
+      "$value": "{opacity.opacity-45}",
+      "$description": "Item desmarcado na fatura.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{opacity.opacity-45}",
+            "dark": "{opacity.opacity-45}"
+          },
+          "css": null
+        }
+      }
+    },
+    "blur-glass": {
+      "$value": "{blur.blur-18}",
+      "$description": "Vidro sobre a faixa.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{blur.blur-18}",
+            "dark": "{blur.blur-18}"
+          },
+          "css": null
+        }
+      }
+    },
+    "blur-pocket": {
+      "$value": "{blur.blur-16}",
+      "$description": "Bolso sólido.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{blur.blur-16}",
+            "dark": "{blur.blur-16}"
+          },
+          "css": null
+        }
+      }
+    },
+    "blur-header": {
+      "$value": "{blur.blur-24}",
+      "$description": "Cabeçalho ao rolar.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{blur.blur-24}",
+            "dark": "{blur.blur-24}"
+          },
+          "css": null
+        }
+      }
+    },
+    "shadow-surface": {
+      "$value": "{shadow.shadow-soft-light}",
+      "$description": "Todo card sobre a página.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{shadow.shadow-soft-light}",
+            "dark": "{shadow.shadow-soft-dark}"
+          },
+          "css": null
+        }
+      }
+    },
+    "shadow-floating": {
+      "$value": "{shadow.shadow-dock}",
+      "$description": "Dock e toast.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{shadow.shadow-dock}",
+            "dark": "{shadow.shadow-dock}"
+          },
+          "css": null
+        }
+      }
+    },
+    "shadow-pocket": {
+      "$value": "{shadow.shadow-pocket}",
+      "$description": "Bolso sólido.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{shadow.shadow-pocket}",
+            "dark": "{shadow.shadow-pocket}"
+          },
+          "css": null
+        }
+      }
+    }
+  },
+  "motion": {
+    "motion-duration-fast": {
+      "$value": "{duration.duration-200}",
+      "$description": "Fade, hover.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{duration.duration-200}",
+            "dark": "{duration.duration-200}"
+          },
+          "css": null
+        }
+      }
+    },
+    "motion-duration-sheet": {
+      "$value": "{duration.duration-320}",
+      "$description": "Folha subindo.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{duration.duration-320}",
+            "dark": "{duration.duration-320}"
+          },
+          "css": null
+        }
+      }
+    },
+    "motion-duration-pop": {
+      "$value": "{duration.duration-350}",
+      "$description": "Entrada de tela e toast.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{duration.duration-350}",
+            "dark": "{duration.duration-350}"
+          },
+          "css": null
+        }
+      }
+    },
+    "motion-duration-card": {
+      "$value": "{duration.duration-500}",
+      "$description": "Troca de cartão.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{duration.duration-500}",
+            "dark": "{duration.duration-500}"
+          },
+          "css": null
+        }
+      }
+    },
+    "motion-duration-progress": {
+      "$value": "{duration.duration-700}",
+      "$description": "Barras de progresso.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{duration.duration-700}",
+            "dark": "{duration.duration-700}"
+          },
+          "css": null
+        }
+      }
+    },
+    "motion-easing-standard": {
+      "$value": "{easing.easing-standard}",
+      "$description": "Padrão.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{easing.easing-standard}",
+            "dark": "{easing.easing-standard}"
+          },
+          "css": null
+        }
+      }
+    },
+    "motion-easing-spring": {
+      "$value": "{easing.easing-spring}",
+      "$description": "Entrada com leve sobra.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{easing.easing-spring}",
+            "dark": "{easing.easing-spring}"
+          },
+          "css": null
+        }
+      }
+    }
+  },
+  "layer": {
+    "z-band": {
+      "$value": "{z-index.z-index-0}",
+      "$description": "Faixa de fundo.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{z-index.z-index-0}",
+            "dark": "{z-index.z-index-0}"
+          },
+          "css": null
+        }
+      }
+    },
+    "z-pocket": {
+      "$value": "{z-index.z-index-10}",
+      "$description": "Bolso sobre os cartões.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{z-index.z-index-10}",
+            "dark": "{z-index.z-index-10}"
+          },
+          "css": null
+        }
+      }
+    },
+    "z-header": {
+      "$value": "{z-index.z-index-30}",
+      "$description": "Cabeçalho fixo.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{z-index.z-index-30}",
+            "dark": "{z-index.z-index-30}"
+          },
+          "css": null
+        }
+      }
+    },
+    "z-dock": {
+      "$value": "{z-index.z-index-40}",
+      "$description": "Dock e barras fixas.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{z-index.z-index-40}",
+            "dark": "{z-index.z-index-40}"
+          },
+          "css": null
+        }
+      }
+    },
+    "z-sheet": {
+      "$value": "{z-index.z-index-50}",
+      "$description": "Folhas.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{z-index.z-index-50}",
+            "dark": "{z-index.z-index-50}"
+          },
+          "css": null
+        }
+      }
+    },
+    "z-toast": {
+      "$value": "{z-index.z-index-60}",
+      "$description": "Toast.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{z-index.z-index-60}",
+            "dark": "{z-index.z-index-60}"
+          },
+          "css": null
+        }
+      }
+    }
+  },
+  "layout": {
+    "breakpoint-tablet": {
+      "$value": "{breakpoint.breakpoint-800}",
+      "$description": "Tablet.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{breakpoint.breakpoint-800}",
+            "dark": "{breakpoint.breakpoint-800}"
+          },
+          "css": null
+        }
+      }
+    },
+    "breakpoint-desktop": {
+      "$value": "{breakpoint.breakpoint-1100}",
+      "$description": "Desktop: duas colunas, barra superior.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{breakpoint.breakpoint-1100}",
+            "dark": "{breakpoint.breakpoint-1100}"
+          },
+          "css": null
+        }
+      }
+    },
+    "container-max": {
+      "$value": "{breakpoint.breakpoint-1240}",
+      "$description": "Largura máxima do conteúdo.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{breakpoint.breakpoint-1240}",
+            "dark": "{breakpoint.breakpoint-1240}"
+          },
+          "css": null
+        }
+      }
+    }
+  }
+}

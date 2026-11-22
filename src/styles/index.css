@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/* Gamora design tokens — semânticos, com valor por tema.
+   Os utilitários do Tailwind (bg-gm-*, text-gm-*) leem as variáveis --gm-*,
+   que mudam com <html data-theme="light|dark">. */
+@theme inline {
+  --color-gm-bg: var(--gm-bg);
+  --color-gm-surface: var(--gm-surface);
+  --color-gm-elevated: var(--gm-elevated);
+  --color-gm-sheet: var(--gm-sheet);
+  --color-gm-row: var(--gm-row);
+  --color-gm-border: var(--gm-border);
+  --color-gm-track: var(--gm-track);
+  --color-gm-text: var(--gm-text);
+  --color-gm-text-2: var(--gm-text-2);
+  --color-gm-secondary: var(--gm-secondary);
+  --color-gm-muted: var(--gm-muted);
+  --color-gm-primary: var(--gm-primary);
+  --color-gm-on-primary: var(--gm-on-primary);
+  --color-gm-accent: var(--gm-accent);
+  --color-gm-lilac: var(--gm-lilac);
+  --color-gm-lilac-strong: var(--gm-lilac-strong);
+  --color-gm-card: var(--gm-card);
+  --color-gm-on-card: var(--gm-on-card);
+  --color-gm-on: var(--gm-on);
+  --color-gm-band: var(--gm-band-from);
+  --color-gm-dock: var(--gm-dock);
+}
+
+@theme {
+  --font-sans: "Satoshi", "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --radius-hero: 34px;
+  --radius-wallet: 32px;
+  --radius-tile: 26px;
+  --radius-control: 12px;
+  --radius-sheet: 34px;
+
+  --breakpoint-md: 800px;
+  --breakpoint-lg: 1100px;
+
+  --animate-sheet-up: sheet-up 0.32s cubic-bezier(0.2, 0.9, 0.25, 1);
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-pop: pop 0.35s cubic-bezier(0.2, 0.9, 0.25, 1.2);
+  --animate-shimmer: shimmer 1.4s linear infinite;
+
+  @keyframes sheet-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: none; } }
+  @keyframes shimmer { from { background-position: -200% 0; } to { background-position: 200% 0; } }
+}
+
+/* ── Tema claro (padrão) — cores da referência: marinho + lilás + branco */
+:root {
+  --gm-bg: #f2f4f9;
+  --gm-surface: #ffffff;
+  --gm-elevated: #f6f7fb;
+  --gm-sheet: #ffffff;
+  --gm-row: #edf0f7;
+  --gm-border: #e3e7f0;
+  --gm-track: #dfe4ee;
+  --gm-text: #0e1a33;
+  --gm-text-2: #1e2b47;
+  --gm-secondary: #56627c;
+  --gm-muted: #68738d;
+  --gm-primary: #1f3b70;
+  --gm-on-primary: #ffffff;
+  --gm-accent: #2e64d4;
+  --gm-lilac: #cdbdf4;
+  --gm-lilac-strong: #9f86e8;
+  --gm-card: #ffffff;
+  --gm-on-card: #0e1a33;
+  --gm-on: #0e1a33; /* texto sobre lilás / cartões claros (igual nos dois temas) */
+  --gm-band-from: #1a3466;
+  --gm-band-to: #2d5392;
+  --gm-dock: #1f3b70;
+  --gm-shadow: 0 10px 30px rgba(22, 40, 84, 0.07);
+  --gm-gradient-hero: linear-gradient(128deg, #b9a2f1 0%, #d6c8f8 48%, #f1ebfd 100%);
+  --gm-gradient-wallet: linear-gradient(128deg, #b9a2f1 0%, #e4d9fb 70%);
+  --gm-gradient-periwinkle: linear-gradient(128deg, #a9bdf3 0%, #dbe4fb 75%);
+  --gm-gradient-silver: linear-gradient(128deg, #dfe4ee 0%, #f7f8fb 75%);
+  color-scheme: light;
+}
+
+/* ── Tema escuro — mesmo marinho, mais profundo */
+:root[data-theme="dark"] {
+  --gm-bg: #0a1222;
+  --gm-surface: #121c30;
+  --gm-elevated: #18243b;
+  --gm-sheet: #131e34;
+  --gm-row: #1d2942;
+  --gm-border: #202e48;
+  --gm-track: #26344f;
+  --gm-text: #f2f5fb;
+  --gm-text-2: #dce3f0;
+  --gm-secondary: #a3aec4;
+  --gm-muted: #8d99b1;
+  --gm-primary: #a7bff7;
+  --gm-on-primary: #0a1222;
+  --gm-accent: #93b2ff;
+  --gm-lilac: #cdbdf4;
+  --gm-lilac-strong: #b29cf0;
+  --gm-card: #16223a;
+  --gm-on-card: #f2f5fb;
+  --gm-band-from: #0e1c3b;
+  --gm-band-to: #183262;
+  --gm-dock: #1c3060;
+  --gm-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+html, body, #root { min-height: 100%; }
+body {
+  margin: 0;
+  background: var(--gm-bg);
+  color: var(--gm-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@utility bg-hero { background-image: var(--gm-gradient-hero); }
+@utility bg-wallet { background-image: var(--gm-gradient-wallet); }
+@utility bg-periwinkle { background-image: var(--gm-gradient-periwinkle); }
+@utility bg-silver { background-image: var(--gm-gradient-silver); }
+/* faixa marinho do topo, que desbota no fundo da página */
+@utility bg-band { background-image: linear-gradient(180deg, var(--gm-band-from) 0%, var(--gm-band-to) 58%, var(--gm-bg) 100%); }
+@utility bg-band-solid { background-image: linear-gradient(160deg, var(--gm-band-from) 0%, var(--gm-band-to) 100%); }
+/* vidro da carteira (bolso) */
+@utility glass {
+  background: linear-gradient(160deg, rgba(255,255,255,.20) 0%, rgba(255,255,255,.08) 100%);
+  border: 1px solid rgba(255,255,255,.28);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+@utility shadow-soft { box-shadow: var(--gm-shadow); }
+@utility pocket {
+  background: linear-gradient(165deg, color-mix(in oklab, var(--gm-band-to) 90%, transparent) 0%, color-mix(in oklab, var(--gm-band-from) 96%, transparent) 100%);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 22px 44px rgba(14,26,51,.28);
+}
+@utility num { letter-spacing: -0.045em; font-variant-numeric: tabular-nums; }
+@utility kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+@utility no-scrollbar { scrollbar-width: none; &::-webkit-scrollbar { display: none; } }
+
+@layer base {
+  :focus-visible { outline: 2px solid var(--gm-accent); outline-offset: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Introdução" />
+
+# Gamora — Design system
+
+Seu assistente financeiro para grandes conquistas.
+
+Este Storybook documenta os **tokens** e os **componentes** que já existem no app (`src/`). Ele usa o mesmo CSS, os mesmos componentes e os mesmos dados de referência do app.
+
+## Como navegar
+
+- **Tokens / Primitivos**: valores crus (cor, fonte, tamanho, peso, altura de linha, letter-spacing, espaço, espaço negativo, raio, stroke, tamanho, opacidade, blur, sombra, duração, easing, z-index, breakpoint).
+- **Tokens / Semânticos**: aliases em kebab-case (`color-bg-surface`, `space-inset-card`, `radius-wallet-card`…), com valor no tema claro e no escuro.
+- **Componentes**: Base, Formulário, Feedback, Finanças (carteira) e Layout.
+- **Folhas**: Adicionar, Detalhe, Cartão, Guardar, Meta, Teto e Conta.
+- **Telas**: Home, Cartões, Metas, Fatura, Assistente e Login.
+
+Na barra de cima: **Tema** (claro/escuro) e **Viewport** (mobile 390, mobile 375, tablet, desktop 1440).
+
+## Fonte da verdade
+
+| O quê | Onde |
+|---|---|
+| Tokens (fonte) | `tokens/source.mjs` |
+| Tokens gerados | `tokens/primitives.json`, `tokens/semantic.json` (W3C DTCG), `tokens/figma-variables.json` |
+| Documentação dos tokens | `docs/TOKENS.md` |
+| CSS do app | `src/styles/index.css` (`--gm-*`) |
+
+`npm run tokens` regenera os arquivos e confere se os semânticos batem com o CSS do app.
+
+## Regra de ouro
+
+Componente → token semântico → token primitivo. Componentes nunca usam um primitivo direto.

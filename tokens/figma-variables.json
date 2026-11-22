@@ -1,0 +1,3816 @@
+{
+  "collections": [
+    {
+      "name": "Primitives",
+      "modes": [
+        "Value"
+      ],
+      "variables": [
+        {
+          "name": "color/base/white",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "description": "#ffffff"
+        },
+        {
+          "name": "color/base/black",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          },
+          "description": "#000000"
+        },
+        {
+          "name": "color/gray/gray-25",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.9686274509803922,
+              "g": 0.9725490196078431,
+              "b": 0.984313725490196,
+              "a": 1
+            }
+          },
+          "description": "#f7f8fb"
+        },
+        {
+          "name": "color/gray/gray-50",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.9647058823529412,
+              "g": 0.9686274509803922,
+              "b": 0.984313725490196,
+              "a": 1
+            }
+          },
+          "description": "#f6f7fb"
+        },
+        {
+          "name": "color/gray/gray-75",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.9490196078431372,
+              "g": 0.9607843137254902,
+              "b": 0.984313725490196,
+              "a": 1
+            }
+          },
+          "description": "#f2f5fb"
+        },
+        {
+          "name": "color/gray/gray-100",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.9490196078431372,
+              "g": 0.9568627450980393,
+              "b": 0.9764705882352941,
+              "a": 1
+            }
+          },
+          "description": "#f2f4f9"
+        },
+        {
+          "name": "color/gray/gray-150",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.9294117647058824,
+              "g": 0.9411764705882353,
+              "b": 0.9686274509803922,
+              "a": 1
+            }
+          },
+          "description": "#edf0f7"
+        },
+        {
+          "name": "color/gray/gray-200",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.8901960784313725,
+              "g": 0.9058823529411765,
+              "b": 0.9411764705882353,
+              "a": 1
+            }
+          },
+          "description": "#e3e7f0"
+        },
+        {
+          "name": "color/gray/gray-250",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.8745098039215686,
+              "g": 0.8941176470588236,
+              "b": 0.9333333333333333,
+              "a": 1
+            }
+          },
+          "description": "#dfe4ee"
+        },
+        {
+          "name": "color/gray/gray-300",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.8627450980392157,
+              "g": 0.8901960784313725,
+              "b": 0.9411764705882353,
+              "a": 1
+            }
+          },
+          "description": "#dce3f0"
+        },
+        {
+          "name": "color/gray/gray-400",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.6392156862745098,
+              "g": 0.6823529411764706,
+              "b": 0.7686274509803922,
+              "a": 1
+            }
+          },
+          "description": "#a3aec4"
+        },
+        {
+          "name": "color/gray/gray-500",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.5529411764705883,
+              "g": 0.6,
+              "b": 0.6941176470588235,
+              "a": 1
+            }
+          },
+          "description": "#8d99b1"
+        },
+        {
+          "name": "color/gray/gray-600",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.40784313725490196,
+              "g": 0.45098039215686275,
+              "b": 0.5529411764705883,
+              "a": 1
+            }
+          },
+          "description": "#68738d"
+        },
+        {
+          "name": "color/gray/gray-700",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.33725490196078434,
+              "g": 0.3843137254901961,
+              "b": 0.48627450980392156,
+              "a": 1
+            }
+          },
+          "description": "#56627c"
+        },
+        {
+          "name": "color/slate/slate-700",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.14901960784313725,
+              "g": 0.20392156862745098,
+              "b": 0.30980392156862746,
+              "a": 1
+            }
+          },
+          "description": "#26344f"
+        },
+        {
+          "name": "color/slate/slate-750",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.12549019607843137,
+              "g": 0.1803921568627451,
+              "b": 0.2823529411764706,
+              "a": 1
+            }
+          },
+          "description": "#202e48"
+        },
+        {
+          "name": "color/slate/slate-775",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.11764705882352941,
+              "g": 0.16862745098039217,
+              "b": 0.2784313725490196,
+              "a": 1
+            }
+          },
+          "description": "#1e2b47"
+        },
+        {
+          "name": "color/slate/slate-800",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.11372549019607843,
+              "g": 0.1607843137254902,
+              "b": 0.25882352941176473,
+              "a": 1
+            }
+          },
+          "description": "#1d2942"
+        },
+        {
+          "name": "color/slate/slate-850",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.09411764705882353,
+              "g": 0.1411764705882353,
+              "b": 0.23137254901960785,
+              "a": 1
+            }
+          },
+          "description": "#18243b"
+        },
+        {
+          "name": "color/slate/slate-875",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.08627450980392157,
+              "g": 0.13333333333333333,
+              "b": 0.22745098039215686,
+              "a": 1
+            }
+          },
+          "description": "#16223a"
+        },
+        {
+          "name": "color/slate/slate-900",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.07450980392156863,
+              "g": 0.11764705882352941,
+              "b": 0.20392156862745098,
+              "a": 1
+            }
+          },
+          "description": "#131e34"
+        },
+        {
+          "name": "color/slate/slate-925",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.07058823529411765,
+              "g": 0.10980392156862745,
+              "b": 0.18823529411764706,
+              "a": 1
+            }
+          },
+          "description": "#121c30"
+        },
+        {
+          "name": "color/blue/blue-100",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.8588235294117647,
+              "g": 0.8941176470588236,
+              "b": 0.984313725490196,
+              "a": 1
+            }
+          },
+          "description": "#dbe4fb"
+        },
+        {
+          "name": "color/blue/blue-200",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.6549019607843137,
+              "g": 0.7490196078431373,
+              "b": 0.9686274509803922,
+              "a": 1
+            }
+          },
+          "description": "#a7bff7"
+        },
+        {
+          "name": "color/blue/blue-250",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.6627450980392157,
+              "g": 0.7411764705882353,
+              "b": 0.9529411764705882,
+              "a": 1
+            }
+          },
+          "description": "#a9bdf3"
+        },
+        {
+          "name": "color/blue/blue-300",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.5764705882352941,
+              "g": 0.6980392156862745,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "description": "#93b2ff"
+        },
+        {
+          "name": "color/blue/blue-500",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.1803921568627451,
+              "g": 0.39215686274509803,
+              "b": 0.8313725490196079,
+              "a": 1
+            }
+          },
+          "description": "#2e64d4"
+        },
+        {
+          "name": "color/blue/blue-600",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.17647058823529413,
+              "g": 0.3254901960784314,
+              "b": 0.5725490196078431,
+              "a": 1
+            }
+          },
+          "description": "#2d5392"
+        },
+        {
+          "name": "color/blue/blue-700",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.12156862745098039,
+              "g": 0.23137254901960785,
+              "b": 0.4392156862745098,
+              "a": 1
+            }
+          },
+          "description": "#1f3b70"
+        },
+        {
+          "name": "color/blue/blue-750",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.10196078431372549,
+              "g": 0.20392156862745098,
+              "b": 0.4,
+              "a": 1
+            }
+          },
+          "description": "#1a3466"
+        },
+        {
+          "name": "color/blue/blue-775",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.09411764705882353,
+              "g": 0.19607843137254902,
+              "b": 0.3843137254901961,
+              "a": 1
+            }
+          },
+          "description": "#183262"
+        },
+        {
+          "name": "color/blue/blue-800",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.10980392156862745,
+              "g": 0.18823529411764706,
+              "b": 0.3764705882352941,
+              "a": 1
+            }
+          },
+          "description": "#1c3060"
+        },
+        {
+          "name": "color/blue/blue-850",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.054901960784313725,
+              "g": 0.10980392156862745,
+              "b": 0.23137254901960785,
+              "a": 1
+            }
+          },
+          "description": "#0e1c3b"
+        },
+        {
+          "name": "color/blue/blue-900",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.054901960784313725,
+              "g": 0.10196078431372549,
+              "b": 0.2,
+              "a": 1
+            }
+          },
+          "description": "#0e1a33"
+        },
+        {
+          "name": "color/blue/blue-950",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.0392156862745098,
+              "g": 0.07058823529411765,
+              "b": 0.13333333333333333,
+              "a": 1
+            }
+          },
+          "description": "#0a1222"
+        },
+        {
+          "name": "color/lilac/lilac-50",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.9450980392156862,
+              "g": 0.9215686274509803,
+              "b": 0.9921568627450981,
+              "a": 1
+            }
+          },
+          "description": "#f1ebfd"
+        },
+        {
+          "name": "color/lilac/lilac-100",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.8941176470588236,
+              "g": 0.8509803921568627,
+              "b": 0.984313725490196,
+              "a": 1
+            }
+          },
+          "description": "#e4d9fb"
+        },
+        {
+          "name": "color/lilac/lilac-200",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.8392156862745098,
+              "g": 0.7843137254901961,
+              "b": 0.9725490196078431,
+              "a": 1
+            }
+          },
+          "description": "#d6c8f8"
+        },
+        {
+          "name": "color/lilac/lilac-300",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.803921568627451,
+              "g": 0.7411764705882353,
+              "b": 0.9568627450980393,
+              "a": 1
+            }
+          },
+          "description": "#cdbdf4"
+        },
+        {
+          "name": "color/lilac/lilac-400",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.7254901960784313,
+              "g": 0.6352941176470588,
+              "b": 0.9450980392156862,
+              "a": 1
+            }
+          },
+          "description": "#b9a2f1"
+        },
+        {
+          "name": "color/lilac/lilac-500",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.6980392156862745,
+              "g": 0.611764705882353,
+              "b": 0.9411764705882353,
+              "a": 1
+            }
+          },
+          "description": "#b29cf0"
+        },
+        {
+          "name": "color/lilac/lilac-600",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.6235294117647059,
+              "g": 0.5254901960784314,
+              "b": 0.9098039215686274,
+              "a": 1
+            }
+          },
+          "description": "#9f86e8"
+        },
+        {
+          "name": "color/alpha/white-alpha-6",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.06
+            }
+          },
+          "description": "#ffffff @ 6%"
+        },
+        {
+          "name": "color/alpha/white-alpha-8",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.08
+            }
+          },
+          "description": "#ffffff @ 8%"
+        },
+        {
+          "name": "color/alpha/white-alpha-10",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.1
+            }
+          },
+          "description": "#ffffff @ 10%"
+        },
+        {
+          "name": "color/alpha/white-alpha-12",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.12
+            }
+          },
+          "description": "#ffffff @ 12%"
+        },
+        {
+          "name": "color/alpha/white-alpha-15",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.15
+            }
+          },
+          "description": "#ffffff @ 15%"
+        },
+        {
+          "name": "color/alpha/white-alpha-18",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.18
+            }
+          },
+          "description": "#ffffff @ 18%"
+        },
+        {
+          "name": "color/alpha/white-alpha-20",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.2
+            }
+          },
+          "description": "#ffffff @ 20%"
+        },
+        {
+          "name": "color/alpha/white-alpha-22",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.22
+            }
+          },
+          "description": "#ffffff @ 22%"
+        },
+        {
+          "name": "color/alpha/white-alpha-25",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.25
+            }
+          },
+          "description": "#ffffff @ 25%"
+        },
+        {
+          "name": "color/alpha/white-alpha-28",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.28
+            }
+          },
+          "description": "#ffffff @ 28%"
+        },
+        {
+          "name": "color/alpha/white-alpha-35",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.35
+            }
+          },
+          "description": "#ffffff @ 35%"
+        },
+        {
+          "name": "color/alpha/white-alpha-45",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.45
+            }
+          },
+          "description": "#ffffff @ 45%"
+        },
+        {
+          "name": "color/alpha/white-alpha-55",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.55
+            }
+          },
+          "description": "#ffffff @ 55%"
+        },
+        {
+          "name": "color/alpha/white-alpha-60",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.6
+            }
+          },
+          "description": "#ffffff @ 60%"
+        },
+        {
+          "name": "color/alpha/white-alpha-65",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.65
+            }
+          },
+          "description": "#ffffff @ 65%"
+        },
+        {
+          "name": "color/alpha/white-alpha-70",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.7
+            }
+          },
+          "description": "#ffffff @ 70%"
+        },
+        {
+          "name": "color/alpha/white-alpha-75",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.75
+            }
+          },
+          "description": "#ffffff @ 75%"
+        },
+        {
+          "name": "color/alpha/white-alpha-80",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.8
+            }
+          },
+          "description": "#ffffff @ 80%"
+        },
+        {
+          "name": "color/alpha/white-alpha-85",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.85
+            }
+          },
+          "description": "#ffffff @ 85%"
+        },
+        {
+          "name": "color/alpha/white-alpha-90",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.9
+            }
+          },
+          "description": "#ffffff @ 90%"
+        },
+        {
+          "name": "color/alpha/blue-950-alpha-55",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.0392156862745098,
+              "g": 0.07058823529411765,
+              "b": 0.13333333333333333,
+              "a": 0.55
+            }
+          },
+          "description": "#0a1222 @ 55%"
+        },
+        {
+          "name": "color/alpha/blue-900-alpha-10",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.054901960784313725,
+              "g": 0.10196078431372549,
+              "b": 0.2,
+              "a": 0.1
+            }
+          },
+          "description": "#0e1a33 @ 10%"
+        },
+        {
+          "name": "color/alpha/blue-900-alpha-15",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.054901960784313725,
+              "g": 0.10196078431372549,
+              "b": 0.2,
+              "a": 0.15
+            }
+          },
+          "description": "#0e1a33 @ 15%"
+        },
+        {
+          "name": "color/alpha/blue-900-alpha-35",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.054901960784313725,
+              "g": 0.10196078431372549,
+              "b": 0.2,
+              "a": 0.35
+            }
+          },
+          "description": "#0e1a33 @ 35%"
+        },
+        {
+          "name": "color/alpha/blue-900-alpha-45",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.054901960784313725,
+              "g": 0.10196078431372549,
+              "b": 0.2,
+              "a": 0.45
+            }
+          },
+          "description": "#0e1a33 @ 45%"
+        },
+        {
+          "name": "color/alpha/shadow-alpha-7",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.08627450980392157,
+              "g": 0.1568627450980392,
+              "b": 0.32941176470588235,
+              "a": 0.07
+            }
+          },
+          "description": "#162854 @ 7%"
+        },
+        {
+          "name": "color/alpha/black-alpha-25",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.25
+            }
+          },
+          "description": "#000000 @ 25%"
+        },
+        {
+          "name": "color/alpha/black-alpha-35",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0.35
+            }
+          },
+          "description": "#000000 @ 35%"
+        },
+        {
+          "name": "font/family/font-family-satoshi",
+          "type": "STRING",
+          "values": {
+            "Value": "Satoshi"
+          },
+          "description": "Satoshi"
+        },
+        {
+          "name": "font/family/font-family-manrope",
+          "type": "STRING",
+          "values": {
+            "Value": "Manrope"
+          },
+          "description": "Manrope"
+        },
+        {
+          "name": "font/family/font-family-ibm-plex-mono",
+          "type": "STRING",
+          "values": {
+            "Value": "IBM Plex Mono"
+          },
+          "description": "IBM Plex Mono"
+        },
+        {
+          "name": "font/size/font-size-10",
+          "type": "FLOAT",
+          "values": {
+            "Value": 10
+          },
+          "description": "10px"
+        },
+        {
+          "name": "font/size/font-size-11",
+          "type": "FLOAT",
+          "values": {
+            "Value": 11
+          },
+          "description": "11px"
+        },
+        {
+          "name": "font/size/font-size-12",
+          "type": "FLOAT",
+          "values": {
+            "Value": 12
+          },
+          "description": "12px"
+        },
+        {
+          "name": "font/size/font-size-12-5",
+          "type": "FLOAT",
+          "values": {
+            "Value": 12.5
+          },
+          "description": "12.5px"
+        },
+        {
+          "name": "font/size/font-size-13",
+          "type": "FLOAT",
+          "values": {
+            "Value": 13
+          },
+          "description": "13px"
+        },
+        {
+          "name": "font/size/font-size-14",
+          "type": "FLOAT",
+          "values": {
+            "Value": 14
+          },
+          "description": "14px"
+        },
+        {
+          "name": "font/size/font-size-15",
+          "type": "FLOAT",
+          "values": {
+            "Value": 15
+          },
+          "description": "15px"
+        },
+        {
+          "name": "font/size/font-size-16",
+          "type": "FLOAT",
+          "values": {
+            "Value": 16
+          },
+          "description": "16px"
+        },
+        {
+          "name": "font/size/font-size-18",
+          "type": "FLOAT",
+          "values": {
+            "Value": 18
+          },
+          "description": "18px"
+        },
+        {
+          "name": "font/size/font-size-19",
+          "type": "FLOAT",
+          "values": {
+            "Value": 19
+          },
+          "description": "19px"
+        },
+        {
+          "name": "font/size/font-size-20",
+          "type": "FLOAT",
+          "values": {
+            "Value": 20
+          },
+          "description": "20px"
+        },
+        {
+          "name": "font/size/font-size-22",
+          "type": "FLOAT",
+          "values": {
+            "Value": 22
+          },
+          "description": "22px"
+        },
+        {
+          "name": "font/size/font-size-24",
+          "type": "FLOAT",
+          "values": {
+            "Value": 24
+          },
+          "description": "24px"
+        },
+        {
+          "name": "font/size/font-size-26",
+          "type": "FLOAT",
+          "values": {
+            "Value": 26
+          },
+          "description": "26px"
+        },
+        {
+          "name": "font/size/font-size-28",
+          "type": "FLOAT",
+          "values": {
+            "Value": 28
+          },
+          "description": "28px"
+        },
+        {
+          "name": "font/size/font-size-29",
+          "type": "FLOAT",
+          "values": {
+            "Value": 29
+          },
+          "description": "29px"
+        },
+        {
+          "name": "font/size/font-size-30",
+          "type": "FLOAT",
+          "values": {
+            "Value": 30
+          },
+          "description": "30px"
+        },
+        {
+          "name": "font/size/font-size-32",
+          "type": "FLOAT",
+          "values": {
+            "Value": 32
+          },
+          "description": "32px"
+        },
+        {
+          "name": "font/size/font-size-36",
+          "type": "FLOAT",
+          "values": {
+            "Value": 36
+          },
+          "description": "36px"
+        },
+        {
+          "name": "font/size/font-size-40",
+          "type": "FLOAT",
+          "values": {
+            "Value": 40
+          },
+          "description": "40px"
+        },
+        {
+          "name": "font/size/font-size-44",
+          "type": "FLOAT",
+          "values": {
+            "Value": 44
+          },
+          "description": "44px"
+        },
+        {
+          "name": "font/size/font-size-46",
+          "type": "FLOAT",
+          "values": {
+            "Value": 46
+          },
+          "description": "46px"
+        },
+        {
+          "name": "font/size/font-size-48",
+          "type": "FLOAT",
+          "values": {
+            "Value": 48
+          },
+          "description": "48px"
+        },
+        {
+          "name": "font/size/font-size-52",
+          "type": "FLOAT",
+          "values": {
+            "Value": 52
+          },
+          "description": "52px"
+        },
+        {
+          "name": "font/size/font-size-56",
+          "type": "FLOAT",
+          "values": {
+            "Value": 56
+          },
+          "description": "56px"
+        },
+        {
+          "name": "font/size/font-size-60",
+          "type": "FLOAT",
+          "values": {
+            "Value": 60
+          },
+          "description": "60px"
+        },
+        {
+          "name": "font/size/font-size-66",
+          "type": "FLOAT",
+          "values": {
+            "Value": 66
+          },
+          "description": "66px"
+        },
+        {
+          "name": "font/weight/font-weight-400",
+          "type": "FLOAT",
+          "values": {
+            "Value": 400
+          },
+          "description": "400 (Regular)"
+        },
+        {
+          "name": "font/weight/font-weight-500",
+          "type": "FLOAT",
+          "values": {
+            "Value": 500
+          },
+          "description": "500 (Medium)"
+        },
+        {
+          "name": "font/weight/font-weight-600",
+          "type": "FLOAT",
+          "values": {
+            "Value": 600
+          },
+          "description": "600 (Semibold)"
+        },
+        {
+          "name": "font/weight/font-weight-700",
+          "type": "FLOAT",
+          "values": {
+            "Value": 700
+          },
+          "description": "700 (Bold)"
+        },
+        {
+          "name": "font/weight/font-weight-900",
+          "type": "FLOAT",
+          "values": {
+            "Value": 900
+          },
+          "description": "900 (Black)"
+        },
+        {
+          "name": "font/line-height/line-height-16",
+          "type": "FLOAT",
+          "values": {
+            "Value": 16
+          },
+          "description": "16px"
+        },
+        {
+          "name": "font/line-height/line-height-18",
+          "type": "FLOAT",
+          "values": {
+            "Value": 18
+          },
+          "description": "18px"
+        },
+        {
+          "name": "font/line-height/line-height-20",
+          "type": "FLOAT",
+          "values": {
+            "Value": 20
+          },
+          "description": "20px"
+        },
+        {
+          "name": "font/line-height/line-height-22",
+          "type": "FLOAT",
+          "values": {
+            "Value": 22
+          },
+          "description": "22px"
+        },
+        {
+          "name": "font/line-height/line-height-24",
+          "type": "FLOAT",
+          "values": {
+            "Value": 24
+          },
+          "description": "24px"
+        },
+        {
+          "name": "font/line-height/line-height-26",
+          "type": "FLOAT",
+          "values": {
+            "Value": 26
+          },
+          "description": "26px"
+        },
+        {
+          "name": "font/line-height/line-height-30",
+          "type": "FLOAT",
+          "values": {
+            "Value": 30
+          },
+          "description": "30px"
+        },
+        {
+          "name": "font/line-height/line-height-32",
+          "type": "FLOAT",
+          "values": {
+            "Value": 32
+          },
+          "description": "32px"
+        },
+        {
+          "name": "font/line-height/line-height-36",
+          "type": "FLOAT",
+          "values": {
+            "Value": 36
+          },
+          "description": "36px"
+        },
+        {
+          "name": "font/line-height/line-height-40",
+          "type": "FLOAT",
+          "values": {
+            "Value": 40
+          },
+          "description": "40px"
+        },
+        {
+          "name": "font/line-height/line-height-44",
+          "type": "FLOAT",
+          "values": {
+            "Value": 44
+          },
+          "description": "44px"
+        },
+        {
+          "name": "font/line-height/line-height-52",
+          "type": "FLOAT",
+          "values": {
+            "Value": 52
+          },
+          "description": "52px"
+        },
+        {
+          "name": "font/line-height/line-height-56",
+          "type": "FLOAT",
+          "values": {
+            "Value": 56
+          },
+          "description": "56px"
+        },
+        {
+          "name": "font/line-height/line-height-66",
+          "type": "FLOAT",
+          "values": {
+            "Value": 66
+          },
+          "description": "66px"
+        },
+        {
+          "name": "font/letter-spacing/letter-spacing-neg-45",
+          "type": "FLOAT",
+          "values": {
+            "Value": -4.5
+          },
+          "description": "-4.5%"
+        },
+        {
+          "name": "font/letter-spacing/letter-spacing-neg-40",
+          "type": "FLOAT",
+          "values": {
+            "Value": -4
+          },
+          "description": "-4%"
+        },
+        {
+          "name": "font/letter-spacing/letter-spacing-neg-35",
+          "type": "FLOAT",
+          "values": {
+            "Value": -3.5
+          },
+          "description": "-3.5%"
+        },
+        {
+          "name": "font/letter-spacing/letter-spacing-neg-30",
+          "type": "FLOAT",
+          "values": {
+            "Value": -3
+          },
+          "description": "-3%"
+        },
+        {
+          "name": "font/letter-spacing/letter-spacing-neg-20",
+          "type": "FLOAT",
+          "values": {
+            "Value": -2
+          },
+          "description": "-2%"
+        },
+        {
+          "name": "font/letter-spacing/letter-spacing-neg-10",
+          "type": "FLOAT",
+          "values": {
+            "Value": -1
+          },
+          "description": "-1%"
+        },
+        {
+          "name": "font/letter-spacing/letter-spacing-0",
+          "type": "FLOAT",
+          "values": {
+            "Value": 0
+          },
+          "description": "0%"
+        },
+        {
+          "name": "font/letter-spacing/letter-spacing-80",
+          "type": "FLOAT",
+          "values": {
+            "Value": 8
+          },
+          "description": "8%"
+        },
+        {
+          "name": "font/letter-spacing/letter-spacing-120",
+          "type": "FLOAT",
+          "values": {
+            "Value": 12
+          },
+          "description": "12%"
+        },
+        {
+          "name": "space/positive/space-0",
+          "type": "FLOAT",
+          "values": {
+            "Value": 0
+          },
+          "description": "0px"
+        },
+        {
+          "name": "space/positive/space-1",
+          "type": "FLOAT",
+          "values": {
+            "Value": 1
+          },
+          "description": "1px"
+        },
+        {
+          "name": "space/positive/space-2",
+          "type": "FLOAT",
+          "values": {
+            "Value": 2
+          },
+          "description": "2px"
+        },
+        {
+          "name": "space/positive/space-4",
+          "type": "FLOAT",
+          "values": {
+            "Value": 4
+          },
+          "description": "4px"
+        },
+        {
+          "name": "space/positive/space-6",
+          "type": "FLOAT",
+          "values": {
+            "Value": 6
+          },
+          "description": "6px"
+        },
+        {
+          "name": "space/positive/space-7",
+          "type": "FLOAT",
+          "values": {
+            "Value": 7
+          },
+          "description": "7px"
+        },
+        {
+          "name": "space/positive/space-8",
+          "type": "FLOAT",
+          "values": {
+            "Value": 8
+          },
+          "description": "8px"
+        },
+        {
+          "name": "space/positive/space-10",
+          "type": "FLOAT",
+          "values": {
+            "Value": 10
+          },
+          "description": "10px"
+        },
+        {
+          "name": "space/positive/space-12",
+          "type": "FLOAT",
+          "values": {
+            "Value": 12
+          },
+          "description": "12px"
+        },
+        {
+          "name": "space/positive/space-14",
+          "type": "FLOAT",
+          "values": {
+            "Value": 14
+          },
+          "description": "14px"
+        },
+        {
+          "name": "space/positive/space-16",
+          "type": "FLOAT",
+          "values": {
+            "Value": 16
+          },
+          "description": "16px"
+        },
+        {
+          "name": "space/positive/space-20",
+          "type": "FLOAT",
+          "values": {
+            "Value": 20
+          },
+          "description": "20px"
+        },
+        {
+          "name": "space/positive/space-22",
+          "type": "FLOAT",
+          "values": {
+            "Value": 22
+          },
+          "description": "22px"
+        },
+        {
+          "name": "space/positive/space-24",
+          "type": "FLOAT",
+          "values": {
+            "Value": 24
+          },
+          "description": "24px"
+        },
+        {
+          "name": "space/positive/space-28",
+          "type": "FLOAT",
+          "values": {
+            "Value": 28
+          },
+          "description": "28px"
+        },
+        {
+          "name": "space/positive/space-32",
+          "type": "FLOAT",
+          "values": {
+            "Value": 32
+          },
+          "description": "32px"
+        },
+        {
+          "name": "space/positive/space-36",
+          "type": "FLOAT",
+          "values": {
+            "Value": 36
+          },
+          "description": "36px"
+        },
+        {
+          "name": "space/positive/space-40",
+          "type": "FLOAT",
+          "values": {
+            "Value": 40
+          },
+          "description": "40px"
+        },
+        {
+          "name": "space/positive/space-44",
+          "type": "FLOAT",
+          "values": {
+            "Value": 44
+          },
+          "description": "44px"
+        },
+        {
+          "name": "space/positive/space-48",
+          "type": "FLOAT",
+          "values": {
+            "Value": 48
+          },
+          "description": "48px"
+        },
+        {
+          "name": "space/positive/space-56",
+          "type": "FLOAT",
+          "values": {
+            "Value": 56
+          },
+          "description": "56px"
+        },
+        {
+          "name": "space/positive/space-64",
+          "type": "FLOAT",
+          "values": {
+            "Value": 64
+          },
+          "description": "64px"
+        },
+        {
+          "name": "space/positive/space-72",
+          "type": "FLOAT",
+          "values": {
+            "Value": 72
+          },
+          "description": "72px"
+        },
+        {
+          "name": "space/positive/space-80",
+          "type": "FLOAT",
+          "values": {
+            "Value": 80
+          },
+          "description": "80px"
+        },
+        {
+          "name": "space/positive/space-96",
+          "type": "FLOAT",
+          "values": {
+            "Value": 96
+          },
+          "description": "96px"
+        },
+        {
+          "name": "space/positive/space-112",
+          "type": "FLOAT",
+          "values": {
+            "Value": 112
+          },
+          "description": "112px"
+        },
+        {
+          "name": "space/negative/space-neg-1",
+          "type": "FLOAT",
+          "values": {
+            "Value": -1
+          },
+          "description": "-1px"
+        },
+        {
+          "name": "space/negative/space-neg-2",
+          "type": "FLOAT",
+          "values": {
+            "Value": -2
+          },
+          "description": "-2px"
+        },
+        {
+          "name": "space/negative/space-neg-4",
+          "type": "FLOAT",
+          "values": {
+            "Value": -4
+          },
+          "description": "-4px"
+        },
+        {
+          "name": "space/negative/space-neg-6",
+          "type": "FLOAT",
+          "values": {
+            "Value": -6
+          },
+          "description": "-6px"
+        },
+        {
+          "name": "space/negative/space-neg-8",
+          "type": "FLOAT",
+          "values": {
+            "Value": -8
+          },
+          "description": "-8px"
+        },
+        {
+          "name": "space/negative/space-neg-10",
+          "type": "FLOAT",
+          "values": {
+            "Value": -10
+          },
+          "description": "-10px"
+        },
+        {
+          "name": "space/negative/space-neg-12",
+          "type": "FLOAT",
+          "values": {
+            "Value": -12
+          },
+          "description": "-12px"
+        },
+        {
+          "name": "space/negative/space-neg-16",
+          "type": "FLOAT",
+          "values": {
+            "Value": -16
+          },
+          "description": "-16px"
+        },
+        {
+          "name": "space/negative/space-neg-20",
+          "type": "FLOAT",
+          "values": {
+            "Value": -20
+          },
+          "description": "-20px"
+        },
+        {
+          "name": "space/negative/space-neg-24",
+          "type": "FLOAT",
+          "values": {
+            "Value": -24
+          },
+          "description": "-24px"
+        },
+        {
+          "name": "space/negative/space-neg-32",
+          "type": "FLOAT",
+          "values": {
+            "Value": -32
+          },
+          "description": "-32px"
+        },
+        {
+          "name": "space/negative/space-neg-40",
+          "type": "FLOAT",
+          "values": {
+            "Value": -40
+          },
+          "description": "-40px"
+        },
+        {
+          "name": "space/negative/space-neg-48",
+          "type": "FLOAT",
+          "values": {
+            "Value": -48
+          },
+          "description": "-48px"
+        },
+        {
+          "name": "space/negative/space-neg-64",
+          "type": "FLOAT",
+          "values": {
+            "Value": -64
+          },
+          "description": "-64px"
+        },
+        {
+          "name": "radius/radius-0",
+          "type": "FLOAT",
+          "values": {
+            "Value": 0
+          },
+          "description": "0px"
+        },
+        {
+          "name": "radius/radius-8",
+          "type": "FLOAT",
+          "values": {
+            "Value": 8
+          },
+          "description": "8px"
+        },
+        {
+          "name": "radius/radius-9",
+          "type": "FLOAT",
+          "values": {
+            "Value": 9
+          },
+          "description": "9px"
+        },
+        {
+          "name": "radius/radius-12",
+          "type": "FLOAT",
+          "values": {
+            "Value": 12
+          },
+          "description": "12px"
+        },
+        {
+          "name": "radius/radius-14",
+          "type": "FLOAT",
+          "values": {
+            "Value": 14
+          },
+          "description": "14px"
+        },
+        {
+          "name": "radius/radius-18",
+          "type": "FLOAT",
+          "values": {
+            "Value": 18
+          },
+          "description": "18px"
+        },
+        {
+          "name": "radius/radius-22",
+          "type": "FLOAT",
+          "values": {
+            "Value": 22
+          },
+          "description": "22px"
+        },
+        {
+          "name": "radius/radius-24",
+          "type": "FLOAT",
+          "values": {
+            "Value": 24
+          },
+          "description": "24px"
+        },
+        {
+          "name": "radius/radius-26",
+          "type": "FLOAT",
+          "values": {
+            "Value": 26
+          },
+          "description": "26px"
+        },
+        {
+          "name": "radius/radius-30",
+          "type": "FLOAT",
+          "values": {
+            "Value": 30
+          },
+          "description": "30px"
+        },
+        {
+          "name": "radius/radius-32",
+          "type": "FLOAT",
+          "values": {
+            "Value": 32
+          },
+          "description": "32px"
+        },
+        {
+          "name": "radius/radius-34",
+          "type": "FLOAT",
+          "values": {
+            "Value": 34
+          },
+          "description": "34px"
+        },
+        {
+          "name": "radius/radius-full",
+          "type": "FLOAT",
+          "values": {
+            "Value": 999
+          },
+          "description": "999px"
+        },
+        {
+          "name": "stroke/stroke-width-0",
+          "type": "FLOAT",
+          "values": {
+            "Value": 0
+          },
+          "description": "0px"
+        },
+        {
+          "name": "stroke/stroke-width-1",
+          "type": "FLOAT",
+          "values": {
+            "Value": 1
+          },
+          "description": "1px"
+        },
+        {
+          "name": "stroke/stroke-width-1-5",
+          "type": "FLOAT",
+          "values": {
+            "Value": 1.5
+          },
+          "description": "1.5px"
+        },
+        {
+          "name": "stroke/stroke-width-1-75",
+          "type": "FLOAT",
+          "values": {
+            "Value": 1.75
+          },
+          "description": "1.75px"
+        },
+        {
+          "name": "stroke/stroke-width-1-9",
+          "type": "FLOAT",
+          "values": {
+            "Value": 1.9
+          },
+          "description": "1.9px"
+        },
+        {
+          "name": "stroke/stroke-width-2",
+          "type": "FLOAT",
+          "values": {
+            "Value": 2
+          },
+          "description": "2px"
+        },
+        {
+          "name": "stroke/stroke-width-2-5",
+          "type": "FLOAT",
+          "values": {
+            "Value": 2.5
+          },
+          "description": "2.5px"
+        },
+        {
+          "name": "stroke/stroke-width-3",
+          "type": "FLOAT",
+          "values": {
+            "Value": 3
+          },
+          "description": "3px"
+        },
+        {
+          "name": "stroke/stroke-width-4",
+          "type": "FLOAT",
+          "values": {
+            "Value": 4
+          },
+          "description": "4px"
+        },
+        {
+          "name": "size/size-4",
+          "type": "FLOAT",
+          "values": {
+            "Value": 4
+          },
+          "description": "4px"
+        },
+        {
+          "name": "size/size-6",
+          "type": "FLOAT",
+          "values": {
+            "Value": 6
+          },
+          "description": "6px"
+        },
+        {
+          "name": "size/size-8",
+          "type": "FLOAT",
+          "values": {
+            "Value": 8
+          },
+          "description": "8px"
+        },
+        {
+          "name": "size/size-10",
+          "type": "FLOAT",
+          "values": {
+            "Value": 10
+          },
+          "description": "10px"
+        },
+        {
+          "name": "size/size-12",
+          "type": "FLOAT",
+          "values": {
+            "Value": 12
+          },
+          "description": "12px"
+        },
+        {
+          "name": "size/size-14",
+          "type": "FLOAT",
+          "values": {
+            "Value": 14
+          },
+          "description": "14px"
+        },
+        {
+          "name": "size/size-15",
+          "type": "FLOAT",
+          "values": {
+            "Value": 15
+          },
+          "description": "15px"
+        },
+        {
+          "name": "size/size-16",
+          "type": "FLOAT",
+          "values": {
+            "Value": 16
+          },
+          "description": "16px"
+        },
+        {
+          "name": "size/size-17",
+          "type": "FLOAT",
+          "values": {
+            "Value": 17
+          },
+          "description": "17px"
+        },
+        {
+          "name": "size/size-18",
+          "type": "FLOAT",
+          "values": {
+            "Value": 18
+          },
+          "description": "18px"
+        },
+        {
+          "name": "size/size-19",
+          "type": "FLOAT",
+          "values": {
+            "Value": 19
+          },
+          "description": "19px"
+        },
+        {
+          "name": "size/size-20",
+          "type": "FLOAT",
+          "values": {
+            "Value": 20
+          },
+          "description": "20px"
+        },
+        {
+          "name": "size/size-21",
+          "type": "FLOAT",
+          "values": {
+            "Value": 21
+          },
+          "description": "21px"
+        },
+        {
+          "name": "size/size-22",
+          "type": "FLOAT",
+          "values": {
+            "Value": 22
+          },
+          "description": "22px"
+        },
+        {
+          "name": "size/size-24",
+          "type": "FLOAT",
+          "values": {
+            "Value": 24
+          },
+          "description": "24px"
+        },
+        {
+          "name": "size/size-26",
+          "type": "FLOAT",
+          "values": {
+            "Value": 26
+          },
+          "description": "26px"
+        },
+        {
+          "name": "size/size-28",
+          "type": "FLOAT",
+          "values": {
+            "Value": 28
+          },
+          "description": "28px"
+        },
+        {
+          "name": "size/size-32",
+          "type": "FLOAT",
+          "values": {
+            "Value": 32
+          },
+          "description": "32px"
+        },
+        {
+          "name": "size/size-36",
+          "type": "FLOAT",
+          "values": {
+            "Value": 36
+          },
+          "description": "36px"
+        },
+        {
+          "name": "size/size-40",
+          "type": "FLOAT",
+          "values": {
+            "Value": 40
+          },
+          "description": "40px"
+        },
+        {
+          "name": "size/size-42",
+          "type": "FLOAT",
+          "values": {
+            "Value": 42
+          },
+          "description": "42px"
+        },
+        {
+          "name": "size/size-44",
+          "type": "FLOAT",
+          "values": {
+            "Value": 44
+          },
+          "description": "44px"
+        },
+        {
+          "name": "size/size-48",
+          "type": "FLOAT",
+          "values": {
+            "Value": 48
+          },
+          "description": "48px"
+        },
+        {
+          "name": "size/size-56",
+          "type": "FLOAT",
+          "values": {
+            "Value": 56
+          },
+          "description": "56px"
+        },
+        {
+          "name": "size/size-60",
+          "type": "FLOAT",
+          "values": {
+            "Value": 60
+          },
+          "description": "60px"
+        },
+        {
+          "name": "size/size-64",
+          "type": "FLOAT",
+          "values": {
+            "Value": 64
+          },
+          "description": "64px"
+        },
+        {
+          "name": "opacity/opacity-0",
+          "type": "FLOAT",
+          "values": {
+            "Value": 0
+          },
+          "description": "0"
+        },
+        {
+          "name": "opacity/opacity-8",
+          "type": "FLOAT",
+          "values": {
+            "Value": 8
+          },
+          "description": "8"
+        },
+        {
+          "name": "opacity/opacity-10",
+          "type": "FLOAT",
+          "values": {
+            "Value": 10
+          },
+          "description": "10"
+        },
+        {
+          "name": "opacity/opacity-12",
+          "type": "FLOAT",
+          "values": {
+            "Value": 12
+          },
+          "description": "12"
+        },
+        {
+          "name": "opacity/opacity-15",
+          "type": "FLOAT",
+          "values": {
+            "Value": 15
+          },
+          "description": "15"
+        },
+        {
+          "name": "opacity/opacity-18",
+          "type": "FLOAT",
+          "values": {
+            "Value": 18
+          },
+          "description": "18"
+        },
+        {
+          "name": "opacity/opacity-20",
+          "type": "FLOAT",
+          "values": {
+            "Value": 20
+          },
+          "description": "20"
+        },
+        {
+          "name": "opacity/opacity-25",
+          "type": "FLOAT",
+          "values": {
+            "Value": 25
+          },
+          "description": "25"
+        },
+        {
+          "name": "opacity/opacity-30",
+          "type": "FLOAT",
+          "values": {
+            "Value": 30
+          },
+          "description": "30"
+        },
+        {
+          "name": "opacity/opacity-35",
+          "type": "FLOAT",
+          "values": {
+            "Value": 35
+          },
+          "description": "35"
+        },
+        {
+          "name": "opacity/opacity-40",
+          "type": "FLOAT",
+          "values": {
+            "Value": 40
+          },
+          "description": "40"
+        },
+        {
+          "name": "opacity/opacity-45",
+          "type": "FLOAT",
+          "values": {
+            "Value": 45
+          },
+          "description": "45"
+        },
+        {
+          "name": "opacity/opacity-55",
+          "type": "FLOAT",
+          "values": {
+            "Value": 55
+          },
+          "description": "55"
+        },
+        {
+          "name": "opacity/opacity-60",
+          "type": "FLOAT",
+          "values": {
+            "Value": 60
+          },
+          "description": "60"
+        },
+        {
+          "name": "opacity/opacity-65",
+          "type": "FLOAT",
+          "values": {
+            "Value": 65
+          },
+          "description": "65"
+        },
+        {
+          "name": "opacity/opacity-70",
+          "type": "FLOAT",
+          "values": {
+            "Value": 70
+          },
+          "description": "70"
+        },
+        {
+          "name": "opacity/opacity-75",
+          "type": "FLOAT",
+          "values": {
+            "Value": 75
+          },
+          "description": "75"
+        },
+        {
+          "name": "opacity/opacity-80",
+          "type": "FLOAT",
+          "values": {
+            "Value": 80
+          },
+          "description": "80"
+        },
+        {
+          "name": "opacity/opacity-85",
+          "type": "FLOAT",
+          "values": {
+            "Value": 85
+          },
+          "description": "85"
+        },
+        {
+          "name": "opacity/opacity-90",
+          "type": "FLOAT",
+          "values": {
+            "Value": 90
+          },
+          "description": "90"
+        },
+        {
+          "name": "opacity/opacity-95",
+          "type": "FLOAT",
+          "values": {
+            "Value": 95
+          },
+          "description": "95"
+        },
+        {
+          "name": "opacity/opacity-100",
+          "type": "FLOAT",
+          "values": {
+            "Value": 100
+          },
+          "description": "100"
+        },
+        {
+          "name": "blur/blur-2",
+          "type": "FLOAT",
+          "values": {
+            "Value": 2
+          },
+          "description": "2px"
+        },
+        {
+          "name": "blur/blur-3",
+          "type": "FLOAT",
+          "values": {
+            "Value": 3
+          },
+          "description": "3px"
+        },
+        {
+          "name": "blur/blur-12",
+          "type": "FLOAT",
+          "values": {
+            "Value": 12
+          },
+          "description": "12px"
+        },
+        {
+          "name": "blur/blur-16",
+          "type": "FLOAT",
+          "values": {
+            "Value": 16
+          },
+          "description": "16px"
+        },
+        {
+          "name": "blur/blur-18",
+          "type": "FLOAT",
+          "values": {
+            "Value": 18
+          },
+          "description": "18px"
+        },
+        {
+          "name": "blur/blur-24",
+          "type": "FLOAT",
+          "values": {
+            "Value": 24
+          },
+          "description": "24px"
+        },
+        {
+          "name": "blur/blur-40",
+          "type": "FLOAT",
+          "values": {
+            "Value": 40
+          },
+          "description": "40px"
+        },
+        {
+          "name": "duration/duration-150",
+          "type": "FLOAT",
+          "values": {
+            "Value": 150
+          },
+          "description": "150ms"
+        },
+        {
+          "name": "duration/duration-200",
+          "type": "FLOAT",
+          "values": {
+            "Value": 200
+          },
+          "description": "200ms"
+        },
+        {
+          "name": "duration/duration-250",
+          "type": "FLOAT",
+          "values": {
+            "Value": 250
+          },
+          "description": "250ms"
+        },
+        {
+          "name": "duration/duration-320",
+          "type": "FLOAT",
+          "values": {
+            "Value": 320
+          },
+          "description": "320ms"
+        },
+        {
+          "name": "duration/duration-350",
+          "type": "FLOAT",
+          "values": {
+            "Value": 350
+          },
+          "description": "350ms"
+        },
+        {
+          "name": "duration/duration-500",
+          "type": "FLOAT",
+          "values": {
+            "Value": 500
+          },
+          "description": "500ms"
+        },
+        {
+          "name": "duration/duration-700",
+          "type": "FLOAT",
+          "values": {
+            "Value": 700
+          },
+          "description": "700ms"
+        },
+        {
+          "name": "duration/duration-900",
+          "type": "FLOAT",
+          "values": {
+            "Value": 900
+          },
+          "description": "900ms"
+        },
+        {
+          "name": "easing/easing-standard",
+          "type": "STRING",
+          "values": {
+            "Value": "cubic-bezier(0.2, 0.9, 0.25, 1)"
+          },
+          "description": "cubic-bezier(0.2, 0.9, 0.25, 1)"
+        },
+        {
+          "name": "easing/easing-spring",
+          "type": "STRING",
+          "values": {
+            "Value": "cubic-bezier(0.2, 0.9, 0.25, 1.2)"
+          },
+          "description": "cubic-bezier(0.2, 0.9, 0.25, 1.2)"
+        },
+        {
+          "name": "easing/easing-ease-out",
+          "type": "STRING",
+          "values": {
+            "Value": "cubic-bezier(0, 0, 0.58, 1)"
+          },
+          "description": "cubic-bezier(0, 0, 0.58, 1)"
+        },
+        {
+          "name": "z-index/z-index-0",
+          "type": "FLOAT",
+          "values": {
+            "Value": 0
+          },
+          "description": "0"
+        },
+        {
+          "name": "z-index/z-index-10",
+          "type": "FLOAT",
+          "values": {
+            "Value": 10
+          },
+          "description": "10"
+        },
+        {
+          "name": "z-index/z-index-20",
+          "type": "FLOAT",
+          "values": {
+            "Value": 20
+          },
+          "description": "20"
+        },
+        {
+          "name": "z-index/z-index-30",
+          "type": "FLOAT",
+          "values": {
+            "Value": 30
+          },
+          "description": "30"
+        },
+        {
+          "name": "z-index/z-index-40",
+          "type": "FLOAT",
+          "values": {
+            "Value": 40
+          },
+          "description": "40"
+        },
+        {
+          "name": "z-index/z-index-50",
+          "type": "FLOAT",
+          "values": {
+            "Value": 50
+          },
+          "description": "50"
+        },
+        {
+          "name": "z-index/z-index-60",
+          "type": "FLOAT",
+          "values": {
+            "Value": 60
+          },
+          "description": "60"
+        },
+        {
+          "name": "breakpoint/breakpoint-400",
+          "type": "FLOAT",
+          "values": {
+            "Value": 400
+          },
+          "description": "400px"
+        },
+        {
+          "name": "breakpoint/breakpoint-800",
+          "type": "FLOAT",
+          "values": {
+            "Value": 800
+          },
+          "description": "800px"
+        },
+        {
+          "name": "breakpoint/breakpoint-1100",
+          "type": "FLOAT",
+          "values": {
+            "Value": 1100
+          },
+          "description": "1100px"
+        },
+        {
+          "name": "breakpoint/breakpoint-1240",
+          "type": "FLOAT",
+          "values": {
+            "Value": 1240
+          },
+          "description": "1240px"
+        }
+      ]
+    },
+    {
+      "name": "Semantic",
+      "modes": [
+        "Light",
+        "Dark"
+      ],
+      "variables": [
+        {
+          "name": "color/background/color-bg-page",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/gray/gray-100",
+            "Dark": "color/blue/blue-950"
+          },
+          "description": "Fundo da página."
+        },
+        {
+          "name": "color/background/color-bg-surface",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/base/white",
+            "Dark": "color/slate/slate-925"
+          },
+          "description": "Cards, atalhos, linhas, campos."
+        },
+        {
+          "name": "color/background/color-bg-elevated",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/gray/gray-50",
+            "Dark": "color/slate/slate-850"
+          },
+          "description": "Hover/pressionado sobre surface."
+        },
+        {
+          "name": "color/background/color-bg-sheet",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/base/white",
+            "Dark": "color/slate/slate-900"
+          },
+          "description": "Folhas que sobem por cima da tela."
+        },
+        {
+          "name": "color/background/color-bg-subtle",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/gray/gray-150",
+            "Dark": "color/slate/slate-800"
+          },
+          "description": "Quadrado do ícone, chip inativo, botão secundário."
+        },
+        {
+          "name": "color/background/color-bg-card",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/base/white",
+            "Dark": "color/slate/slate-875"
+          },
+          "description": "Tiles de destaque."
+        },
+        {
+          "name": "color/background/color-bg-dock",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-700",
+            "Dark": "color/blue/blue-800"
+          },
+          "description": "Dock flutuante do mobile."
+        },
+        {
+          "name": "color/background/color-bg-overlay",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/alpha/blue-950-alpha-55",
+            "Dark": "color/alpha/blue-950-alpha-55"
+          },
+          "description": "Véu atrás das folhas."
+        },
+        {
+          "name": "color/band/color-band-start",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-750",
+            "Dark": "color/blue/blue-850"
+          },
+          "description": "Topo da faixa marinho / barra do desktop."
+        },
+        {
+          "name": "color/band/color-band-end",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-600",
+            "Dark": "color/blue/blue-775"
+          },
+          "description": "Fim da faixa e base do bolso sólido."
+        },
+        {
+          "name": "color/text/color-text-default",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-900",
+            "Dark": "color/gray/gray-75"
+          },
+          "description": "Texto e números principais."
+        },
+        {
+          "name": "color/text/color-text-emphasis",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/slate/slate-775",
+            "Dark": "color/gray/gray-300"
+          },
+          "description": "Texto de chips e rótulos fortes."
+        },
+        {
+          "name": "color/text/color-text-secondary",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/gray/gray-700",
+            "Dark": "color/gray/gray-400"
+          },
+          "description": "Texto de apoio."
+        },
+        {
+          "name": "color/text/color-text-muted",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/gray/gray-600",
+            "Dark": "color/gray/gray-500"
+          },
+          "description": "Datas, dicas, kickers (em surface)."
+        },
+        {
+          "name": "color/text/color-text-link",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-500",
+            "Dark": "color/blue/blue-300"
+          },
+          "description": "Links e destaque dentro de frase."
+        },
+        {
+          "name": "color/text/color-text-on-action",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/base/white",
+            "Dark": "color/blue/blue-950"
+          },
+          "description": "Texto sobre color-action-primary."
+        },
+        {
+          "name": "color/text/color-text-on-card",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-900",
+            "Dark": "color/gray/gray-75"
+          },
+          "description": "Texto sobre color-bg-card."
+        },
+        {
+          "name": "color/text/color-text-on-brand",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-900",
+            "Dark": "color/blue/blue-900"
+          },
+          "description": "Texto sobre lilás e cartões claros."
+        },
+        {
+          "name": "color/text/color-text-on-band",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/base/white",
+            "Dark": "color/base/white"
+          },
+          "description": "Texto sobre a faixa marinho e o bolso."
+        },
+        {
+          "name": "color/text/color-text-on-band-muted",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/alpha/white-alpha-70",
+            "Dark": "color/alpha/white-alpha-70"
+          },
+          "description": "Texto secundário sobre a faixa."
+        },
+        {
+          "name": "color/action/color-action-primary",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-700",
+            "Dark": "color/blue/blue-200"
+          },
+          "description": "Ação principal, chip selecionado, progresso."
+        },
+        {
+          "name": "color/action/color-action-brand",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/lilac/lilac-300",
+            "Dark": "color/lilac/lilac-300"
+          },
+          "description": "Botão + do dock, Pergunte ao Gamora, Adicionar (desktop)."
+        },
+        {
+          "name": "color/border/color-border-default",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/gray/gray-200",
+            "Dark": "color/slate/slate-750"
+          },
+          "description": "Divisórias."
+        },
+        {
+          "name": "color/border/color-border-control",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/gray/gray-250",
+            "Dark": "color/slate/slate-700"
+          },
+          "description": "Borda de campos; trilho de progresso."
+        },
+        {
+          "name": "color/border/color-border-focus",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-500",
+            "Dark": "color/blue/blue-300"
+          },
+          "description": "Anel de foco e campo ativo."
+        },
+        {
+          "name": "color/border/color-border-glass",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/alpha/white-alpha-28",
+            "Dark": "color/alpha/white-alpha-28"
+          },
+          "description": "Borda do vidro."
+        },
+        {
+          "name": "color/border/color-border-stitch",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/alpha/white-alpha-35",
+            "Dark": "color/alpha/white-alpha-35"
+          },
+          "description": "Costura tracejada do bolso."
+        },
+        {
+          "name": "color/brand/color-brand-lilac",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/lilac/lilac-300",
+            "Dark": "color/lilac/lilac-300"
+          },
+          "description": "Cor da marca."
+        },
+        {
+          "name": "color/brand/color-brand-lilac-strong",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/lilac/lilac-600",
+            "Dark": "color/lilac/lilac-500"
+          },
+          "description": "Assinaturas, limite atingido, 3ª série."
+        },
+        {
+          "name": "color/glass/color-glass-fill-start",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/alpha/white-alpha-20",
+            "Dark": "color/alpha/white-alpha-20"
+          },
+          "description": "Vidro: topo."
+        },
+        {
+          "name": "color/glass/color-glass-fill-end",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/alpha/white-alpha-8",
+            "Dark": "color/alpha/white-alpha-8"
+          },
+          "description": "Vidro: base."
+        },
+        {
+          "name": "color/glass/color-glass-highlight",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/alpha/white-alpha-70",
+            "Dark": "color/alpha/white-alpha-70"
+          },
+          "description": "Reflexo de 1px na borda de cima do bolso."
+        },
+        {
+          "name": "color/card/color-card-lilac-start",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/lilac/lilac-400",
+            "Dark": "color/lilac/lilac-400"
+          },
+          "description": "Cartão lilás (gradiente 128°)."
+        },
+        {
+          "name": "color/card/color-card-lilac-end",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/lilac/lilac-100",
+            "Dark": "color/lilac/lilac-100"
+          },
+          "description": "Cartão lilás, fim."
+        },
+        {
+          "name": "color/card/color-card-periwinkle-start",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-250",
+            "Dark": "color/blue/blue-250"
+          },
+          "description": "Cartão lavanda."
+        },
+        {
+          "name": "color/card/color-card-periwinkle-end",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-100",
+            "Dark": "color/blue/blue-100"
+          },
+          "description": "Cartão lavanda, fim."
+        },
+        {
+          "name": "color/card/color-card-silver-start",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/gray/gray-250",
+            "Dark": "color/gray/gray-250"
+          },
+          "description": "Cartão prata."
+        },
+        {
+          "name": "color/card/color-card-silver-end",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/gray/gray-25",
+            "Dark": "color/gray/gray-25"
+          },
+          "description": "Cartão prata, fim."
+        },
+        {
+          "name": "color/card/color-hero-start",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/lilac/lilac-400",
+            "Dark": "color/lilac/lilac-400"
+          },
+          "description": "Bolha do assistente/avatar: início."
+        },
+        {
+          "name": "color/card/color-hero-middle",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/lilac/lilac-200",
+            "Dark": "color/lilac/lilac-200"
+          },
+          "description": "Meio."
+        },
+        {
+          "name": "color/card/color-hero-end",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/lilac/lilac-50",
+            "Dark": "color/lilac/lilac-50"
+          },
+          "description": "Fim."
+        },
+        {
+          "name": "color/chart/color-chart-1",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-700",
+            "Dark": "color/blue/blue-200"
+          },
+          "description": "1ª série."
+        },
+        {
+          "name": "color/chart/color-chart-2",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-500",
+            "Dark": "color/blue/blue-300"
+          },
+          "description": "2ª série."
+        },
+        {
+          "name": "color/chart/color-chart-3",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/lilac/lilac-600",
+            "Dark": "color/lilac/lilac-500"
+          },
+          "description": "3ª série."
+        },
+        {
+          "name": "color/chart/color-chart-rest",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/gray/gray-250",
+            "Dark": "color/slate/slate-700"
+          },
+          "description": "Restante."
+        },
+        {
+          "name": "typography/font-family-body",
+          "type": "STRING",
+          "aliases": {
+            "Light": "font/family/font-family-satoshi",
+            "Dark": "font/family/font-family-satoshi"
+          },
+          "description": "Toda a interface (fallback Manrope)."
+        },
+        {
+          "name": "typography/font-family-body-fallback",
+          "type": "STRING",
+          "aliases": {
+            "Light": "font/family/font-family-manrope",
+            "Dark": "font/family/font-family-manrope"
+          },
+          "description": "Quando a Satoshi não carrega."
+        },
+        {
+          "name": "typography/font-family-code",
+          "type": "STRING",
+          "aliases": {
+            "Light": "font/family/font-family-ibm-plex-mono",
+            "Dark": "font/family/font-family-ibm-plex-mono"
+          },
+          "description": "Kickers e número do cartão."
+        },
+        {
+          "name": "typography/font-size-balance",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-40",
+            "Dark": "font/size/font-size-40"
+          },
+          "description": "Saldo no mobile."
+        },
+        {
+          "name": "typography/font-size-balance-desktop",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-52",
+            "Dark": "font/size/font-size-52"
+          },
+          "description": "Saldo no desktop."
+        },
+        {
+          "name": "typography/font-size-display",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-46",
+            "Dark": "font/size/font-size-46"
+          },
+          "description": "Números de destaque (Ainda pode gastar)."
+        },
+        {
+          "name": "typography/font-size-figure",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-28",
+            "Dark": "font/size/font-size-28"
+          },
+          "description": "Números em cards."
+        },
+        {
+          "name": "typography/font-size-screen-title",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-29",
+            "Dark": "font/size/font-size-29"
+          },
+          "description": "Título de tela (mobile)."
+        },
+        {
+          "name": "typography/font-size-screen-title-desktop",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-36",
+            "Dark": "font/size/font-size-36"
+          },
+          "description": "Título de tela (desktop)."
+        },
+        {
+          "name": "typography/font-size-sheet-title",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-24",
+            "Dark": "font/size/font-size-24"
+          },
+          "description": "Título de folha."
+        },
+        {
+          "name": "typography/font-size-section",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-18",
+            "Dark": "font/size/font-size-18"
+          },
+          "description": "Título de seção."
+        },
+        {
+          "name": "typography/font-size-body-lg",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-16",
+            "Dark": "font/size/font-size-16"
+          },
+          "description": "Nome na linha, campos."
+        },
+        {
+          "name": "typography/font-size-body",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-15",
+            "Dark": "font/size/font-size-15"
+          },
+          "description": "Texto corrido."
+        },
+        {
+          "name": "typography/font-size-label",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-13",
+            "Dark": "font/size/font-size-13"
+          },
+          "description": "Rótulos."
+        },
+        {
+          "name": "typography/font-size-caption",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-12",
+            "Dark": "font/size/font-size-12"
+          },
+          "description": "Legendas e datas."
+        },
+        {
+          "name": "typography/font-size-kicker",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/size/font-size-11",
+            "Dark": "font/size/font-size-11"
+          },
+          "description": "Kicker mono maiúsculo."
+        },
+        {
+          "name": "typography/font-weight-body",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/weight/font-weight-500",
+            "Dark": "font/weight/font-weight-500"
+          },
+          "description": "Corpo."
+        },
+        {
+          "name": "typography/font-weight-strong",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/weight/font-weight-700",
+            "Dark": "font/weight/font-weight-700"
+          },
+          "description": "Títulos, números, botões."
+        },
+        {
+          "name": "typography/font-weight-wordmark",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/weight/font-weight-900",
+            "Dark": "font/weight/font-weight-900"
+          },
+          "description": "Palavra gamora."
+        },
+        {
+          "name": "typography/font-weight-code",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/weight/font-weight-400",
+            "Dark": "font/weight/font-weight-400"
+          },
+          "description": "Mono."
+        },
+        {
+          "name": "typography/line-height-body",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/line-height/line-height-22",
+            "Dark": "font/line-height/line-height-22"
+          },
+          "description": "Corpo 15px."
+        },
+        {
+          "name": "typography/line-height-caption",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/line-height/line-height-16",
+            "Dark": "font/line-height/line-height-16"
+          },
+          "description": "Legenda e kicker."
+        },
+        {
+          "name": "typography/line-height-section",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/line-height/line-height-24",
+            "Dark": "font/line-height/line-height-24"
+          },
+          "description": "Seção 18px."
+        },
+        {
+          "name": "typography/letter-spacing-number",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/letter-spacing/letter-spacing-neg-45",
+            "Dark": "font/letter-spacing/letter-spacing-neg-45"
+          },
+          "description": "Números (saldo, valores)."
+        },
+        {
+          "name": "typography/letter-spacing-title",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/letter-spacing/letter-spacing-neg-35",
+            "Dark": "font/letter-spacing/letter-spacing-neg-35"
+          },
+          "description": "Títulos de tela."
+        },
+        {
+          "name": "typography/letter-spacing-wordmark",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/letter-spacing/letter-spacing-neg-40",
+            "Dark": "font/letter-spacing/letter-spacing-neg-40"
+          },
+          "description": "Palavra gamora."
+        },
+        {
+          "name": "typography/letter-spacing-kicker",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/letter-spacing/letter-spacing-80",
+            "Dark": "font/letter-spacing/letter-spacing-80"
+          },
+          "description": "Kicker."
+        },
+        {
+          "name": "typography/letter-spacing-card-number",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "font/letter-spacing/letter-spacing-120",
+            "Dark": "font/letter-spacing/letter-spacing-120"
+          },
+          "description": "•••• 4552."
+        },
+        {
+          "name": "spacing/space-gutter-mobile",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-20",
+            "Dark": "space/positive/space-20"
+          },
+          "description": "Margem lateral < 800px."
+        },
+        {
+          "name": "spacing/space-gutter-desktop",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-32",
+            "Dark": "space/positive/space-32"
+          },
+          "description": "Margem lateral ≥ 800px."
+        },
+        {
+          "name": "spacing/space-inset-card",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-24",
+            "Dark": "space/positive/space-24"
+          },
+          "description": "Padding de cards e bolso."
+        },
+        {
+          "name": "spacing/space-inset-tile",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-20",
+            "Dark": "space/positive/space-20"
+          },
+          "description": "Padding de tiles."
+        },
+        {
+          "name": "spacing/space-inset-row",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-16",
+            "Dark": "space/positive/space-16"
+          },
+          "description": "Padding horizontal da linha."
+        },
+        {
+          "name": "spacing/space-inset-stitch",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-7",
+            "Dark": "space/positive/space-7"
+          },
+          "description": "Recuo da costura do bolso."
+        },
+        {
+          "name": "spacing/gap-inline-xs",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-6",
+            "Dark": "space/positive/space-6"
+          },
+          "description": "Ícone + texto em chip."
+        },
+        {
+          "name": "spacing/gap-inline-sm",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-8",
+            "Dark": "space/positive/space-8"
+          },
+          "description": "Ícone + texto em botão."
+        },
+        {
+          "name": "spacing/gap-inline-md",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-12",
+            "Dark": "space/positive/space-12"
+          },
+          "description": "Avatar + saudação; atalhos."
+        },
+        {
+          "name": "spacing/gap-stack-list",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-8",
+            "Dark": "space/positive/space-8"
+          },
+          "description": "Entre linhas de transação."
+        },
+        {
+          "name": "spacing/gap-stack-form",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-20",
+            "Dark": "space/positive/space-20"
+          },
+          "description": "Entre campos."
+        },
+        {
+          "name": "spacing/gap-stack-section",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-24",
+            "Dark": "space/positive/space-24"
+          },
+          "description": "Entre seções."
+        },
+        {
+          "name": "spacing/gap-grid-tiles",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-12",
+            "Dark": "space/positive/space-12"
+          },
+          "description": "Grade de tiles e atalhos."
+        },
+        {
+          "name": "spacing/gap-columns-desktop",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-32",
+            "Dark": "space/positive/space-32"
+          },
+          "description": "Colunas no desktop."
+        },
+        {
+          "name": "spacing/wallet-peek",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/positive/space-44",
+            "Dark": "space/positive/space-44"
+          },
+          "description": "Quanto o cartão de trás aparece na Home."
+        },
+        {
+          "name": "spacing/offset-lift-hover",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/negative/space-neg-6",
+            "Dark": "space/negative/space-neg-6"
+          },
+          "description": "Cartão sobe ao passar o mouse."
+        },
+        {
+          "name": "spacing/offset-dock-active",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/negative/space-neg-6",
+            "Dark": "space/negative/space-neg-6"
+          },
+          "description": "Círculo ativo do dock sobressai."
+        },
+        {
+          "name": "spacing/offset-bleed-list",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "space/negative/space-neg-12",
+            "Dark": "space/negative/space-neg-12"
+          },
+          "description": "Lista sangra até a borda."
+        },
+        {
+          "name": "radius/radius-control",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "radius/radius-12",
+            "Dark": "radius/radius-12"
+          },
+          "description": "Campos; ícone de categoria."
+        },
+        {
+          "name": "radius/radius-checkbox",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "radius/radius-8",
+            "Dark": "radius/radius-8"
+          },
+          "description": "Checkbox da fatura."
+        },
+        {
+          "name": "radius/radius-chart-segment",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "radius/radius-14",
+            "Dark": "radius/radius-14"
+          },
+          "description": "Segmento do mês."
+        },
+        {
+          "name": "radius/radius-row",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "radius/radius-22",
+            "Dark": "radius/radius-22"
+          },
+          "description": "Linha de transação, bolhas."
+        },
+        {
+          "name": "radius/radius-stitch",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "radius/radius-24",
+            "Dark": "radius/radius-24"
+          },
+          "description": "Costura do bolso."
+        },
+        {
+          "name": "radius/radius-tile",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "radius/radius-26",
+            "Dark": "radius/radius-26"
+          },
+          "description": "Atalhos, tiles, botões grandes."
+        },
+        {
+          "name": "radius/radius-pocket",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "radius/radius-30",
+            "Dark": "radius/radius-30"
+          },
+          "description": "Bolso da carteira."
+        },
+        {
+          "name": "radius/radius-wallet-card",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "radius/radius-32",
+            "Dark": "radius/radius-32"
+          },
+          "description": "Cartões."
+        },
+        {
+          "name": "radius/radius-section",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "radius/radius-34",
+            "Dark": "radius/radius-34"
+          },
+          "description": "Cards de seção, folhas."
+        },
+        {
+          "name": "radius/radius-pill",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "radius/radius-full",
+            "Dark": "radius/radius-full"
+          },
+          "description": "Chips, botões redondos, dock."
+        },
+        {
+          "name": "stroke/stroke-border",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "stroke/stroke-width-1",
+            "Dark": "stroke/stroke-width-1"
+          },
+          "description": "Bordas e divisórias."
+        },
+        {
+          "name": "stroke/stroke-focus",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "stroke/stroke-width-2",
+            "Dark": "stroke/stroke-width-2"
+          },
+          "description": "Anel de foco."
+        },
+        {
+          "name": "stroke/stroke-icon",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "stroke/stroke-width-1-75",
+            "Dark": "stroke/stroke-width-1-75"
+          },
+          "description": "Ícones de linha."
+        },
+        {
+          "name": "stroke/stroke-icon-strong",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "stroke/stroke-width-2-5",
+            "Dark": "stroke/stroke-width-2-5"
+          },
+          "description": "Ícone + e seta."
+        },
+        {
+          "name": "stroke/stroke-stitch",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "stroke/stroke-width-1",
+            "Dark": "stroke/stroke-width-1"
+          },
+          "description": "Costura tracejada."
+        },
+        {
+          "name": "stroke/stroke-dock-ring",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "stroke/stroke-width-4",
+            "Dark": "stroke/stroke-width-4"
+          },
+          "description": "Anel do item ativo no dock."
+        },
+        {
+          "name": "size/size-control",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "size/size-44",
+            "Dark": "size/size-44"
+          },
+          "description": "Botão redondo, campo."
+        },
+        {
+          "name": "size/size-control-sm",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "size/size-40",
+            "Dark": "size/size-40"
+          },
+          "description": "Botão redondo compacto."
+        },
+        {
+          "name": "size/size-dock-item",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "size/size-48",
+            "Dark": "size/size-48"
+          },
+          "description": "Item do dock."
+        },
+        {
+          "name": "size/size-dock-active",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "size/size-56",
+            "Dark": "size/size-56"
+          },
+          "description": "Item ativo do dock."
+        },
+        {
+          "name": "size/size-category-icon",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "size/size-44",
+            "Dark": "size/size-44"
+          },
+          "description": "Quadrado do ícone de categoria."
+        },
+        {
+          "name": "size/size-avatar",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "size/size-44",
+            "Dark": "size/size-44"
+          },
+          "description": "Avatar no topo."
+        },
+        {
+          "name": "size/size-icon",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "size/size-20",
+            "Dark": "size/size-20"
+          },
+          "description": "Ícone padrão."
+        },
+        {
+          "name": "size/size-icon-sm",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "size/size-16",
+            "Dark": "size/size-16"
+          },
+          "description": "Ícone em chips e botões pequenos."
+        },
+        {
+          "name": "size/size-progress-sm",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "size/size-4",
+            "Dark": "size/size-4"
+          },
+          "description": "Barra fina."
+        },
+        {
+          "name": "size/size-progress-md",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "size/size-8",
+            "Dark": "size/size-8"
+          },
+          "description": "Barra média."
+        },
+        {
+          "name": "effect/opacity-disabled",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "opacity/opacity-40",
+            "Dark": "opacity/opacity-40"
+          },
+          "description": "Controle desabilitado."
+        },
+        {
+          "name": "effect/opacity-deselected",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "opacity/opacity-45",
+            "Dark": "opacity/opacity-45"
+          },
+          "description": "Item desmarcado na fatura."
+        },
+        {
+          "name": "effect/blur-glass",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "blur/blur-18",
+            "Dark": "blur/blur-18"
+          },
+          "description": "Vidro sobre a faixa."
+        },
+        {
+          "name": "effect/blur-pocket",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "blur/blur-16",
+            "Dark": "blur/blur-16"
+          },
+          "description": "Bolso sólido."
+        },
+        {
+          "name": "effect/blur-header",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "blur/blur-24",
+            "Dark": "blur/blur-24"
+          },
+          "description": "Cabeçalho ao rolar."
+        },
+        {
+          "name": "motion/motion-duration-fast",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "duration/duration-200",
+            "Dark": "duration/duration-200"
+          },
+          "description": "Fade, hover."
+        },
+        {
+          "name": "motion/motion-duration-sheet",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "duration/duration-320",
+            "Dark": "duration/duration-320"
+          },
+          "description": "Folha subindo."
+        },
+        {
+          "name": "motion/motion-duration-pop",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "duration/duration-350",
+            "Dark": "duration/duration-350"
+          },
+          "description": "Entrada de tela e toast."
+        },
+        {
+          "name": "motion/motion-duration-card",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "duration/duration-500",
+            "Dark": "duration/duration-500"
+          },
+          "description": "Troca de cartão."
+        },
+        {
+          "name": "motion/motion-duration-progress",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "duration/duration-700",
+            "Dark": "duration/duration-700"
+          },
+          "description": "Barras de progresso."
+        },
+        {
+          "name": "motion/motion-easing-standard",
+          "type": "STRING",
+          "aliases": {
+            "Light": "easing/easing-standard",
+            "Dark": "easing/easing-standard"
+          },
+          "description": "Padrão."
+        },
+        {
+          "name": "motion/motion-easing-spring",
+          "type": "STRING",
+          "aliases": {
+            "Light": "easing/easing-spring",
+            "Dark": "easing/easing-spring"
+          },
+          "description": "Entrada com leve sobra."
+        },
+        {
+          "name": "layer/z-band",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "z-index/z-index-0",
+            "Dark": "z-index/z-index-0"
+          },
+          "description": "Faixa de fundo."
+        },
+        {
+          "name": "layer/z-pocket",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "z-index/z-index-10",
+            "Dark": "z-index/z-index-10"
+          },
+          "description": "Bolso sobre os cartões."
+        },
+        {
+          "name": "layer/z-header",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "z-index/z-index-30",
+            "Dark": "z-index/z-index-30"
+          },
+          "description": "Cabeçalho fixo."
+        },
+        {
+          "name": "layer/z-dock",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "z-index/z-index-40",
+            "Dark": "z-index/z-index-40"
+          },
+          "description": "Dock e barras fixas."
+        },
+        {
+          "name": "layer/z-sheet",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "z-index/z-index-50",
+            "Dark": "z-index/z-index-50"
+          },
+          "description": "Folhas."
+        },
+        {
+          "name": "layer/z-toast",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "z-index/z-index-60",
+            "Dark": "z-index/z-index-60"
+          },
+          "description": "Toast."
+        },
+        {
+          "name": "layout/breakpoint-tablet",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "breakpoint/breakpoint-800",
+            "Dark": "breakpoint/breakpoint-800"
+          },
+          "description": "Tablet."
+        },
+        {
+          "name": "layout/breakpoint-desktop",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "breakpoint/breakpoint-1100",
+            "Dark": "breakpoint/breakpoint-1100"
+          },
+          "description": "Desktop: duas colunas, barra superior."
+        },
+        {
+          "name": "layout/container-max",
+          "type": "FLOAT",
+          "aliases": {
+            "Light": "breakpoint/breakpoint-1240",
+            "Dark": "breakpoint/breakpoint-1240"
+          },
+          "description": "Largura máxima do conteúdo."
+        }
+      ]
+    }
+  ],
+  "effectStyles": [
+    {
+      "name": "shadow/shadow-soft-light",
+      "x": 0,
+      "y": 10,
+      "blur": 30,
+      "spread": 0,
+      "color": {
+        "r": 0.08627450980392157,
+        "g": 0.1568627450980392,
+        "b": 0.32941176470588235,
+        "a": 0.07
+      }
+    },
+    {
+      "name": "shadow/shadow-soft-dark",
+      "x": 0,
+      "y": 10,
+      "blur": 30,
+      "spread": 0,
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0.35
+      }
+    },
+    {
+      "name": "shadow/shadow-dock",
+      "x": 0,
+      "y": 18,
+      "blur": 44,
+      "spread": 0,
+      "color": {
+        "r": 0.054901960784313725,
+        "g": 0.10196078431372549,
+        "b": 0.2,
+        "a": 0.45
+      }
+    },
+    {
+      "name": "shadow/shadow-pocket",
+      "x": 0,
+      "y": 22,
+      "blur": 44,
+      "spread": 0,
+      "color": {
+        "r": 0.054901960784313725,
+        "g": 0.10196078431372549,
+        "b": 0.2,
+        "a": 0.35
+      }
+    },
+    {
+      "name": "shadow/shadow-card-wallet",
+      "x": 0,
+      "y": -6,
+      "blur": 24,
+      "spread": 0,
+      "color": {
+        "r": 0.054901960784313725,
+        "g": 0.10196078431372549,
+        "b": 0.2,
+        "a": 0.15
+      }
+    }
+  ]
+}
