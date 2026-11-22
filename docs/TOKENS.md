@@ -7,8 +7,8 @@
 
 | Camada | O que é | Modos | Quantidade |
 |---|---|---|---|
-| **Primitivos** | Valores crus, sem significado. Nunca usados direto nos componentes. | um (`Value`) | 272 |
-| **Semânticos** | Aliases em kebab-case que dizem *para que* serve. Componentes usam só estes. | `Light` · `Dark` | 141 |
+| **Primitivos** | Valores crus, sem significado. Nunca usados direto nos componentes. | um (`Value`) | 271 |
+| **Semânticos** | Aliases em kebab-case que dizem *para que* serve. Componentes usam só estes. | `Light` · `Dark` | 149 |
 
 **Nomenclatura (kebab-case):** `{categoria}-{papel}-{variante}` → `color-bg-surface`, `color-text-on-brand`, `space-inset-card`, `radius-wallet-card`.
 No Figma o caminho vira grupo: `color/background/color-bg-surface`.
@@ -24,65 +24,67 @@ No Figma o caminho vira grupo: `color/background/color-bg-surface`.
 | `white` | `#ffffff` | `color/base/white` |
 | `black` | `#000000` | `color/base/black` |
 
-### color / gray
+### color / neutral
 
 | Token | Valor | Figma |
 |---|---|---|
-| `gray-25` | `#f7f8fb` | `color/gray/gray-25` |
-| `gray-50` | `#f6f7fb` | `color/gray/gray-50` |
-| `gray-75` | `#f2f5fb` | `color/gray/gray-75` |
-| `gray-100` | `#f2f4f9` | `color/gray/gray-100` |
-| `gray-150` | `#edf0f7` | `color/gray/gray-150` |
-| `gray-200` | `#e3e7f0` | `color/gray/gray-200` |
-| `gray-250` | `#dfe4ee` | `color/gray/gray-250` |
-| `gray-300` | `#dce3f0` | `color/gray/gray-300` |
-| `gray-400` | `#a3aec4` | `color/gray/gray-400` |
-| `gray-500` | `#8d99b1` | `color/gray/gray-500` |
-| `gray-600` | `#68738d` | `color/gray/gray-600` |
-| `gray-700` | `#56627c` | `color/gray/gray-700` |
+| `neutral-25` | `#f8f9ff` | `color/neutral/neutral-25` |
+| `neutral-50` | `#f3f2ff` | `color/neutral/neutral-50` |
+| `neutral-100` | `#ede9ff` | `color/neutral/neutral-100` |
+| `neutral-150` | `#e6e2f7` | `color/neutral/neutral-150` |
+| `neutral-200` | `#dedcf5` | `color/neutral/neutral-200` |
+| `neutral-400` | `#a9abca` | `color/neutral/neutral-400` |
+| `neutral-500` | `#9295b6` | `color/neutral/neutral-500` |
+| `neutral-600` | `#676b8a` | `color/neutral/neutral-600` |
+| `neutral-700` | `#54597a` | `color/neutral/neutral-700` |
 
-### color / slate
+### color / ink
 
 | Token | Valor | Figma |
 |---|---|---|
-| `slate-700` | `#26344f` | `color/slate/slate-700` |
-| `slate-750` | `#202e48` | `color/slate/slate-750` |
-| `slate-775` | `#1e2b47` | `color/slate/slate-775` |
-| `slate-800` | `#1d2942` | `color/slate/slate-800` |
-| `slate-850` | `#18243b` | `color/slate/slate-850` |
-| `slate-875` | `#16223a` | `color/slate/slate-875` |
-| `slate-900` | `#131e34` | `color/slate/slate-900` |
-| `slate-925` | `#121c30` | `color/slate/slate-925` |
+| `ink-650` | `#2a3055` | `color/ink/ink-650` |
+| `ink-700` | `#222849` | `color/ink/ink-700` |
+| `ink-725` | `#1c2142` | `color/ink/ink-725` |
+| `ink-750` | `#1b2147` | `color/ink/ink-750` |
+| `ink-775` | `#171c3a` | `color/ink/ink-775` |
+| `ink-800` | `#151a36` | `color/ink/ink-800` |
+| `ink-825` | `#121733` | `color/ink/ink-825` |
+| `ink-850` | `#11152f` | `color/ink/ink-850` |
+| `ink-900` | `#0b1230` | `color/ink/ink-900` |
+| `ink-925` | `#0b0d2a` | `color/ink/ink-925` |
+| `ink-950` | `#070a1f` | `color/ink/ink-950` |
+
+### color / violet
+
+| Token | Valor | Figma |
+|---|---|---|
+| `violet-100` | `#ede9ff` | `color/violet/violet-100` |
+| `violet-200` | `#b9a8ff` | `color/violet/violet-200` |
+| `violet-300` | `#a897ff` | `color/violet/violet-300` |
+| `violet-400` | `#8f74ff` | `color/violet/violet-400` |
+| `violet-500` | `#7b5cff` | `color/violet/violet-500` |
+| `violet-600` | `#5b3fe0` | `color/violet/violet-600` |
+| `violet-700` | `#3a2a8f` | `color/violet/violet-700` |
+| `violet-750` | `#2c2378` | `color/violet/violet-750` |
+| `violet-775` | `#2b1f7a` | `color/violet/violet-775` |
+| `violet-800` | `#241a63` | `color/violet/violet-800` |
+| `violet-850` | `#1a1150` | `color/violet/violet-850` |
+| `violet-875` | `#18124a` | `color/violet/violet-875` |
+| `violet-950` | `#0d0a2e` | `color/violet/violet-950` |
+
+### color / teal
+
+| Token | Valor | Figma |
+|---|---|---|
+| `teal-200` | `#7be3d4` | `color/teal/teal-200` |
+| `teal-400` | `#2ed8bf` | `color/teal/teal-400` |
+| `teal-500` | `#00c2a8` | `color/teal/teal-500` |
 
 ### color / blue
 
 | Token | Valor | Figma |
 |---|---|---|
-| `blue-100` | `#dbe4fb` | `color/blue/blue-100` |
-| `blue-200` | `#a7bff7` | `color/blue/blue-200` |
-| `blue-250` | `#a9bdf3` | `color/blue/blue-250` |
-| `blue-300` | `#93b2ff` | `color/blue/blue-300` |
-| `blue-500` | `#2e64d4` | `color/blue/blue-500` |
-| `blue-600` | `#2d5392` | `color/blue/blue-600` |
-| `blue-700` | `#1f3b70` | `color/blue/blue-700` |
-| `blue-750` | `#1a3466` | `color/blue/blue-750` |
-| `blue-775` | `#183262` | `color/blue/blue-775` |
-| `blue-800` | `#1c3060` | `color/blue/blue-800` |
-| `blue-850` | `#0e1c3b` | `color/blue/blue-850` |
-| `blue-900` | `#0e1a33` | `color/blue/blue-900` |
-| `blue-950` | `#0a1222` | `color/blue/blue-950` |
-
-### color / lilac
-
-| Token | Valor | Figma |
-|---|---|---|
-| `lilac-50` | `#f1ebfd` | `color/lilac/lilac-50` |
-| `lilac-100` | `#e4d9fb` | `color/lilac/lilac-100` |
-| `lilac-200` | `#d6c8f8` | `color/lilac/lilac-200` |
-| `lilac-300` | `#cdbdf4` | `color/lilac/lilac-300` |
-| `lilac-400` | `#b9a2f1` | `color/lilac/lilac-400` |
-| `lilac-500` | `#b29cf0` | `color/lilac/lilac-500` |
-| `lilac-600` | `#9f86e8` | `color/lilac/lilac-600` |
+| `blue-400` | `#5b8bff` | `color/blue/blue-400` |
 
 ### color / alpha
 
@@ -99,6 +101,7 @@ No Figma o caminho vira grupo: `color/background/color-bg-surface`.
 | `white-alpha-25` | `#ffffff @ 25%` | `color/alpha/white-alpha-25` |
 | `white-alpha-28` | `#ffffff @ 28%` | `color/alpha/white-alpha-28` |
 | `white-alpha-35` | `#ffffff @ 35%` | `color/alpha/white-alpha-35` |
+| `white-alpha-38` | `#ffffff @ 38%` | `color/alpha/white-alpha-38` |
 | `white-alpha-45` | `#ffffff @ 45%` | `color/alpha/white-alpha-45` |
 | `white-alpha-55` | `#ffffff @ 55%` | `color/alpha/white-alpha-55` |
 | `white-alpha-60` | `#ffffff @ 60%` | `color/alpha/white-alpha-60` |
@@ -108,12 +111,12 @@ No Figma o caminho vira grupo: `color/background/color-bg-surface`.
 | `white-alpha-80` | `#ffffff @ 80%` | `color/alpha/white-alpha-80` |
 | `white-alpha-85` | `#ffffff @ 85%` | `color/alpha/white-alpha-85` |
 | `white-alpha-90` | `#ffffff @ 90%` | `color/alpha/white-alpha-90` |
-| `blue-950-alpha-55` | `#0a1222 @ 55%` | `color/alpha/blue-950-alpha-55` |
-| `blue-900-alpha-10` | `#0e1a33 @ 10%` | `color/alpha/blue-900-alpha-10` |
-| `blue-900-alpha-15` | `#0e1a33 @ 15%` | `color/alpha/blue-900-alpha-15` |
-| `blue-900-alpha-35` | `#0e1a33 @ 35%` | `color/alpha/blue-900-alpha-35` |
-| `blue-900-alpha-45` | `#0e1a33 @ 45%` | `color/alpha/blue-900-alpha-45` |
-| `shadow-alpha-7` | `#162854 @ 7%` | `color/alpha/shadow-alpha-7` |
+| `ink-900-alpha-7` | `#0b1230 @ 7%` | `color/alpha/ink-900-alpha-7` |
+| `ink-900-alpha-22` | `#0b1230 @ 22%` | `color/alpha/ink-900-alpha-22` |
+| `ink-900-alpha-30` | `#0b1230 @ 30%` | `color/alpha/ink-900-alpha-30` |
+| `ink-900-alpha-40` | `#0b1230 @ 40%` | `color/alpha/ink-900-alpha-40` |
+| `ink-900-alpha-55` | `#0b1230 @ 55%` | `color/alpha/ink-900-alpha-55` |
+| `violet-500-alpha-45` | `#7b5cff @ 45%` | `color/alpha/violet-500-alpha-45` |
 | `black-alpha-25` | `#000000 @ 25%` | `color/alpha/black-alpha-25` |
 | `black-alpha-35` | `#000000 @ 35%` | `color/alpha/black-alpha-35` |
 
@@ -121,7 +124,6 @@ No Figma o caminho vira grupo: `color/background/color-bg-surface`.
 
 | Token | Valor | Figma |
 |---|---|---|
-| `font-family-satoshi` | `Satoshi` | `font/family/font-family-satoshi` |
 | `font-family-manrope` | `Manrope` | `font/family/font-family-manrope` |
 | `font-family-ibm-plex-mono` | `IBM Plex Mono` | `font/family/font-family-ibm-plex-mono` |
 
@@ -165,6 +167,7 @@ No Figma o caminho vira grupo: `color/background/color-bg-surface`.
 | `font-weight-500` | `500 (Medium)` | `font/weight/font-weight-500` |
 | `font-weight-600` | `600 (Semibold)` | `font/weight/font-weight-600` |
 | `font-weight-700` | `700 (Bold)` | `font/weight/font-weight-700` |
+| `font-weight-800` | `800 (ExtraBold)` | `font/weight/font-weight-800` |
 | `font-weight-900` | `900 (Black)` | `font/weight/font-weight-900` |
 
 ### font / line-height
@@ -356,11 +359,12 @@ No Figma o caminho vira grupo: `color/background/color-bg-surface`.
 
 | Token | Valor | Figma |
 |---|---|---|
-| `shadow-soft-light` | `0 10px 30px 0 · #162854 @ 7%` | `shadow/shadow-soft-light` |
+| `shadow-soft-light` | `0 10px 30px 0 · #0b1230 @ 7%` | `shadow/shadow-soft-light` |
 | `shadow-soft-dark` | `0 10px 30px 0 · #000000 @ 35%` | `shadow/shadow-soft-dark` |
-| `shadow-dock` | `0 18px 44px 0 · #0e1a33 @ 45%` | `shadow/shadow-dock` |
-| `shadow-pocket` | `0 22px 44px 0 · #0e1a33 @ 35%` | `shadow/shadow-pocket` |
-| `shadow-card-wallet` | `0 -6px 24px 0 · #0e1a33 @ 15%` | `shadow/shadow-card-wallet` |
+| `shadow-dock` | `0 18px 44px 0 · #0b1230 @ 40%` | `shadow/shadow-dock` |
+| `shadow-pocket` | `0 22px 44px 0 · #0b1230 @ 30%` | `shadow/shadow-pocket` |
+| `shadow-glow-brand` | `0 8px 24px 0 · #7b5cff @ 45%` | `shadow/shadow-glow-brand` |
+| `shadow-card-wallet` | `0 -6px 24px 0 · #0b1230 @ 22%` | `shadow/shadow-card-wallet` |
 
 ### duration
 
@@ -412,60 +416,64 @@ Cada linha: alias → primitivo → valor resolvido, nos dois temas. A coluna **
 
 | Token | Light | Dark | CSS | Uso |
 |---|---|---|---|---|
-| `color-bg-page` | `gray-100` · #f2f4f9 | `blue-950` · #0a1222 | `--gm-bg` | Fundo da página. |
-| `color-bg-surface` | `white` · #ffffff | `slate-925` · #121c30 | `--gm-surface` | Cards, atalhos, linhas, campos. |
-| `color-bg-elevated` | `gray-50` · #f6f7fb | `slate-850` · #18243b | `--gm-elevated` | Hover/pressionado sobre surface. |
-| `color-bg-sheet` | `white` · #ffffff | `slate-900` · #131e34 | `--gm-sheet` | Folhas que sobem por cima da tela. |
-| `color-bg-subtle` | `gray-150` · #edf0f7 | `slate-800` · #1d2942 | `--gm-row` | Quadrado do ícone, chip inativo, botão secundário. |
-| `color-bg-card` | `white` · #ffffff | `slate-875` · #16223a | `--gm-card` | Tiles de destaque. |
-| `color-bg-dock` | `blue-700` · #1f3b70 | `blue-800` · #1c3060 | `--gm-dock` | Dock flutuante do mobile. |
-| `color-bg-overlay` | `blue-950-alpha-55` · #0a1222 @ 55% | = | — | Véu atrás das folhas. |
+| `color-bg-page` | `neutral-25` · #f8f9ff | `ink-950` · #070a1f | `--gm-bg` | Fundo da página (Fundo #F8F9FF). |
+| `color-bg-surface` | `white` · #ffffff | `ink-850` · #11152f | `--gm-surface` | Cards, atalhos, linhas, campos. |
+| `color-bg-elevated` | `neutral-50` · #f3f2ff | `ink-775` · #171c3a | `--gm-elevated` | Hover/pressionado sobre surface. |
+| `color-bg-sheet` | `white` · #ffffff | `ink-825` · #121733 | `--gm-sheet` | Folhas que sobem por cima da tela. |
+| `color-bg-subtle` | `neutral-100` · #ede9ff | `ink-725` · #1c2142 | `--gm-row` | Superfície lavanda (#EDE9FF): ícone, chip inativo, botão secundário. |
+| `color-bg-card` | `white` · #ffffff | `ink-800` · #151a36 | `--gm-card` | Tiles de destaque. |
+| `color-bg-dock` | `violet-850` · #1a1150 | `violet-800` · #241a63 | `--gm-dock` | Dock flutuante do mobile. |
+| `color-bg-overlay` | `ink-900-alpha-55` · #0b1230 @ 55% | = | — | Véu atrás das folhas. |
 
 ### color / band
 
 | Token | Light | Dark | CSS | Uso |
 |---|---|---|---|---|
-| `color-band-start` | `blue-750` · #1a3466 | `blue-850` · #0e1c3b | `--gm-band-from` | Topo da faixa marinho / barra do desktop. |
-| `color-band-end` | `blue-600` · #2d5392 | `blue-775` · #183262 | `--gm-band-to` | Fim da faixa e base do bolso sólido. |
+| `color-band-start` | `violet-850` · #1a1150 | `violet-950` · #0d0a2e | `--gm-band-from` | Topo da faixa roxa / barra do desktop. |
+| `color-band-end` | `violet-700` · #3a2a8f | `violet-800` · #241a63 | `--gm-band-to` | Fim da faixa roxa. |
 
 ### color / text
 
 | Token | Light | Dark | CSS | Uso |
 |---|---|---|---|---|
-| `color-text-default` | `blue-900` · #0e1a33 | `gray-75` · #f2f5fb | `--gm-text` | Texto e números principais. |
-| `color-text-emphasis` | `slate-775` · #1e2b47 | `gray-300` · #dce3f0 | `--gm-text-2` | Texto de chips e rótulos fortes. |
-| `color-text-secondary` | `gray-700` · #56627c | `gray-400` · #a3aec4 | `--gm-secondary` | Texto de apoio. |
-| `color-text-muted` | `gray-600` · #68738d | `gray-500` · #8d99b1 | `--gm-muted` | Datas, dicas, kickers (em surface). |
-| `color-text-link` | `blue-500` · #2e64d4 | `blue-300` · #93b2ff | `--gm-accent` | Links e destaque dentro de frase. |
-| `color-text-on-action` | `white` · #ffffff | `blue-950` · #0a1222 | `--gm-on-primary` | Texto sobre color-action-primary. |
-| `color-text-on-card` | `blue-900` · #0e1a33 | `gray-75` · #f2f5fb | `--gm-on-card` | Texto sobre color-bg-card. |
-| `color-text-on-brand` | `blue-900` · #0e1a33 | = | `--gm-on` | Texto sobre lilás e cartões claros. |
-| `color-text-on-band` | `white` · #ffffff | = | — | Texto sobre a faixa marinho e o bolso. |
+| `color-text-default` | `ink-900` · #0b1230 | `neutral-50` · #f3f2ff | `--gm-text` | Texto e números principais (Primária #0B1230). |
+| `color-text-emphasis` | `ink-750` · #1b2147 | `neutral-200` · #dedcf5 | `--gm-text-2` | Texto de chips e rótulos fortes. |
+| `color-text-secondary` | `neutral-700` · #54597a | `neutral-400` · #a9abca | `--gm-secondary` | Texto de apoio. |
+| `color-text-muted` | `neutral-600` · #676b8a | `neutral-500` · #9295b6 | `--gm-muted` | Datas, dicas, kickers. |
+| `color-text-link` | `violet-600` · #5b3fe0 | `violet-300` · #a897ff | `--gm-accent` | Links e destaque em frase (violeta escuro: 6.5:1 no branco). |
+| `color-text-on-action` | `white` · #ffffff | `ink-900` · #0b1230 | `--gm-on-primary` | Texto sobre color-action-primary. |
+| `color-text-on-card` | `ink-900` · #0b1230 | `neutral-50` · #f3f2ff | `--gm-on-card` | Texto sobre color-bg-card. |
+| `color-text-on-brand` | `ink-900` · #0b1230 | = | `--gm-on` | Texto sobre lilás, verde-água e cartões claros. |
+| `color-text-on-band` | `white` · #ffffff | = | — | Texto sobre a faixa roxa e o bolso. |
 | `color-text-on-band-muted` | `white-alpha-70` · #ffffff @ 70% | = | — | Texto secundário sobre a faixa. |
 
 ### color / action
 
 | Token | Light | Dark | CSS | Uso |
 |---|---|---|---|---|
-| `color-action-primary` | `blue-700` · #1f3b70 | `blue-200` · #a7bff7 | `--gm-primary` | Ação principal, chip selecionado, progresso. |
-| `color-action-brand` | `lilac-300` · #cdbdf4 | = | `--gm-lilac` | Botão + do dock, Pergunte ao Gamora, Adicionar (desktop). |
+| `color-action-primary` | `ink-900` · #0b1230 | `violet-200` · #b9a8ff | `--gm-primary` | Ação principal (Primária), chip selecionado. |
+| `color-action-brand` | `violet-200` · #b9a8ff | = | `--gm-lilac` | Pergunte ao Gamora, + do dock, Adicionar (desktop). |
 
 ### color / border
 
 | Token | Light | Dark | CSS | Uso |
 |---|---|---|---|---|
-| `color-border-default` | `gray-200` · #e3e7f0 | `slate-750` · #202e48 | `--gm-border` | Divisórias. |
-| `color-border-control` | `gray-250` · #dfe4ee | `slate-700` · #26344f | `--gm-track` | Borda de campos; trilho de progresso. |
-| `color-border-focus` | `blue-500` · #2e64d4 | `blue-300` · #93b2ff | — | Anel de foco e campo ativo. |
+| `color-border-default` | `neutral-150` · #e6e2f7 | `ink-700` · #222849 | `--gm-border` | Divisórias. |
+| `color-border-control` | `neutral-200` · #dedcf5 | `ink-650` · #2a3055 | `--gm-track` | Borda de campos; trilho de progresso. |
+| `color-border-focus` | `violet-600` · #5b3fe0 | `violet-300` · #a897ff | — | Anel de foco e campo ativo. |
 | `color-border-glass` | `white-alpha-28` · #ffffff @ 28% | = | — | Borda do vidro. |
-| `color-border-stitch` | `white-alpha-35` · #ffffff @ 35% | = | — | Costura tracejada do bolso. |
+| `color-border-stitch` | `white-alpha-38` · #ffffff @ 38% | = | — | Costura tracejada do bolso. |
 
 ### color / brand
 
 | Token | Light | Dark | CSS | Uso |
 |---|---|---|---|---|
-| `color-brand-lilac` | `lilac-300` · #cdbdf4 | = | — | Cor da marca. |
-| `color-brand-lilac-strong` | `lilac-600` · #9f86e8 | `lilac-500` · #b29cf0 | `--gm-lilac-strong` | Assinaturas, limite atingido, 3ª série. |
+| `color-brand-violet` | `violet-500` · #7b5cff | `violet-400` · #8f74ff | `--gm-lilac-strong` | Secundária #7B5CFF: preenchimentos, 1ª série, assinaturas. |
+| `color-brand-teal` | `teal-500` · #00c2a8 | `teal-400` · #2ed8bf | `--gm-teal` | Acento #00C2A8: barras e anéis de progresso, 2ª série. |
+| `color-brand-lilac` | `violet-200` · #b9a8ff | = | — | Lilás de apoio. |
+| `color-logo-start` | `violet-500` · #7b5cff | = | — | Logo G: início. |
+| `color-logo-middle` | `blue-400` · #5b8bff | = | — | Logo G: meio. |
+| `color-logo-end` | `teal-500` · #00c2a8 | = | — | Logo G: fim. |
 
 ### color / glass
 
@@ -473,37 +481,40 @@ Cada linha: alias → primitivo → valor resolvido, nos dois temas. A coluna **
 |---|---|---|---|---|
 | `color-glass-fill-start` | `white-alpha-20` · #ffffff @ 20% | = | — | Vidro: topo. |
 | `color-glass-fill-end` | `white-alpha-8` · #ffffff @ 8% | = | — | Vidro: base. |
-| `color-glass-highlight` | `white-alpha-70` · #ffffff @ 70% | = | — | Reflexo de 1px na borda de cima do bolso. |
+| `color-glass-highlight` | `white-alpha-70` · #ffffff @ 70% | = | — | Reflexo de 1px. |
+| `color-pocket-start` | `violet-750` · #2c2378 | = | — | Bolso da carteira: topo. |
+| `color-pocket-middle` | `violet-875` · #18124a | = | — | Bolso: meio. |
+| `color-pocket-end` | `ink-925` · #0b0d2a | = | — | Bolso: base. |
 
 ### color / card
 
 | Token | Light | Dark | CSS | Uso |
 |---|---|---|---|---|
-| `color-card-lilac-start` | `lilac-400` · #b9a2f1 | = | — | Cartão lilás (gradiente 128°). |
-| `color-card-lilac-end` | `lilac-100` · #e4d9fb | = | — | Cartão lilás, fim. |
-| `color-card-periwinkle-start` | `blue-250` · #a9bdf3 | = | — | Cartão lavanda. |
-| `color-card-periwinkle-end` | `blue-100` · #dbe4fb | = | — | Cartão lavanda, fim. |
-| `color-card-silver-start` | `gray-250` · #dfe4ee | = | — | Cartão prata. |
-| `color-card-silver-end` | `gray-25` · #f7f8fb | = | — | Cartão prata, fim. |
-| `color-hero-start` | `lilac-400` · #b9a2f1 | = | — | Bolha do assistente/avatar: início. |
-| `color-hero-middle` | `lilac-200` · #d6c8f8 | = | — | Meio. |
-| `color-hero-end` | `lilac-50` · #f1ebfd | = | — | Fim. |
+| `color-card-brand-light` | `violet-400` · #8f74ff | = | — | Cartão Gamora (radial, canto de cima à direita). |
+| `color-card-brand-middle` | `violet-600` · #5b3fe0 | = | — | Cartão Gamora: meio. |
+| `color-card-brand-dark` | `violet-775` · #2b1f7a | = | — | Cartão Gamora: base. Texto branco. |
+| `color-card-teal-start` | `teal-500` · #00c2a8 | = | — | Cartão verde-água. |
+| `color-card-teal-end` | `teal-200` · #7be3d4 | = | — | Cartão verde-água, fim. |
+| `color-card-lavender-start` | `violet-100` · #ede9ff | = | — | Cartão lavanda. |
+| `color-card-lavender-end` | `white` · #ffffff | = | — | Cartão lavanda, fim. |
+| `color-hero-start` | `violet-200` · #b9a8ff | = | — | Bolha do assistente/avatar: início. |
+| `color-hero-middle` | `violet-100` · #ede9ff | = | — | Meio. |
+| `color-hero-end` | `neutral-25` · #f8f9ff | = | — | Fim. |
 
 ### color / chart
 
 | Token | Light | Dark | CSS | Uso |
 |---|---|---|---|---|
-| `color-chart-1` | `blue-700` · #1f3b70 | `blue-200` · #a7bff7 | — | 1ª série. |
-| `color-chart-2` | `blue-500` · #2e64d4 | `blue-300` · #93b2ff | — | 2ª série. |
-| `color-chart-3` | `lilac-600` · #9f86e8 | `lilac-500` · #b29cf0 | — | 3ª série. |
-| `color-chart-rest` | `gray-250` · #dfe4ee | `slate-700` · #26344f | — | Restante. |
+| `color-chart-1` | `violet-500` · #7b5cff | `violet-400` · #8f74ff | — | 1ª série. |
+| `color-chart-2` | `teal-500` · #00c2a8 | `teal-400` · #2ed8bf | — | 2ª série. |
+| `color-chart-3` | `ink-900` · #0b1230 | `violet-200` · #b9a8ff | — | 3ª série. |
+| `color-chart-rest` | `neutral-200` · #dedcf5 | `ink-650` · #2a3055 | — | Restante. |
 
 ### typography
 
 | Token | Light | Dark | CSS | Uso |
 |---|---|---|---|---|
-| `font-family-body` | `font-family-satoshi` · Satoshi | = | — | Toda a interface (fallback Manrope). |
-| `font-family-body-fallback` | `font-family-manrope` · Manrope | = | — | Quando a Satoshi não carrega. |
+| `font-family-body` | `font-family-manrope` · Manrope | = | — | Toda a interface (Manrope: moderna, legível e versátil). |
 | `font-family-code` | `font-family-ibm-plex-mono` · IBM Plex Mono | = | — | Kickers e número do cartão. |
 | `font-size-balance` | `font-size-40` · 40px | = | — | Saldo no mobile. |
 | `font-size-balance-desktop` | `font-size-52` · 52px | = | — | Saldo no desktop. |
@@ -520,14 +531,14 @@ Cada linha: alias → primitivo → valor resolvido, nos dois temas. A coluna **
 | `font-size-kicker` | `font-size-11` · 11px | = | — | Kicker mono maiúsculo. |
 | `font-weight-body` | `font-weight-500` · 500 (Medium) | = | — | Corpo. |
 | `font-weight-strong` | `font-weight-700` · 700 (Bold) | = | — | Títulos, números, botões. |
-| `font-weight-wordmark` | `font-weight-900` · 900 (Black) | = | — | Palavra gamora. |
+| `font-weight-wordmark` | `font-weight-800` · 800 (ExtraBold) | = | — | Palavra Gamora. |
 | `font-weight-code` | `font-weight-400` · 400 (Regular) | = | — | Mono. |
 | `line-height-body` | `line-height-22` · 22px | = | — | Corpo 15px. |
 | `line-height-caption` | `line-height-16` · 16px | = | — | Legenda e kicker. |
 | `line-height-section` | `line-height-24` · 24px | = | — | Seção 18px. |
 | `letter-spacing-number` | `letter-spacing-neg-45` · -4.5% | = | — | Números (saldo, valores). |
 | `letter-spacing-title` | `letter-spacing-neg-35` · -3.5% | = | — | Títulos de tela. |
-| `letter-spacing-wordmark` | `letter-spacing-neg-40` · -4% | = | — | Palavra gamora. |
+| `letter-spacing-wordmark` | `letter-spacing-neg-30` · -3% | = | — | Palavra Gamora. |
 | `letter-spacing-kicker` | `letter-spacing-80` · 8% | = | — | Kicker. |
 | `letter-spacing-card-number` | `letter-spacing-120` · 12% | = | — | •••• 4552. |
 
@@ -604,9 +615,10 @@ Cada linha: alias → primitivo → valor resolvido, nos dois temas. A coluna **
 | `blur-glass` | `blur-18` · 18px | = | — | Vidro sobre a faixa. |
 | `blur-pocket` | `blur-16` · 16px | = | — | Bolso sólido. |
 | `blur-header` | `blur-24` · 24px | = | — | Cabeçalho ao rolar. |
-| `shadow-surface` | `shadow-soft-light` · 0 10px 30px 0 · #162854 @ 7% | `shadow-soft-dark` · 0 10px 30px 0 · #000000 @ 35% | — | Todo card sobre a página. |
-| `shadow-floating` | `shadow-dock` · 0 18px 44px 0 · #0e1a33 @ 45% | = | — | Dock e toast. |
-| `shadow-pocket` | `shadow-pocket` · 0 22px 44px 0 · #0e1a33 @ 35% | = | — | Bolso sólido. |
+| `shadow-surface` | `shadow-soft-light` · 0 10px 30px 0 · #0b1230 @ 7% | `shadow-soft-dark` · 0 10px 30px 0 · #000000 @ 35% | — | Todo card sobre a página. |
+| `shadow-floating` | `shadow-dock` · 0 18px 44px 0 · #0b1230 @ 40% | = | — | Dock e toast. |
+| `shadow-brand-glow` | `shadow-glow-brand` · 0 8px 24px 0 · #7b5cff @ 45% | = | — | Brilho do botão Pergunte. |
+| `shadow-pocket` | `shadow-pocket` · 0 22px 44px 0 · #0b1230 @ 30% | = | — | Bolso sólido. |
 
 ### motion
 
@@ -643,16 +655,16 @@ Cada linha: alias → primitivo → valor resolvido, nos dois temas. A coluna **
 
 | Família | Tokens |
 |---|---|
-| Cor (base, gray, slate, blue, lilac) | 42 |
-| Cor com transparência | 28 |
+| Cor (base, gray, slate, blue, lilac) | 39 |
+| Cor com transparência | 29 |
 | Fonte (família, tamanho, peso, altura de linha, espaçamento) | 58 |
 | Espaço positivo / negativo | 26 / 14 |
 | Raio | 13 |
 | Stroke | 9 |
 | Tamanho | 26 |
-| Opacidade / Blur / Sombra | 22 / 7 / 5 |
+| Opacidade / Blur / Sombra | 22 / 7 / 6 |
 | Duração / Easing / Z-index / Breakpoint | 8 / 3 / 7 / 4 |
 
 **No Figma:** sombras viram *Effect styles* (`shadow/*`), porque variáveis do Figma não guardam sombra. Easing e família de fonte são variáveis de texto (STRING); o resto é número (FLOAT) ou cor (COLOR). Letter-spacing está em %.
 
-**Conferência com o código:** ✅ todos os 22 tokens semânticos com variável CSS batem com `src/styles/index.css` nos dois temas.
+**Conferência com o código:** ✅ todos os 23 tokens semânticos com variável CSS batem com `src/styles/index.css` nos dois temas.

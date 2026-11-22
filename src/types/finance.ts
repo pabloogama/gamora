@@ -34,7 +34,12 @@ export interface Goal {
 
 export interface Budget { category: CategoryId; limit: number }
 
-export interface User { name: string; email: string }
+export interface User {
+  name: string
+  email: string
+  /** foto de perfil: caminho público (ex.: avatars/pablo.webp) ou data URL enviada pela pessoa */
+  avatar?: string
+}
 
 /** Item que a leitura de fatura devolve para a pessoa confirmar */
 export interface InvoiceItem {

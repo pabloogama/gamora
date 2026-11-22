@@ -2,13 +2,13 @@
   "color": {
     "background": {
       "color-bg-page": {
-        "$value": "{color.gray.gray-100}",
-        "$description": "Fundo da página.",
+        "$value": "{color.neutral.neutral-25}",
+        "$description": "Fundo da página (Fundo #F8F9FF).",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.gray.gray-100}",
-              "dark": "{color.blue.blue-950}"
+              "light": "{color.neutral.neutral-25}",
+              "dark": "{color.ink.ink-950}"
             },
             "css": "--gm-bg"
           }
@@ -21,20 +21,20 @@
           "app.gamora": {
             "modes": {
               "light": "{color.base.white}",
-              "dark": "{color.slate.slate-925}"
+              "dark": "{color.ink.ink-850}"
             },
             "css": "--gm-surface"
           }
         }
       },
       "color-bg-elevated": {
-        "$value": "{color.gray.gray-50}",
+        "$value": "{color.neutral.neutral-50}",
         "$description": "Hover/pressionado sobre surface.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.gray.gray-50}",
-              "dark": "{color.slate.slate-850}"
+              "light": "{color.neutral.neutral-50}",
+              "dark": "{color.ink.ink-775}"
             },
             "css": "--gm-elevated"
           }
@@ -47,20 +47,20 @@
           "app.gamora": {
             "modes": {
               "light": "{color.base.white}",
-              "dark": "{color.slate.slate-900}"
+              "dark": "{color.ink.ink-825}"
             },
             "css": "--gm-sheet"
           }
         }
       },
       "color-bg-subtle": {
-        "$value": "{color.gray.gray-150}",
-        "$description": "Quadrado do ícone, chip inativo, botão secundário.",
+        "$value": "{color.neutral.neutral-100}",
+        "$description": "Superfície lavanda (#EDE9FF): ícone, chip inativo, botão secundário.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.gray.gray-150}",
-              "dark": "{color.slate.slate-800}"
+              "light": "{color.neutral.neutral-100}",
+              "dark": "{color.ink.ink-725}"
             },
             "css": "--gm-row"
           }
@@ -73,33 +73,33 @@
           "app.gamora": {
             "modes": {
               "light": "{color.base.white}",
-              "dark": "{color.slate.slate-875}"
+              "dark": "{color.ink.ink-800}"
             },
             "css": "--gm-card"
           }
         }
       },
       "color-bg-dock": {
-        "$value": "{color.blue.blue-700}",
+        "$value": "{color.violet.violet-850}",
         "$description": "Dock flutuante do mobile.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-700}",
-              "dark": "{color.blue.blue-800}"
+              "light": "{color.violet.violet-850}",
+              "dark": "{color.violet.violet-800}"
             },
             "css": "--gm-dock"
           }
         }
       },
       "color-bg-overlay": {
-        "$value": "{color.alpha.blue-950-alpha-55}",
+        "$value": "{color.alpha.ink-900-alpha-55}",
         "$description": "Véu atrás das folhas.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.alpha.blue-950-alpha-55}",
-              "dark": "{color.alpha.blue-950-alpha-55}"
+              "light": "{color.alpha.ink-900-alpha-55}",
+              "dark": "{color.alpha.ink-900-alpha-55}"
             },
             "css": null
           }
@@ -108,26 +108,26 @@
     },
     "band": {
       "color-band-start": {
-        "$value": "{color.blue.blue-750}",
-        "$description": "Topo da faixa marinho / barra do desktop.",
+        "$value": "{color.violet.violet-850}",
+        "$description": "Topo da faixa roxa / barra do desktop.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-750}",
-              "dark": "{color.blue.blue-850}"
+              "light": "{color.violet.violet-850}",
+              "dark": "{color.violet.violet-950}"
             },
             "css": "--gm-band-from"
           }
         }
       },
       "color-band-end": {
-        "$value": "{color.blue.blue-600}",
-        "$description": "Fim da faixa e base do bolso sólido.",
+        "$value": "{color.violet.violet-700}",
+        "$description": "Fim da faixa roxa.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-600}",
-              "dark": "{color.blue.blue-775}"
+              "light": "{color.violet.violet-700}",
+              "dark": "{color.violet.violet-800}"
             },
             "css": "--gm-band-to"
           }
@@ -136,65 +136,65 @@
     },
     "text": {
       "color-text-default": {
-        "$value": "{color.blue.blue-900}",
-        "$description": "Texto e números principais.",
+        "$value": "{color.ink.ink-900}",
+        "$description": "Texto e números principais (Primária #0B1230).",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-900}",
-              "dark": "{color.gray.gray-75}"
+              "light": "{color.ink.ink-900}",
+              "dark": "{color.neutral.neutral-50}"
             },
             "css": "--gm-text"
           }
         }
       },
       "color-text-emphasis": {
-        "$value": "{color.slate.slate-775}",
+        "$value": "{color.ink.ink-750}",
         "$description": "Texto de chips e rótulos fortes.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.slate.slate-775}",
-              "dark": "{color.gray.gray-300}"
+              "light": "{color.ink.ink-750}",
+              "dark": "{color.neutral.neutral-200}"
             },
             "css": "--gm-text-2"
           }
         }
       },
       "color-text-secondary": {
-        "$value": "{color.gray.gray-700}",
+        "$value": "{color.neutral.neutral-700}",
         "$description": "Texto de apoio.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.gray.gray-700}",
-              "dark": "{color.gray.gray-400}"
+              "light": "{color.neutral.neutral-700}",
+              "dark": "{color.neutral.neutral-400}"
             },
             "css": "--gm-secondary"
           }
         }
       },
       "color-text-muted": {
-        "$value": "{color.gray.gray-600}",
-        "$description": "Datas, dicas, kickers (em surface).",
+        "$value": "{color.neutral.neutral-600}",
+        "$description": "Datas, dicas, kickers.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.gray.gray-600}",
-              "dark": "{color.gray.gray-500}"
+              "light": "{color.neutral.neutral-600}",
+              "dark": "{color.neutral.neutral-500}"
             },
             "css": "--gm-muted"
           }
         }
       },
       "color-text-link": {
-        "$value": "{color.blue.blue-500}",
-        "$description": "Links e destaque dentro de frase.",
+        "$value": "{color.violet.violet-600}",
+        "$description": "Links e destaque em frase (violeta escuro: 6.5:1 no branco).",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-500}",
-              "dark": "{color.blue.blue-300}"
+              "light": "{color.violet.violet-600}",
+              "dark": "{color.violet.violet-300}"
             },
             "css": "--gm-accent"
           }
@@ -207,33 +207,33 @@
           "app.gamora": {
             "modes": {
               "light": "{color.base.white}",
-              "dark": "{color.blue.blue-950}"
+              "dark": "{color.ink.ink-900}"
             },
             "css": "--gm-on-primary"
           }
         }
       },
       "color-text-on-card": {
-        "$value": "{color.blue.blue-900}",
+        "$value": "{color.ink.ink-900}",
         "$description": "Texto sobre color-bg-card.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-900}",
-              "dark": "{color.gray.gray-75}"
+              "light": "{color.ink.ink-900}",
+              "dark": "{color.neutral.neutral-50}"
             },
             "css": "--gm-on-card"
           }
         }
       },
       "color-text-on-brand": {
-        "$value": "{color.blue.blue-900}",
-        "$description": "Texto sobre lilás e cartões claros.",
+        "$value": "{color.ink.ink-900}",
+        "$description": "Texto sobre lilás, verde-água e cartões claros.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-900}",
-              "dark": "{color.blue.blue-900}"
+              "light": "{color.ink.ink-900}",
+              "dark": "{color.ink.ink-900}"
             },
             "css": "--gm-on"
           }
@@ -241,7 +241,7 @@
       },
       "color-text-on-band": {
         "$value": "{color.base.white}",
-        "$description": "Texto sobre a faixa marinho e o bolso.",
+        "$description": "Texto sobre a faixa roxa e o bolso.",
         "$extensions": {
           "app.gamora": {
             "modes": {
@@ -268,26 +268,26 @@
     },
     "action": {
       "color-action-primary": {
-        "$value": "{color.blue.blue-700}",
-        "$description": "Ação principal, chip selecionado, progresso.",
+        "$value": "{color.ink.ink-900}",
+        "$description": "Ação principal (Primária), chip selecionado.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-700}",
-              "dark": "{color.blue.blue-200}"
+              "light": "{color.ink.ink-900}",
+              "dark": "{color.violet.violet-200}"
             },
             "css": "--gm-primary"
           }
         }
       },
       "color-action-brand": {
-        "$value": "{color.lilac.lilac-300}",
-        "$description": "Botão + do dock, Pergunte ao Gamora, Adicionar (desktop).",
+        "$value": "{color.violet.violet-200}",
+        "$description": "Pergunte ao Gamora, + do dock, Adicionar (desktop).",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.lilac.lilac-300}",
-              "dark": "{color.lilac.lilac-300}"
+              "light": "{color.violet.violet-200}",
+              "dark": "{color.violet.violet-200}"
             },
             "css": "--gm-lilac"
           }
@@ -296,39 +296,39 @@
     },
     "border": {
       "color-border-default": {
-        "$value": "{color.gray.gray-200}",
+        "$value": "{color.neutral.neutral-150}",
         "$description": "Divisórias.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.gray.gray-200}",
-              "dark": "{color.slate.slate-750}"
+              "light": "{color.neutral.neutral-150}",
+              "dark": "{color.ink.ink-700}"
             },
             "css": "--gm-border"
           }
         }
       },
       "color-border-control": {
-        "$value": "{color.gray.gray-250}",
+        "$value": "{color.neutral.neutral-200}",
         "$description": "Borda de campos; trilho de progresso.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.gray.gray-250}",
-              "dark": "{color.slate.slate-700}"
+              "light": "{color.neutral.neutral-200}",
+              "dark": "{color.ink.ink-650}"
             },
             "css": "--gm-track"
           }
         }
       },
       "color-border-focus": {
-        "$value": "{color.blue.blue-500}",
+        "$value": "{color.violet.violet-600}",
         "$description": "Anel de foco e campo ativo.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-500}",
-              "dark": "{color.blue.blue-300}"
+              "light": "{color.violet.violet-600}",
+              "dark": "{color.violet.violet-300}"
             },
             "css": null
           }
@@ -348,13 +348,13 @@
         }
       },
       "color-border-stitch": {
-        "$value": "{color.alpha.white-alpha-35}",
+        "$value": "{color.alpha.white-alpha-38}",
         "$description": "Costura tracejada do bolso.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.alpha.white-alpha-35}",
-              "dark": "{color.alpha.white-alpha-35}"
+              "light": "{color.alpha.white-alpha-38}",
+              "dark": "{color.alpha.white-alpha-38}"
             },
             "css": null
           }
@@ -362,29 +362,81 @@
       }
     },
     "brand": {
-      "color-brand-lilac": {
-        "$value": "{color.lilac.lilac-300}",
-        "$description": "Cor da marca.",
+      "color-brand-violet": {
+        "$value": "{color.violet.violet-500}",
+        "$description": "Secundária #7B5CFF: preenchimentos, 1ª série, assinaturas.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.lilac.lilac-300}",
-              "dark": "{color.lilac.lilac-300}"
+              "light": "{color.violet.violet-500}",
+              "dark": "{color.violet.violet-400}"
+            },
+            "css": "--gm-lilac-strong"
+          }
+        }
+      },
+      "color-brand-teal": {
+        "$value": "{color.teal.teal-500}",
+        "$description": "Acento #00C2A8: barras e anéis de progresso, 2ª série.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.teal.teal-500}",
+              "dark": "{color.teal.teal-400}"
+            },
+            "css": "--gm-teal"
+          }
+        }
+      },
+      "color-brand-lilac": {
+        "$value": "{color.violet.violet-200}",
+        "$description": "Lilás de apoio.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.violet.violet-200}",
+              "dark": "{color.violet.violet-200}"
             },
             "css": null
           }
         }
       },
-      "color-brand-lilac-strong": {
-        "$value": "{color.lilac.lilac-600}",
-        "$description": "Assinaturas, limite atingido, 3ª série.",
+      "color-logo-start": {
+        "$value": "{color.violet.violet-500}",
+        "$description": "Logo G: início.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.lilac.lilac-600}",
-              "dark": "{color.lilac.lilac-500}"
+              "light": "{color.violet.violet-500}",
+              "dark": "{color.violet.violet-500}"
             },
-            "css": "--gm-lilac-strong"
+            "css": null
+          }
+        }
+      },
+      "color-logo-middle": {
+        "$value": "{color.blue.blue-400}",
+        "$description": "Logo G: meio.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.blue.blue-400}",
+              "dark": "{color.blue.blue-400}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-logo-end": {
+        "$value": "{color.teal.teal-500}",
+        "$description": "Logo G: fim.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.teal.teal-500}",
+              "dark": "{color.teal.teal-500}"
+            },
+            "css": null
           }
         }
       }
@@ -418,7 +470,7 @@
       },
       "color-glass-highlight": {
         "$value": "{color.alpha.white-alpha-70}",
-        "$description": "Reflexo de 1px na borda de cima do bolso.",
+        "$description": "Reflexo de 1px.",
         "$extensions": {
           "app.gamora": {
             "modes": {
@@ -428,121 +480,173 @@
             "css": null
           }
         }
+      },
+      "color-pocket-start": {
+        "$value": "{color.violet.violet-750}",
+        "$description": "Bolso da carteira: topo.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.violet.violet-750}",
+              "dark": "{color.violet.violet-750}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-pocket-middle": {
+        "$value": "{color.violet.violet-875}",
+        "$description": "Bolso: meio.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.violet.violet-875}",
+              "dark": "{color.violet.violet-875}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-pocket-end": {
+        "$value": "{color.ink.ink-925}",
+        "$description": "Bolso: base.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.ink.ink-925}",
+              "dark": "{color.ink.ink-925}"
+            },
+            "css": null
+          }
+        }
       }
     },
     "card": {
-      "color-card-lilac-start": {
-        "$value": "{color.lilac.lilac-400}",
-        "$description": "Cartão lilás (gradiente 128°).",
+      "color-card-brand-light": {
+        "$value": "{color.violet.violet-400}",
+        "$description": "Cartão Gamora (radial, canto de cima à direita).",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.lilac.lilac-400}",
-              "dark": "{color.lilac.lilac-400}"
+              "light": "{color.violet.violet-400}",
+              "dark": "{color.violet.violet-400}"
             },
             "css": null
           }
         }
       },
-      "color-card-lilac-end": {
-        "$value": "{color.lilac.lilac-100}",
-        "$description": "Cartão lilás, fim.",
+      "color-card-brand-middle": {
+        "$value": "{color.violet.violet-600}",
+        "$description": "Cartão Gamora: meio.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.lilac.lilac-100}",
-              "dark": "{color.lilac.lilac-100}"
+              "light": "{color.violet.violet-600}",
+              "dark": "{color.violet.violet-600}"
             },
             "css": null
           }
         }
       },
-      "color-card-periwinkle-start": {
-        "$value": "{color.blue.blue-250}",
+      "color-card-brand-dark": {
+        "$value": "{color.violet.violet-775}",
+        "$description": "Cartão Gamora: base. Texto branco.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.violet.violet-775}",
+              "dark": "{color.violet.violet-775}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-card-teal-start": {
+        "$value": "{color.teal.teal-500}",
+        "$description": "Cartão verde-água.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.teal.teal-500}",
+              "dark": "{color.teal.teal-500}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-card-teal-end": {
+        "$value": "{color.teal.teal-200}",
+        "$description": "Cartão verde-água, fim.",
+        "$extensions": {
+          "app.gamora": {
+            "modes": {
+              "light": "{color.teal.teal-200}",
+              "dark": "{color.teal.teal-200}"
+            },
+            "css": null
+          }
+        }
+      },
+      "color-card-lavender-start": {
+        "$value": "{color.violet.violet-100}",
         "$description": "Cartão lavanda.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-250}",
-              "dark": "{color.blue.blue-250}"
+              "light": "{color.violet.violet-100}",
+              "dark": "{color.violet.violet-100}"
             },
             "css": null
           }
         }
       },
-      "color-card-periwinkle-end": {
-        "$value": "{color.blue.blue-100}",
+      "color-card-lavender-end": {
+        "$value": "{color.base.white}",
         "$description": "Cartão lavanda, fim.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-100}",
-              "dark": "{color.blue.blue-100}"
-            },
-            "css": null
-          }
-        }
-      },
-      "color-card-silver-start": {
-        "$value": "{color.gray.gray-250}",
-        "$description": "Cartão prata.",
-        "$extensions": {
-          "app.gamora": {
-            "modes": {
-              "light": "{color.gray.gray-250}",
-              "dark": "{color.gray.gray-250}"
-            },
-            "css": null
-          }
-        }
-      },
-      "color-card-silver-end": {
-        "$value": "{color.gray.gray-25}",
-        "$description": "Cartão prata, fim.",
-        "$extensions": {
-          "app.gamora": {
-            "modes": {
-              "light": "{color.gray.gray-25}",
-              "dark": "{color.gray.gray-25}"
+              "light": "{color.base.white}",
+              "dark": "{color.base.white}"
             },
             "css": null
           }
         }
       },
       "color-hero-start": {
-        "$value": "{color.lilac.lilac-400}",
+        "$value": "{color.violet.violet-200}",
         "$description": "Bolha do assistente/avatar: início.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.lilac.lilac-400}",
-              "dark": "{color.lilac.lilac-400}"
+              "light": "{color.violet.violet-200}",
+              "dark": "{color.violet.violet-200}"
             },
             "css": null
           }
         }
       },
       "color-hero-middle": {
-        "$value": "{color.lilac.lilac-200}",
+        "$value": "{color.violet.violet-100}",
         "$description": "Meio.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.lilac.lilac-200}",
-              "dark": "{color.lilac.lilac-200}"
+              "light": "{color.violet.violet-100}",
+              "dark": "{color.violet.violet-100}"
             },
             "css": null
           }
         }
       },
       "color-hero-end": {
-        "$value": "{color.lilac.lilac-50}",
+        "$value": "{color.neutral.neutral-25}",
         "$description": "Fim.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.lilac.lilac-50}",
-              "dark": "{color.lilac.lilac-50}"
+              "light": "{color.neutral.neutral-25}",
+              "dark": "{color.neutral.neutral-25}"
             },
             "css": null
           }
@@ -551,52 +655,52 @@
     },
     "chart": {
       "color-chart-1": {
-        "$value": "{color.blue.blue-700}",
+        "$value": "{color.violet.violet-500}",
         "$description": "1ª série.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-700}",
-              "dark": "{color.blue.blue-200}"
+              "light": "{color.violet.violet-500}",
+              "dark": "{color.violet.violet-400}"
             },
             "css": null
           }
         }
       },
       "color-chart-2": {
-        "$value": "{color.blue.blue-500}",
+        "$value": "{color.teal.teal-500}",
         "$description": "2ª série.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.blue.blue-500}",
-              "dark": "{color.blue.blue-300}"
+              "light": "{color.teal.teal-500}",
+              "dark": "{color.teal.teal-400}"
             },
             "css": null
           }
         }
       },
       "color-chart-3": {
-        "$value": "{color.lilac.lilac-600}",
+        "$value": "{color.ink.ink-900}",
         "$description": "3ª série.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.lilac.lilac-600}",
-              "dark": "{color.lilac.lilac-500}"
+              "light": "{color.ink.ink-900}",
+              "dark": "{color.violet.violet-200}"
             },
             "css": null
           }
         }
       },
       "color-chart-rest": {
-        "$value": "{color.gray.gray-250}",
+        "$value": "{color.neutral.neutral-200}",
         "$description": "Restante.",
         "$extensions": {
           "app.gamora": {
             "modes": {
-              "light": "{color.gray.gray-250}",
-              "dark": "{color.slate.slate-700}"
+              "light": "{color.neutral.neutral-200}",
+              "dark": "{color.ink.ink-650}"
             },
             "css": null
           }
@@ -606,21 +710,8 @@
   },
   "typography": {
     "font-family-body": {
-      "$value": "{font.family.font-family-satoshi}",
-      "$description": "Toda a interface (fallback Manrope).",
-      "$extensions": {
-        "app.gamora": {
-          "modes": {
-            "light": "{font.family.font-family-satoshi}",
-            "dark": "{font.family.font-family-satoshi}"
-          },
-          "css": null
-        }
-      }
-    },
-    "font-family-body-fallback": {
       "$value": "{font.family.font-family-manrope}",
-      "$description": "Quando a Satoshi não carrega.",
+      "$description": "Toda a interface (Manrope: moderna, legível e versátil).",
       "$extensions": {
         "app.gamora": {
           "modes": {
@@ -840,13 +931,13 @@
       }
     },
     "font-weight-wordmark": {
-      "$value": "{font.weight.font-weight-900}",
-      "$description": "Palavra gamora.",
+      "$value": "{font.weight.font-weight-800}",
+      "$description": "Palavra Gamora.",
       "$extensions": {
         "app.gamora": {
           "modes": {
-            "light": "{font.weight.font-weight-900}",
-            "dark": "{font.weight.font-weight-900}"
+            "light": "{font.weight.font-weight-800}",
+            "dark": "{font.weight.font-weight-800}"
           },
           "css": null
         }
@@ -931,13 +1022,13 @@
       }
     },
     "letter-spacing-wordmark": {
-      "$value": "{font.letter-spacing.letter-spacing-neg-40}",
-      "$description": "Palavra gamora.",
+      "$value": "{font.letter-spacing.letter-spacing-neg-30}",
+      "$description": "Palavra Gamora.",
       "$extensions": {
         "app.gamora": {
           "modes": {
-            "light": "{font.letter-spacing.letter-spacing-neg-40}",
-            "dark": "{font.letter-spacing.letter-spacing-neg-40}"
+            "light": "{font.letter-spacing.letter-spacing-neg-30}",
+            "dark": "{font.letter-spacing.letter-spacing-neg-30}"
           },
           "css": null
         }
@@ -1637,6 +1728,19 @@
           "modes": {
             "light": "{shadow.shadow-dock}",
             "dark": "{shadow.shadow-dock}"
+          },
+          "css": null
+        }
+      }
+    },
+    "shadow-brand-glow": {
+      "$value": "{shadow.shadow-glow-brand}",
+      "$description": "Brilho do botão Pergunte.",
+      "$extensions": {
+        "app.gamora": {
+          "modes": {
+            "light": "{shadow.shadow-glow-brand}",
+            "dark": "{shadow.shadow-glow-brand}"
           },
           "css": null
         }

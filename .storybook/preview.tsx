@@ -18,7 +18,7 @@ const preview: Preview = {
       },
     },
   },
-  initialGlobals: { theme: 'light' },
+  initialGlobals: { theme: 'light' }, // tema padrão do app: claro
   parameters: {
     layout: 'padded',
     controls: { expanded: true, matchers: { color: /(background|color)$/i } },

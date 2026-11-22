@@ -9,7 +9,7 @@ import { Button, cx, Empty, Kicker, LinkButton, Money, SectionTitle, Skeleton } 
 import { TransactionRow, WalletCard, WavyPocket } from '@/components/finance'
 import { useMoney } from '@/hooks/useMoney'
 
-const SEG = ['bg-gm-primary', 'bg-gm-accent', 'bg-gm-lilac-strong']
+const SEG = ['bg-gm-lilac-strong', 'bg-gm-teal', 'bg-gm-primary']
 
 export default function Home() {
   const fmt = useMoney()
@@ -79,7 +79,7 @@ export default function Home() {
                     {env.stage === 2 && (
                       <button
                         onClick={() => nav.push('assistant')}
-                        className="-mt-2 inline-flex h-10 shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-gm-lilac pl-1.5 pr-4 text-[13px] font-bold text-gm-on shadow-[0_8px_24px_rgba(155,130,232,.5)] transition hover:brightness-105 active:scale-[0.97]"
+                        className="-mt-2 inline-flex h-10 shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-gm-lilac pl-1.5 pr-4 text-[13px] font-bold text-gm-on shadow-[0_8px_24px_rgba(123,92,255,.45)] transition hover:brightness-105 active:scale-[0.97]"
                       >
                         <span className="grid size-7 place-items-center rounded-full bg-gm-on text-gm-lilac"><Sparkles size={14} /></span>
                         Pergunte

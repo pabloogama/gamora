@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, type ButtonHTMLAttributes, type ReactNode } from 'react'
+import { useEffect, useId, useRef, useState, type ButtonHTMLAttributes, type ReactNode } from 'react'
 import {
   Car, CircleEllipsis, Clapperboard, HeartPulse, House, Repeat, ShoppingBasket, X, Check,
   CreditCard, Banknote, QrCode, Moon, Sun, Eye, EyeOff,
@@ -76,7 +76,7 @@ export function Bar({ value, tone = 'primary', height = 4, className }: { value:
   return (
     <div className={cx('w-full overflow-hidden', tone === 'on' ? 'bg-gm-on/15' : tone === 'white' ? 'bg-white/20' : 'bg-gm-track', className)} style={{ height, borderRadius: height }}>
       <div
-        className={cx('h-full transition-[width] duration-700 ease-out', tone === 'primary' && 'bg-gm-primary', tone === 'lilac' && 'bg-gm-lilac-strong', tone === 'on' && 'bg-gm-on', tone === 'white' && 'bg-white')}
+        className={cx('h-full transition-[width] duration-700 ease-out', tone === 'primary' && 'bg-gm-teal', tone === 'lilac' && 'bg-gm-lilac-strong', tone === 'on' && 'bg-gm-on', tone === 'white' && 'bg-white')}
         style={{ width: `${v}%`, borderRadius: height }}
       />
     </div>
@@ -92,7 +92,7 @@ export function Ring({ value, size = 112, stroke = 10, children }: { value: numb
       <svg width={size} height={size} className="-rotate-90" aria-hidden>
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--gm-track)" strokeWidth={stroke} />
         <circle
-          cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--gm-primary)" strokeWidth={stroke} strokeLinecap="round"
+          cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--gm-teal)" strokeWidth={stroke} strokeLinecap="round"
           strokeDasharray={c} strokeDashoffset={c - (c * v) / 100}
           style={{ transition: 'stroke-dashoffset 900ms cubic-bezier(.2,.9,.25,1)' }}
         />
@@ -120,23 +120,61 @@ export function MethodIcon({ method, size = 16 }: { method: string; size?: numbe
   return <I size={size} strokeWidth={1.75} />
 }
 
-export function Avatar({ name, size = 44 }: { name: string; size?: number }) {
+/** Avatar: foto (se houver) ou a inicial sobre o gradiente da marca. */
+export function Avatar({ name, src, size = 44, className }: { name: string; src?: string; size?: number; className?: string }) {
+  const [broken, setBroken] = useState(false)
+  const initials = name.trim().split(/\s+/).map((p) => p[0]).slice(0, 2).join('').toUpperCase()
+  if (src && !broken) {
+    return (
+      <img
+        src={src} alt="" width={size} height={size} onError={() => setBroken(true)}
+        className={cx('shrink-0 rounded-full object-cover ring-2 ring-white/70', className)}
+        style={{ width: size, height: size }}
+      />
+    )
+  }
   return (
     <span
-      className="grid shrink-0 place-items-center rounded-full bg-hero font-bold text-gm-on"
-      style={{ width: size, height: size, fontSize: size * 0.4 }}
+      className={cx('grid shrink-0 place-items-center rounded-full bg-hero font-bold text-gm-on', className)}
+      style={{ width: size, height: size, fontSize: size * 0.36 }}
       aria-hidden
     >
-      {name.slice(0, 1).toUpperCase()}
+      {initials || '?'}
     </span>
   )
 }
 
-export function Logo({ className }: { className?: string }) {
+/** Símbolo da marca: "G" em gradiente violeta → verde-água. */
+export function LogoMark({ size = 28, tile = false, className }: { size?: number; tile?: boolean; className?: string }) {
+  const id = useId().replace(/:/g, '')
+  const g = (
+    <svg viewBox="0 0 48 48" width={tile ? size * 0.68 : size} height={tile ? size * 0.68 : size} aria-hidden className={tile ? undefined : className}>
+      <defs>
+        <linearGradient id={`g${id}`} x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#7B5CFF" />
+          <stop offset=".55" stopColor="#5B8BFF" />
+          <stop offset="1" stopColor="#00C2A8" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M37.5 14.5A17 17 0 1 0 41 27.5H25"
+        fill="none" stroke={`url(#g${id})`} strokeWidth="9.5" strokeLinecap="round" strokeLinejoin="round"
+      />
+    </svg>
+  )
+  if (!tile) return g
   return (
-    <span className={cx('inline-flex items-center gap-2 font-black tracking-[-0.04em]', className)}>
-      <span className="grid size-7 place-items-center rounded-[9px] bg-hero text-[15px] text-gm-on">g</span>
-      gamora
+    <span className={cx('grid shrink-0 place-items-center rounded-[28%] bg-[#0b1230]', className)} style={{ width: size, height: size }}>
+      {g}
+    </span>
+  )
+}
+
+export function Logo({ className, tile = true }: { className?: string; tile?: boolean }) {
+  return (
+    <span className={cx('inline-flex items-center gap-2 font-extrabold tracking-[-0.03em]', className)}>
+      <LogoMark tile={tile} size={30} />
+      Gamora
     </span>
   )
 }
@@ -155,7 +193,7 @@ export function Sheet({ title, kicker, onClose, children }: { title: string; kic
   }, [onClose])
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center md:items-center md:p-6">
-      <div className="absolute inset-0 animate-fade-in bg-[#0a1222]/55 backdrop-blur-[3px]" onClick={onClose} />
+      <div className="absolute inset-0 animate-fade-in bg-[#0b1230]/55 backdrop-blur-[3px]" onClick={onClose} />
       <div
         ref={ref}
         role="dialog" aria-modal="true" aria-labelledby={id}
@@ -229,7 +267,7 @@ export function Chips<T extends string>({ value, options, onChange, label }: { v
 export function Toast({ msg }: { msg: string }) {
   return (
     <div role="status" aria-live="polite" className="pointer-events-none fixed inset-x-0 bottom-28 z-[60] flex justify-center px-5 md:bottom-8">
-      <div className="pointer-events-auto flex animate-pop items-center gap-2.5 rounded-full bg-gm-primary py-3 pl-3 pr-5 text-[14px] font-bold text-gm-on-primary shadow-[0_12px_40px_rgba(14,26,51,.35)]">
+      <div className="pointer-events-auto flex animate-pop items-center gap-2.5 rounded-full bg-gm-primary py-3 pl-3 pr-5 text-[14px] font-bold text-gm-on-primary shadow-[0_12px_40px_rgba(11,18,48,.3)]">
         <span className="grid size-6 place-items-center rounded-full bg-gm-on-primary text-gm-primary"><Check size={14} strokeWidth={3} /></span>
         {msg}
       </div>

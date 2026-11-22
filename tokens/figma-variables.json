@@ -33,524 +33,485 @@
           "description": "#000000"
         },
         {
-          "name": "color/gray/gray-25",
+          "name": "color/neutral/neutral-25",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.9686274509803922,
-              "g": 0.9725490196078431,
-              "b": 0.984313725490196,
-              "a": 1
-            }
-          },
-          "description": "#f7f8fb"
-        },
-        {
-          "name": "color/gray/gray-50",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.9647058823529412,
-              "g": 0.9686274509803922,
-              "b": 0.984313725490196,
-              "a": 1
-            }
-          },
-          "description": "#f6f7fb"
-        },
-        {
-          "name": "color/gray/gray-75",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.9490196078431372,
-              "g": 0.9607843137254902,
-              "b": 0.984313725490196,
-              "a": 1
-            }
-          },
-          "description": "#f2f5fb"
-        },
-        {
-          "name": "color/gray/gray-100",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.9490196078431372,
-              "g": 0.9568627450980393,
-              "b": 0.9764705882352941,
-              "a": 1
-            }
-          },
-          "description": "#f2f4f9"
-        },
-        {
-          "name": "color/gray/gray-150",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.9294117647058824,
-              "g": 0.9411764705882353,
-              "b": 0.9686274509803922,
-              "a": 1
-            }
-          },
-          "description": "#edf0f7"
-        },
-        {
-          "name": "color/gray/gray-200",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.8901960784313725,
-              "g": 0.9058823529411765,
-              "b": 0.9411764705882353,
-              "a": 1
-            }
-          },
-          "description": "#e3e7f0"
-        },
-        {
-          "name": "color/gray/gray-250",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.8745098039215686,
-              "g": 0.8941176470588236,
-              "b": 0.9333333333333333,
-              "a": 1
-            }
-          },
-          "description": "#dfe4ee"
-        },
-        {
-          "name": "color/gray/gray-300",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.8627450980392157,
-              "g": 0.8901960784313725,
-              "b": 0.9411764705882353,
-              "a": 1
-            }
-          },
-          "description": "#dce3f0"
-        },
-        {
-          "name": "color/gray/gray-400",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.6392156862745098,
-              "g": 0.6823529411764706,
-              "b": 0.7686274509803922,
-              "a": 1
-            }
-          },
-          "description": "#a3aec4"
-        },
-        {
-          "name": "color/gray/gray-500",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.5529411764705883,
-              "g": 0.6,
-              "b": 0.6941176470588235,
-              "a": 1
-            }
-          },
-          "description": "#8d99b1"
-        },
-        {
-          "name": "color/gray/gray-600",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.40784313725490196,
-              "g": 0.45098039215686275,
-              "b": 0.5529411764705883,
-              "a": 1
-            }
-          },
-          "description": "#68738d"
-        },
-        {
-          "name": "color/gray/gray-700",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.33725490196078434,
-              "g": 0.3843137254901961,
-              "b": 0.48627450980392156,
-              "a": 1
-            }
-          },
-          "description": "#56627c"
-        },
-        {
-          "name": "color/slate/slate-700",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.14901960784313725,
-              "g": 0.20392156862745098,
-              "b": 0.30980392156862746,
-              "a": 1
-            }
-          },
-          "description": "#26344f"
-        },
-        {
-          "name": "color/slate/slate-750",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.12549019607843137,
-              "g": 0.1803921568627451,
-              "b": 0.2823529411764706,
-              "a": 1
-            }
-          },
-          "description": "#202e48"
-        },
-        {
-          "name": "color/slate/slate-775",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.11764705882352941,
-              "g": 0.16862745098039217,
-              "b": 0.2784313725490196,
-              "a": 1
-            }
-          },
-          "description": "#1e2b47"
-        },
-        {
-          "name": "color/slate/slate-800",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.11372549019607843,
-              "g": 0.1607843137254902,
-              "b": 0.25882352941176473,
-              "a": 1
-            }
-          },
-          "description": "#1d2942"
-        },
-        {
-          "name": "color/slate/slate-850",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.09411764705882353,
-              "g": 0.1411764705882353,
-              "b": 0.23137254901960785,
-              "a": 1
-            }
-          },
-          "description": "#18243b"
-        },
-        {
-          "name": "color/slate/slate-875",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.08627450980392157,
-              "g": 0.13333333333333333,
-              "b": 0.22745098039215686,
-              "a": 1
-            }
-          },
-          "description": "#16223a"
-        },
-        {
-          "name": "color/slate/slate-900",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.07450980392156863,
-              "g": 0.11764705882352941,
-              "b": 0.20392156862745098,
-              "a": 1
-            }
-          },
-          "description": "#131e34"
-        },
-        {
-          "name": "color/slate/slate-925",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.07058823529411765,
-              "g": 0.10980392156862745,
-              "b": 0.18823529411764706,
-              "a": 1
-            }
-          },
-          "description": "#121c30"
-        },
-        {
-          "name": "color/blue/blue-100",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.8588235294117647,
-              "g": 0.8941176470588236,
-              "b": 0.984313725490196,
-              "a": 1
-            }
-          },
-          "description": "#dbe4fb"
-        },
-        {
-          "name": "color/blue/blue-200",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.6549019607843137,
-              "g": 0.7490196078431373,
-              "b": 0.9686274509803922,
-              "a": 1
-            }
-          },
-          "description": "#a7bff7"
-        },
-        {
-          "name": "color/blue/blue-250",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.6627450980392157,
-              "g": 0.7411764705882353,
-              "b": 0.9529411764705882,
-              "a": 1
-            }
-          },
-          "description": "#a9bdf3"
-        },
-        {
-          "name": "color/blue/blue-300",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.5764705882352941,
-              "g": 0.6980392156862745,
+              "r": 0.9725490196078431,
+              "g": 0.9764705882352941,
               "b": 1,
               "a": 1
             }
           },
-          "description": "#93b2ff"
+          "description": "#f8f9ff"
         },
         {
-          "name": "color/blue/blue-500",
+          "name": "color/neutral/neutral-50",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.1803921568627451,
-              "g": 0.39215686274509803,
-              "b": 0.8313725490196079,
+              "r": 0.9529411764705882,
+              "g": 0.9490196078431372,
+              "b": 1,
               "a": 1
             }
           },
-          "description": "#2e64d4"
+          "description": "#f3f2ff"
         },
         {
-          "name": "color/blue/blue-600",
+          "name": "color/neutral/neutral-100",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.17647058823529413,
-              "g": 0.3254901960784314,
-              "b": 0.5725490196078431,
+              "r": 0.9294117647058824,
+              "g": 0.9137254901960784,
+              "b": 1,
               "a": 1
             }
           },
-          "description": "#2d5392"
+          "description": "#ede9ff"
         },
         {
-          "name": "color/blue/blue-700",
+          "name": "color/neutral/neutral-150",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.12156862745098039,
-              "g": 0.23137254901960785,
-              "b": 0.4392156862745098,
+              "r": 0.9019607843137255,
+              "g": 0.8862745098039215,
+              "b": 0.9686274509803922,
               "a": 1
             }
           },
-          "description": "#1f3b70"
+          "description": "#e6e2f7"
         },
         {
-          "name": "color/blue/blue-750",
+          "name": "color/neutral/neutral-200",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.10196078431372549,
-              "g": 0.20392156862745098,
-              "b": 0.4,
+              "r": 0.8705882352941177,
+              "g": 0.8627450980392157,
+              "b": 0.9607843137254902,
               "a": 1
             }
           },
-          "description": "#1a3466"
+          "description": "#dedcf5"
         },
         {
-          "name": "color/blue/blue-775",
+          "name": "color/neutral/neutral-400",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.09411764705882353,
-              "g": 0.19607843137254902,
-              "b": 0.3843137254901961,
+              "r": 0.6627450980392157,
+              "g": 0.6705882352941176,
+              "b": 0.792156862745098,
               "a": 1
             }
           },
-          "description": "#183262"
+          "description": "#a9abca"
         },
         {
-          "name": "color/blue/blue-800",
+          "name": "color/neutral/neutral-500",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.5725490196078431,
+              "g": 0.5843137254901961,
+              "b": 0.7137254901960784,
+              "a": 1
+            }
+          },
+          "description": "#9295b6"
+        },
+        {
+          "name": "color/neutral/neutral-600",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.403921568627451,
+              "g": 0.4196078431372549,
+              "b": 0.5411764705882353,
+              "a": 1
+            }
+          },
+          "description": "#676b8a"
+        },
+        {
+          "name": "color/neutral/neutral-700",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.32941176470588235,
+              "g": 0.34901960784313724,
+              "b": 0.47843137254901963,
+              "a": 1
+            }
+          },
+          "description": "#54597a"
+        },
+        {
+          "name": "color/ink/ink-650",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.16470588235294117,
+              "g": 0.18823529411764706,
+              "b": 0.3333333333333333,
+              "a": 1
+            }
+          },
+          "description": "#2a3055"
+        },
+        {
+          "name": "color/ink/ink-700",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.13333333333333333,
+              "g": 0.1568627450980392,
+              "b": 0.28627450980392155,
+              "a": 1
+            }
+          },
+          "description": "#222849"
+        },
+        {
+          "name": "color/ink/ink-725",
           "type": "COLOR",
           "values": {
             "Value": {
               "r": 0.10980392156862745,
-              "g": 0.18823529411764706,
-              "b": 0.3764705882352941,
+              "g": 0.12941176470588237,
+              "b": 0.25882352941176473,
               "a": 1
             }
           },
-          "description": "#1c3060"
+          "description": "#1c2142"
         },
         {
-          "name": "color/blue/blue-850",
+          "name": "color/ink/ink-750",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.054901960784313725,
+              "r": 0.10588235294117647,
+              "g": 0.12941176470588237,
+              "b": 0.2784313725490196,
+              "a": 1
+            }
+          },
+          "description": "#1b2147"
+        },
+        {
+          "name": "color/ink/ink-775",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.09019607843137255,
               "g": 0.10980392156862745,
-              "b": 0.23137254901960785,
+              "b": 0.22745098039215686,
               "a": 1
             }
           },
-          "description": "#0e1c3b"
+          "description": "#171c3a"
         },
         {
-          "name": "color/blue/blue-900",
+          "name": "color/ink/ink-800",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.054901960784313725,
+              "r": 0.08235294117647059,
               "g": 0.10196078431372549,
+              "b": 0.21176470588235294,
+              "a": 1
+            }
+          },
+          "description": "#151a36"
+        },
+        {
+          "name": "color/ink/ink-825",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.07058823529411765,
+              "g": 0.09019607843137255,
               "b": 0.2,
               "a": 1
             }
           },
-          "description": "#0e1a33"
+          "description": "#121733"
         },
         {
-          "name": "color/blue/blue-950",
+          "name": "color/ink/ink-850",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.0392156862745098,
+              "r": 0.06666666666666667,
+              "g": 0.08235294117647059,
+              "b": 0.1843137254901961,
+              "a": 1
+            }
+          },
+          "description": "#11152f"
+        },
+        {
+          "name": "color/ink/ink-900",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.043137254901960784,
               "g": 0.07058823529411765,
-              "b": 0.13333333333333333,
+              "b": 0.18823529411764706,
               "a": 1
             }
           },
-          "description": "#0a1222"
+          "description": "#0b1230"
         },
         {
-          "name": "color/lilac/lilac-50",
+          "name": "color/ink/ink-925",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.9450980392156862,
-              "g": 0.9215686274509803,
-              "b": 0.9921568627450981,
+              "r": 0.043137254901960784,
+              "g": 0.050980392156862744,
+              "b": 0.16470588235294117,
               "a": 1
             }
           },
-          "description": "#f1ebfd"
+          "description": "#0b0d2a"
         },
         {
-          "name": "color/lilac/lilac-100",
+          "name": "color/ink/ink-950",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.8941176470588236,
-              "g": 0.8509803921568627,
-              "b": 0.984313725490196,
+              "r": 0.027450980392156862,
+              "g": 0.0392156862745098,
+              "b": 0.12156862745098039,
               "a": 1
             }
           },
-          "description": "#e4d9fb"
+          "description": "#070a1f"
         },
         {
-          "name": "color/lilac/lilac-200",
+          "name": "color/violet/violet-100",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.8392156862745098,
-              "g": 0.7843137254901961,
-              "b": 0.9725490196078431,
+              "r": 0.9294117647058824,
+              "g": 0.9137254901960784,
+              "b": 1,
               "a": 1
             }
           },
-          "description": "#d6c8f8"
+          "description": "#ede9ff"
         },
         {
-          "name": "color/lilac/lilac-300",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.803921568627451,
-              "g": 0.7411764705882353,
-              "b": 0.9568627450980393,
-              "a": 1
-            }
-          },
-          "description": "#cdbdf4"
-        },
-        {
-          "name": "color/lilac/lilac-400",
+          "name": "color/violet/violet-200",
           "type": "COLOR",
           "values": {
             "Value": {
               "r": 0.7254901960784313,
-              "g": 0.6352941176470588,
-              "b": 0.9450980392156862,
+              "g": 0.6588235294117647,
+              "b": 1,
               "a": 1
             }
           },
-          "description": "#b9a2f1"
+          "description": "#b9a8ff"
         },
         {
-          "name": "color/lilac/lilac-500",
+          "name": "color/violet/violet-300",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.6980392156862745,
-              "g": 0.611764705882353,
-              "b": 0.9411764705882353,
+              "r": 0.6588235294117647,
+              "g": 0.592156862745098,
+              "b": 1,
               "a": 1
             }
           },
-          "description": "#b29cf0"
+          "description": "#a897ff"
         },
         {
-          "name": "color/lilac/lilac-600",
+          "name": "color/violet/violet-400",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.6235294117647059,
-              "g": 0.5254901960784314,
-              "b": 0.9098039215686274,
+              "r": 0.5607843137254902,
+              "g": 0.4549019607843137,
+              "b": 1,
               "a": 1
             }
           },
-          "description": "#9f86e8"
+          "description": "#8f74ff"
+        },
+        {
+          "name": "color/violet/violet-500",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.4823529411764706,
+              "g": 0.3607843137254902,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "description": "#7b5cff"
+        },
+        {
+          "name": "color/violet/violet-600",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.3568627450980392,
+              "g": 0.24705882352941178,
+              "b": 0.8784313725490196,
+              "a": 1
+            }
+          },
+          "description": "#5b3fe0"
+        },
+        {
+          "name": "color/violet/violet-700",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.22745098039215686,
+              "g": 0.16470588235294117,
+              "b": 0.5607843137254902,
+              "a": 1
+            }
+          },
+          "description": "#3a2a8f"
+        },
+        {
+          "name": "color/violet/violet-750",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.17254901960784313,
+              "g": 0.13725490196078433,
+              "b": 0.47058823529411764,
+              "a": 1
+            }
+          },
+          "description": "#2c2378"
+        },
+        {
+          "name": "color/violet/violet-775",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.16862745098039217,
+              "g": 0.12156862745098039,
+              "b": 0.47843137254901963,
+              "a": 1
+            }
+          },
+          "description": "#2b1f7a"
+        },
+        {
+          "name": "color/violet/violet-800",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.1411764705882353,
+              "g": 0.10196078431372549,
+              "b": 0.38823529411764707,
+              "a": 1
+            }
+          },
+          "description": "#241a63"
+        },
+        {
+          "name": "color/violet/violet-850",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.10196078431372549,
+              "g": 0.06666666666666667,
+              "b": 0.3137254901960784,
+              "a": 1
+            }
+          },
+          "description": "#1a1150"
+        },
+        {
+          "name": "color/violet/violet-875",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.09411764705882353,
+              "g": 0.07058823529411765,
+              "b": 0.2901960784313726,
+              "a": 1
+            }
+          },
+          "description": "#18124a"
+        },
+        {
+          "name": "color/violet/violet-950",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.050980392156862744,
+              "g": 0.0392156862745098,
+              "b": 0.1803921568627451,
+              "a": 1
+            }
+          },
+          "description": "#0d0a2e"
+        },
+        {
+          "name": "color/teal/teal-200",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.4823529411764706,
+              "g": 0.8901960784313725,
+              "b": 0.8313725490196079,
+              "a": 1
+            }
+          },
+          "description": "#7be3d4"
+        },
+        {
+          "name": "color/teal/teal-400",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.1803921568627451,
+              "g": 0.8470588235294118,
+              "b": 0.7490196078431373,
+              "a": 1
+            }
+          },
+          "description": "#2ed8bf"
+        },
+        {
+          "name": "color/teal/teal-500",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0,
+              "g": 0.7607843137254902,
+              "b": 0.6588235294117647,
+              "a": 1
+            }
+          },
+          "description": "#00c2a8"
+        },
+        {
+          "name": "color/blue/blue-400",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.3568627450980392,
+              "g": 0.5450980392156862,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "description": "#5b8bff"
         },
         {
           "name": "color/alpha/white-alpha-6",
@@ -696,6 +657,19 @@
           "description": "#ffffff @ 35%"
         },
         {
+          "name": "color/alpha/white-alpha-38",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.38
+            }
+          },
+          "description": "#ffffff @ 38%"
+        },
+        {
           "name": "color/alpha/white-alpha-45",
           "type": "COLOR",
           "values": {
@@ -813,82 +787,82 @@
           "description": "#ffffff @ 90%"
         },
         {
-          "name": "color/alpha/blue-950-alpha-55",
+          "name": "color/alpha/ink-900-alpha-7",
           "type": "COLOR",
           "values": {
             "Value": {
-              "r": 0.0392156862745098,
+              "r": 0.043137254901960784,
               "g": 0.07058823529411765,
-              "b": 0.13333333333333333,
-              "a": 0.55
-            }
-          },
-          "description": "#0a1222 @ 55%"
-        },
-        {
-          "name": "color/alpha/blue-900-alpha-10",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.054901960784313725,
-              "g": 0.10196078431372549,
-              "b": 0.2,
-              "a": 0.1
-            }
-          },
-          "description": "#0e1a33 @ 10%"
-        },
-        {
-          "name": "color/alpha/blue-900-alpha-15",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.054901960784313725,
-              "g": 0.10196078431372549,
-              "b": 0.2,
-              "a": 0.15
-            }
-          },
-          "description": "#0e1a33 @ 15%"
-        },
-        {
-          "name": "color/alpha/blue-900-alpha-35",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.054901960784313725,
-              "g": 0.10196078431372549,
-              "b": 0.2,
-              "a": 0.35
-            }
-          },
-          "description": "#0e1a33 @ 35%"
-        },
-        {
-          "name": "color/alpha/blue-900-alpha-45",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.054901960784313725,
-              "g": 0.10196078431372549,
-              "b": 0.2,
-              "a": 0.45
-            }
-          },
-          "description": "#0e1a33 @ 45%"
-        },
-        {
-          "name": "color/alpha/shadow-alpha-7",
-          "type": "COLOR",
-          "values": {
-            "Value": {
-              "r": 0.08627450980392157,
-              "g": 0.1568627450980392,
-              "b": 0.32941176470588235,
+              "b": 0.18823529411764706,
               "a": 0.07
             }
           },
-          "description": "#162854 @ 7%"
+          "description": "#0b1230 @ 7%"
+        },
+        {
+          "name": "color/alpha/ink-900-alpha-22",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.043137254901960784,
+              "g": 0.07058823529411765,
+              "b": 0.18823529411764706,
+              "a": 0.22
+            }
+          },
+          "description": "#0b1230 @ 22%"
+        },
+        {
+          "name": "color/alpha/ink-900-alpha-30",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.043137254901960784,
+              "g": 0.07058823529411765,
+              "b": 0.18823529411764706,
+              "a": 0.3
+            }
+          },
+          "description": "#0b1230 @ 30%"
+        },
+        {
+          "name": "color/alpha/ink-900-alpha-40",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.043137254901960784,
+              "g": 0.07058823529411765,
+              "b": 0.18823529411764706,
+              "a": 0.4
+            }
+          },
+          "description": "#0b1230 @ 40%"
+        },
+        {
+          "name": "color/alpha/ink-900-alpha-55",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.043137254901960784,
+              "g": 0.07058823529411765,
+              "b": 0.18823529411764706,
+              "a": 0.55
+            }
+          },
+          "description": "#0b1230 @ 55%"
+        },
+        {
+          "name": "color/alpha/violet-500-alpha-45",
+          "type": "COLOR",
+          "values": {
+            "Value": {
+              "r": 0.4823529411764706,
+              "g": 0.3607843137254902,
+              "b": 1,
+              "a": 0.45
+            }
+          },
+          "description": "#7b5cff @ 45%"
         },
         {
           "name": "color/alpha/black-alpha-25",
@@ -915,14 +889,6 @@
             }
           },
           "description": "#000000 @ 35%"
-        },
-        {
-          "name": "font/family/font-family-satoshi",
-          "type": "STRING",
-          "values": {
-            "Value": "Satoshi"
-          },
-          "description": "Satoshi"
         },
         {
           "name": "font/family/font-family-manrope",
@@ -1187,6 +1153,14 @@
             "Value": 700
           },
           "description": "700 (Bold)"
+        },
+        {
+          "name": "font/weight/font-weight-800",
+          "type": "FLOAT",
+          "values": {
+            "Value": 800
+          },
+          "description": "800 (ExtraBold)"
         },
         {
           "name": "font/weight/font-weight-900",
@@ -2505,17 +2479,17 @@
           "name": "color/background/color-bg-page",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/gray/gray-100",
-            "Dark": "color/blue/blue-950"
+            "Light": "color/neutral/neutral-25",
+            "Dark": "color/ink/ink-950"
           },
-          "description": "Fundo da página."
+          "description": "Fundo da página (Fundo #F8F9FF)."
         },
         {
           "name": "color/background/color-bg-surface",
           "type": "COLOR",
           "aliases": {
             "Light": "color/base/white",
-            "Dark": "color/slate/slate-925"
+            "Dark": "color/ink/ink-850"
           },
           "description": "Cards, atalhos, linhas, campos."
         },
@@ -2523,8 +2497,8 @@
           "name": "color/background/color-bg-elevated",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/gray/gray-50",
-            "Dark": "color/slate/slate-850"
+            "Light": "color/neutral/neutral-50",
+            "Dark": "color/ink/ink-775"
           },
           "description": "Hover/pressionado sobre surface."
         },
@@ -2533,7 +2507,7 @@
           "type": "COLOR",
           "aliases": {
             "Light": "color/base/white",
-            "Dark": "color/slate/slate-900"
+            "Dark": "color/ink/ink-825"
           },
           "description": "Folhas que sobem por cima da tela."
         },
@@ -2541,17 +2515,17 @@
           "name": "color/background/color-bg-subtle",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/gray/gray-150",
-            "Dark": "color/slate/slate-800"
+            "Light": "color/neutral/neutral-100",
+            "Dark": "color/ink/ink-725"
           },
-          "description": "Quadrado do ícone, chip inativo, botão secundário."
+          "description": "Superfície lavanda (#EDE9FF): ícone, chip inativo, botão secundário."
         },
         {
           "name": "color/background/color-bg-card",
           "type": "COLOR",
           "aliases": {
             "Light": "color/base/white",
-            "Dark": "color/slate/slate-875"
+            "Dark": "color/ink/ink-800"
           },
           "description": "Tiles de destaque."
         },
@@ -2559,8 +2533,8 @@
           "name": "color/background/color-bg-dock",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-700",
-            "Dark": "color/blue/blue-800"
+            "Light": "color/violet/violet-850",
+            "Dark": "color/violet/violet-800"
           },
           "description": "Dock flutuante do mobile."
         },
@@ -2568,8 +2542,8 @@
           "name": "color/background/color-bg-overlay",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/alpha/blue-950-alpha-55",
-            "Dark": "color/alpha/blue-950-alpha-55"
+            "Light": "color/alpha/ink-900-alpha-55",
+            "Dark": "color/alpha/ink-900-alpha-55"
           },
           "description": "Véu atrás das folhas."
         },
@@ -2577,35 +2551,35 @@
           "name": "color/band/color-band-start",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-750",
-            "Dark": "color/blue/blue-850"
+            "Light": "color/violet/violet-850",
+            "Dark": "color/violet/violet-950"
           },
-          "description": "Topo da faixa marinho / barra do desktop."
+          "description": "Topo da faixa roxa / barra do desktop."
         },
         {
           "name": "color/band/color-band-end",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-600",
-            "Dark": "color/blue/blue-775"
+            "Light": "color/violet/violet-700",
+            "Dark": "color/violet/violet-800"
           },
-          "description": "Fim da faixa e base do bolso sólido."
+          "description": "Fim da faixa roxa."
         },
         {
           "name": "color/text/color-text-default",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-900",
-            "Dark": "color/gray/gray-75"
+            "Light": "color/ink/ink-900",
+            "Dark": "color/neutral/neutral-50"
           },
-          "description": "Texto e números principais."
+          "description": "Texto e números principais (Primária #0B1230)."
         },
         {
           "name": "color/text/color-text-emphasis",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/slate/slate-775",
-            "Dark": "color/gray/gray-300"
+            "Light": "color/ink/ink-750",
+            "Dark": "color/neutral/neutral-200"
           },
           "description": "Texto de chips e rótulos fortes."
         },
@@ -2613,8 +2587,8 @@
           "name": "color/text/color-text-secondary",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/gray/gray-700",
-            "Dark": "color/gray/gray-400"
+            "Light": "color/neutral/neutral-700",
+            "Dark": "color/neutral/neutral-400"
           },
           "description": "Texto de apoio."
         },
@@ -2622,26 +2596,26 @@
           "name": "color/text/color-text-muted",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/gray/gray-600",
-            "Dark": "color/gray/gray-500"
+            "Light": "color/neutral/neutral-600",
+            "Dark": "color/neutral/neutral-500"
           },
-          "description": "Datas, dicas, kickers (em surface)."
+          "description": "Datas, dicas, kickers."
         },
         {
           "name": "color/text/color-text-link",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-500",
-            "Dark": "color/blue/blue-300"
+            "Light": "color/violet/violet-600",
+            "Dark": "color/violet/violet-300"
           },
-          "description": "Links e destaque dentro de frase."
+          "description": "Links e destaque em frase (violeta escuro: 6.5:1 no branco)."
         },
         {
           "name": "color/text/color-text-on-action",
           "type": "COLOR",
           "aliases": {
             "Light": "color/base/white",
-            "Dark": "color/blue/blue-950"
+            "Dark": "color/ink/ink-900"
           },
           "description": "Texto sobre color-action-primary."
         },
@@ -2649,8 +2623,8 @@
           "name": "color/text/color-text-on-card",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-900",
-            "Dark": "color/gray/gray-75"
+            "Light": "color/ink/ink-900",
+            "Dark": "color/neutral/neutral-50"
           },
           "description": "Texto sobre color-bg-card."
         },
@@ -2658,10 +2632,10 @@
           "name": "color/text/color-text-on-brand",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-900",
-            "Dark": "color/blue/blue-900"
+            "Light": "color/ink/ink-900",
+            "Dark": "color/ink/ink-900"
           },
-          "description": "Texto sobre lilás e cartões claros."
+          "description": "Texto sobre lilás, verde-água e cartões claros."
         },
         {
           "name": "color/text/color-text-on-band",
@@ -2670,7 +2644,7 @@
             "Light": "color/base/white",
             "Dark": "color/base/white"
           },
-          "description": "Texto sobre a faixa marinho e o bolso."
+          "description": "Texto sobre a faixa roxa e o bolso."
         },
         {
           "name": "color/text/color-text-on-band-muted",
@@ -2685,26 +2659,26 @@
           "name": "color/action/color-action-primary",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-700",
-            "Dark": "color/blue/blue-200"
+            "Light": "color/ink/ink-900",
+            "Dark": "color/violet/violet-200"
           },
-          "description": "Ação principal, chip selecionado, progresso."
+          "description": "Ação principal (Primária), chip selecionado."
         },
         {
           "name": "color/action/color-action-brand",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/lilac/lilac-300",
-            "Dark": "color/lilac/lilac-300"
+            "Light": "color/violet/violet-200",
+            "Dark": "color/violet/violet-200"
           },
-          "description": "Botão + do dock, Pergunte ao Gamora, Adicionar (desktop)."
+          "description": "Pergunte ao Gamora, + do dock, Adicionar (desktop)."
         },
         {
           "name": "color/border/color-border-default",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/gray/gray-200",
-            "Dark": "color/slate/slate-750"
+            "Light": "color/neutral/neutral-150",
+            "Dark": "color/ink/ink-700"
           },
           "description": "Divisórias."
         },
@@ -2712,8 +2686,8 @@
           "name": "color/border/color-border-control",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/gray/gray-250",
-            "Dark": "color/slate/slate-700"
+            "Light": "color/neutral/neutral-200",
+            "Dark": "color/ink/ink-650"
           },
           "description": "Borda de campos; trilho de progresso."
         },
@@ -2721,8 +2695,8 @@
           "name": "color/border/color-border-focus",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-500",
-            "Dark": "color/blue/blue-300"
+            "Light": "color/violet/violet-600",
+            "Dark": "color/violet/violet-300"
           },
           "description": "Anel de foco e campo ativo."
         },
@@ -2739,28 +2713,64 @@
           "name": "color/border/color-border-stitch",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/alpha/white-alpha-35",
-            "Dark": "color/alpha/white-alpha-35"
+            "Light": "color/alpha/white-alpha-38",
+            "Dark": "color/alpha/white-alpha-38"
           },
           "description": "Costura tracejada do bolso."
+        },
+        {
+          "name": "color/brand/color-brand-violet",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/violet/violet-500",
+            "Dark": "color/violet/violet-400"
+          },
+          "description": "Secundária #7B5CFF: preenchimentos, 1ª série, assinaturas."
+        },
+        {
+          "name": "color/brand/color-brand-teal",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/teal/teal-500",
+            "Dark": "color/teal/teal-400"
+          },
+          "description": "Acento #00C2A8: barras e anéis de progresso, 2ª série."
         },
         {
           "name": "color/brand/color-brand-lilac",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/lilac/lilac-300",
-            "Dark": "color/lilac/lilac-300"
+            "Light": "color/violet/violet-200",
+            "Dark": "color/violet/violet-200"
           },
-          "description": "Cor da marca."
+          "description": "Lilás de apoio."
         },
         {
-          "name": "color/brand/color-brand-lilac-strong",
+          "name": "color/brand/color-logo-start",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/lilac/lilac-600",
-            "Dark": "color/lilac/lilac-500"
+            "Light": "color/violet/violet-500",
+            "Dark": "color/violet/violet-500"
           },
-          "description": "Assinaturas, limite atingido, 3ª série."
+          "description": "Logo G: início."
+        },
+        {
+          "name": "color/brand/color-logo-middle",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/blue/blue-400",
+            "Dark": "color/blue/blue-400"
+          },
+          "description": "Logo G: meio."
+        },
+        {
+          "name": "color/brand/color-logo-end",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/teal/teal-500",
+            "Dark": "color/teal/teal-500"
+          },
+          "description": "Logo G: fim."
         },
         {
           "name": "color/glass/color-glass-fill-start",
@@ -2787,68 +2797,104 @@
             "Light": "color/alpha/white-alpha-70",
             "Dark": "color/alpha/white-alpha-70"
           },
-          "description": "Reflexo de 1px na borda de cima do bolso."
+          "description": "Reflexo de 1px."
         },
         {
-          "name": "color/card/color-card-lilac-start",
+          "name": "color/glass/color-pocket-start",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/lilac/lilac-400",
-            "Dark": "color/lilac/lilac-400"
+            "Light": "color/violet/violet-750",
+            "Dark": "color/violet/violet-750"
           },
-          "description": "Cartão lilás (gradiente 128°)."
+          "description": "Bolso da carteira: topo."
         },
         {
-          "name": "color/card/color-card-lilac-end",
+          "name": "color/glass/color-pocket-middle",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/lilac/lilac-100",
-            "Dark": "color/lilac/lilac-100"
+            "Light": "color/violet/violet-875",
+            "Dark": "color/violet/violet-875"
           },
-          "description": "Cartão lilás, fim."
+          "description": "Bolso: meio."
         },
         {
-          "name": "color/card/color-card-periwinkle-start",
+          "name": "color/glass/color-pocket-end",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-250",
-            "Dark": "color/blue/blue-250"
+            "Light": "color/ink/ink-925",
+            "Dark": "color/ink/ink-925"
+          },
+          "description": "Bolso: base."
+        },
+        {
+          "name": "color/card/color-card-brand-light",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/violet/violet-400",
+            "Dark": "color/violet/violet-400"
+          },
+          "description": "Cartão Gamora (radial, canto de cima à direita)."
+        },
+        {
+          "name": "color/card/color-card-brand-middle",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/violet/violet-600",
+            "Dark": "color/violet/violet-600"
+          },
+          "description": "Cartão Gamora: meio."
+        },
+        {
+          "name": "color/card/color-card-brand-dark",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/violet/violet-775",
+            "Dark": "color/violet/violet-775"
+          },
+          "description": "Cartão Gamora: base. Texto branco."
+        },
+        {
+          "name": "color/card/color-card-teal-start",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/teal/teal-500",
+            "Dark": "color/teal/teal-500"
+          },
+          "description": "Cartão verde-água."
+        },
+        {
+          "name": "color/card/color-card-teal-end",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/teal/teal-200",
+            "Dark": "color/teal/teal-200"
+          },
+          "description": "Cartão verde-água, fim."
+        },
+        {
+          "name": "color/card/color-card-lavender-start",
+          "type": "COLOR",
+          "aliases": {
+            "Light": "color/violet/violet-100",
+            "Dark": "color/violet/violet-100"
           },
           "description": "Cartão lavanda."
         },
         {
-          "name": "color/card/color-card-periwinkle-end",
+          "name": "color/card/color-card-lavender-end",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-100",
-            "Dark": "color/blue/blue-100"
+            "Light": "color/base/white",
+            "Dark": "color/base/white"
           },
           "description": "Cartão lavanda, fim."
-        },
-        {
-          "name": "color/card/color-card-silver-start",
-          "type": "COLOR",
-          "aliases": {
-            "Light": "color/gray/gray-250",
-            "Dark": "color/gray/gray-250"
-          },
-          "description": "Cartão prata."
-        },
-        {
-          "name": "color/card/color-card-silver-end",
-          "type": "COLOR",
-          "aliases": {
-            "Light": "color/gray/gray-25",
-            "Dark": "color/gray/gray-25"
-          },
-          "description": "Cartão prata, fim."
         },
         {
           "name": "color/card/color-hero-start",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/lilac/lilac-400",
-            "Dark": "color/lilac/lilac-400"
+            "Light": "color/violet/violet-200",
+            "Dark": "color/violet/violet-200"
           },
           "description": "Bolha do assistente/avatar: início."
         },
@@ -2856,8 +2902,8 @@
           "name": "color/card/color-hero-middle",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/lilac/lilac-200",
-            "Dark": "color/lilac/lilac-200"
+            "Light": "color/violet/violet-100",
+            "Dark": "color/violet/violet-100"
           },
           "description": "Meio."
         },
@@ -2865,8 +2911,8 @@
           "name": "color/card/color-hero-end",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/lilac/lilac-50",
-            "Dark": "color/lilac/lilac-50"
+            "Light": "color/neutral/neutral-25",
+            "Dark": "color/neutral/neutral-25"
           },
           "description": "Fim."
         },
@@ -2874,8 +2920,8 @@
           "name": "color/chart/color-chart-1",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-700",
-            "Dark": "color/blue/blue-200"
+            "Light": "color/violet/violet-500",
+            "Dark": "color/violet/violet-400"
           },
           "description": "1ª série."
         },
@@ -2883,8 +2929,8 @@
           "name": "color/chart/color-chart-2",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/blue/blue-500",
-            "Dark": "color/blue/blue-300"
+            "Light": "color/teal/teal-500",
+            "Dark": "color/teal/teal-400"
           },
           "description": "2ª série."
         },
@@ -2892,8 +2938,8 @@
           "name": "color/chart/color-chart-3",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/lilac/lilac-600",
-            "Dark": "color/lilac/lilac-500"
+            "Light": "color/ink/ink-900",
+            "Dark": "color/violet/violet-200"
           },
           "description": "3ª série."
         },
@@ -2901,8 +2947,8 @@
           "name": "color/chart/color-chart-rest",
           "type": "COLOR",
           "aliases": {
-            "Light": "color/gray/gray-250",
-            "Dark": "color/slate/slate-700"
+            "Light": "color/neutral/neutral-200",
+            "Dark": "color/ink/ink-650"
           },
           "description": "Restante."
         },
@@ -2910,19 +2956,10 @@
           "name": "typography/font-family-body",
           "type": "STRING",
           "aliases": {
-            "Light": "font/family/font-family-satoshi",
-            "Dark": "font/family/font-family-satoshi"
-          },
-          "description": "Toda a interface (fallback Manrope)."
-        },
-        {
-          "name": "typography/font-family-body-fallback",
-          "type": "STRING",
-          "aliases": {
             "Light": "font/family/font-family-manrope",
             "Dark": "font/family/font-family-manrope"
           },
-          "description": "Quando a Satoshi não carrega."
+          "description": "Toda a interface (Manrope: moderna, legível e versátil)."
         },
         {
           "name": "typography/font-family-code",
@@ -3072,10 +3109,10 @@
           "name": "typography/font-weight-wordmark",
           "type": "FLOAT",
           "aliases": {
-            "Light": "font/weight/font-weight-900",
-            "Dark": "font/weight/font-weight-900"
+            "Light": "font/weight/font-weight-800",
+            "Dark": "font/weight/font-weight-800"
           },
-          "description": "Palavra gamora."
+          "description": "Palavra Gamora."
         },
         {
           "name": "typography/font-weight-code",
@@ -3135,10 +3172,10 @@
           "name": "typography/letter-spacing-wordmark",
           "type": "FLOAT",
           "aliases": {
-            "Light": "font/letter-spacing/letter-spacing-neg-40",
-            "Dark": "font/letter-spacing/letter-spacing-neg-40"
+            "Light": "font/letter-spacing/letter-spacing-neg-30",
+            "Dark": "font/letter-spacing/letter-spacing-neg-30"
           },
-          "description": "Palavra gamora."
+          "description": "Palavra Gamora."
         },
         {
           "name": "typography/letter-spacing-kicker",
@@ -3754,9 +3791,9 @@
       "blur": 30,
       "spread": 0,
       "color": {
-        "r": 0.08627450980392157,
-        "g": 0.1568627450980392,
-        "b": 0.32941176470588235,
+        "r": 0.043137254901960784,
+        "g": 0.07058823529411765,
+        "b": 0.18823529411764706,
         "a": 0.07
       }
     },
@@ -3780,10 +3817,10 @@
       "blur": 44,
       "spread": 0,
       "color": {
-        "r": 0.054901960784313725,
-        "g": 0.10196078431372549,
-        "b": 0.2,
-        "a": 0.45
+        "r": 0.043137254901960784,
+        "g": 0.07058823529411765,
+        "b": 0.18823529411764706,
+        "a": 0.4
       }
     },
     {
@@ -3793,10 +3830,23 @@
       "blur": 44,
       "spread": 0,
       "color": {
-        "r": 0.054901960784313725,
-        "g": 0.10196078431372549,
-        "b": 0.2,
-        "a": 0.35
+        "r": 0.043137254901960784,
+        "g": 0.07058823529411765,
+        "b": 0.18823529411764706,
+        "a": 0.3
+      }
+    },
+    {
+      "name": "shadow/shadow-glow-brand",
+      "x": 0,
+      "y": 8,
+      "blur": 24,
+      "spread": 0,
+      "color": {
+        "r": 0.4823529411764706,
+        "g": 0.3607843137254902,
+        "b": 1,
+        "a": 0.45
       }
     },
     {
@@ -3806,10 +3856,10 @@
       "blur": 24,
       "spread": 0,
       "color": {
-        "r": 0.054901960784313725,
-        "g": 0.10196078431372549,
-        "b": 0.2,
-        "a": 0.15
+        "r": 0.043137254901960784,
+        "g": 0.07058823529411765,
+        "b": 0.18823529411764706,
+        "a": 0.22
       }
     }
   ]

@@ -3,7 +3,8 @@ import { CATEGORIES } from '@/types/finance'
 import { relativeDay } from '@/lib/format'
 import { useStore } from '@/store'
 import { useLayoutEffect, useRef, useState } from 'react'
-import { CategoryIcon, cx } from '@/components/ui'
+import { CategoryIcon, cx, LogoMark } from '@/components/ui'
+import { Nfc } from 'lucide-react'
 import { useMoney } from '@/hooks/useMoney'
 
 export function useMethodLabel() {
@@ -33,41 +34,47 @@ export function TransactionRow({ tx, onClick }: { tx: Transaction; onClick: () =
 }
 
 const CARD_BG: Record<Card['color'], string> = {
-  gradient: 'bg-wallet',     // lilás da referência
-  lilac: 'bg-periwinkle',    // azul-lavanda
-  offwhite: 'bg-silver',     // prata
+  gradient: 'bg-wallet text-white',      // violeta Gamora (cartão da marca)
+  lilac: 'bg-periwinkle text-gm-on',     // verde-água
+  offwhite: 'bg-silver text-gm-on',      // lavanda
 }
 
-/** Cartão da carteira. Texto sempre escuro (#0E1A33) sobre o cartão claro.
- *  A faixa de cima (marca, apelido, brilho) é o que aparece quando o cartão está dentro do bolso. */
+/** Chip do cartão (desenho simples, sem imagem). */
+function Chip() {
+  return (
+    <svg viewBox="0 0 40 30" className="h-7 w-9 shrink-0" aria-hidden>
+      <rect x="0.5" y="0.5" width="39" height="29" rx="6" fill="#E9E4F7" stroke="#B8AEDB" />
+      <path d="M0.5 10H13M0.5 20H13M27 10H39.5M27 20H39.5M13 0.5V29.5M27 0.5V29.5M13 15H27" stroke="#B8AEDB" strokeWidth="1.2" fill="none" />
+    </svg>
+  )
+}
+
+/** Cartão da carteira no estilo da marca: logo Gamora, chip e aproximação.
+ *  A faixa de cima (logo, apelido, aproximação) é o que aparece quando o cartão está dentro do bolso. */
 export function WalletCard({ card, className }: { card: Card; className?: string }) {
   const fmt = useMoney()
+  const light = card.color !== 'gradient'
   return (
-    <div className={cx('relative flex aspect-[1.586] w-full flex-col overflow-hidden rounded-wallet px-6 pb-5 pt-5 text-gm-on shadow-[0_-6px_24px_rgba(14,26,51,.22)]', CARD_BG[card.color], className)}>
+    <div className={cx('relative flex aspect-[1.586] w-full flex-col overflow-hidden rounded-wallet px-6 pb-5 pt-5 shadow-[0_-6px_24px_rgba(11,18,48,.22)]', CARD_BG[card.color], className)}>
       {/* brilho diagonal */}
-      <span className="pointer-events-none absolute -left-1/4 -top-1/2 h-[180%] w-1/2 rotate-[25deg] bg-white/30 blur-2xl" aria-hidden />
+      <span className={cx('pointer-events-none absolute -left-1/4 -top-1/2 h-[180%] w-1/2 rotate-[25deg] blur-2xl', light ? 'bg-white/35' : 'bg-white/12')} aria-hidden />
       <div className="relative flex items-center justify-between gap-3">
-        <span className="flex min-w-0 items-center gap-3">
-          {/* marca: dois círculos sobrepostos */}
-          <span className="relative h-7 w-11 shrink-0" aria-hidden>
-            <span className="absolute left-0 top-0 size-7 rounded-full bg-white/70" />
-            <span className="absolute left-4 top-0 size-7 rounded-full bg-white/45 mix-blend-luminosity" />
-          </span>
-          <span className="truncate text-[17px] font-bold tracking-[-0.02em]">{card.nickname}</span>
+        <span className="flex min-w-0 items-center gap-2.5">
+          <LogoMark size={26} />
+          <span className="truncate text-[17px] font-extrabold tracking-[-0.02em]">{card.nickname}</span>
         </span>
-        <svg viewBox="0 0 24 24" className="size-7 shrink-0 opacity-80" aria-hidden>
-          <path d="M12 1.5c.5 5.3 4.9 9.7 10.5 10.5-5.6.8-10 5.2-10.5 10.5C11.5 17.2 7.1 12.8 1.5 12 7.1 11.2 11.5 6.8 12 1.5z" fill="#ffffff" />
-        </svg>
+        <Nfc size={24} className="shrink-0 opacity-80" aria-hidden />
       </div>
-      <p className="relative mt-auto font-mono text-[16px] tracking-[0.12em] opacity-80">•••• •••• •••• {card.last4}</p>
+      <div className="relative mt-4"><Chip /></div>
+      <p className="relative mt-auto font-mono text-[16px] tracking-[0.12em] opacity-85">•••• •••• •••• {card.last4}</p>
       <div className="relative mt-3 flex items-end justify-between gap-4">
         <div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.08em] opacity-60">Fatura atual</p>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.08em] opacity-70">Fatura atual</p>
           <p className="text-[20px] font-bold leading-tight num">{fmt(card.invoice)}</p>
         </div>
         <div className="text-right">
-          <p className="text-[18px] font-black italic leading-none tracking-[-0.04em]">gamora</p>
-          <p className="mt-1 text-[11px] font-medium opacity-70">Vence em {card.dueInDays}d</p>
+          <p className="text-[17px] font-extrabold leading-none tracking-[-0.03em]">Gamora</p>
+          <p className="mt-1 text-[11px] font-semibold opacity-75">Vence em {card.dueInDays}d</p>
         </div>
       </div>
     </div>
@@ -105,7 +112,7 @@ export function WavyPocket({ children, className, dip = 22 }: { children: React.
   return (
     <div ref={ref} className={cx('relative text-white', className)}>
       <div
-        className={cx('absolute inset-0 bg-[linear-gradient(172deg,#2f4472_0%,#1b2a4b_45%,#111a2f_100%)] backdrop-blur-xl', !size && 'rounded-[30px]')}
+        className={cx('absolute inset-0 bg-pocket backdrop-blur-xl', !size && 'rounded-[30px]')}
         style={size ? { clipPath: `path('${outer}')` } : undefined}
         aria-hidden
       >

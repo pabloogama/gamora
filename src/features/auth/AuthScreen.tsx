@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Eye, EyeOff } from 'lucide-react'
+import { ChartColumn, Eye, EyeOff, Target, Users, Wallet } from 'lucide-react'
 import { useStore, loadFor } from '@/store'
 import { auth, AuthError } from '@/services/auth'
 import { DEMO_ACCOUNT } from '@/data/mocks'
@@ -7,6 +7,12 @@ import { maskMoney, parseMoney } from '@/lib/format'
 import { Button, cx, Field, inputCls, Logo, MoneyInput, ThemeToggle } from '@/components/ui'
 
 type Mode = 'login' | 'signup'
+const PILLARS = [
+  { icon: Wallet, label: 'Controle de gastos' },
+  { icon: Users, label: 'Gestão em família' },
+  { icon: Target, label: 'Metas e planejamento' },
+  { icon: ChartColumn, label: 'Patrimônio e evolução' },
+]
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
 /** Login e cadastro por e-mail e senha (conexão direta, sem Google). */
@@ -15,25 +21,28 @@ export default function AuthScreen() {
   return (
     <main className="grid min-h-dvh lg:grid-cols-2">
       <section className="relative hidden overflow-hidden bg-band-solid p-12 text-white lg:flex lg:flex-col lg:justify-between">
-        <span className="text-[28px] font-black tracking-[-0.04em]">gamora</span>
-        <div>
-          <p className="kicker opacity-60">Finanças</p>
-          <h1 className="mt-3 max-w-[520px] text-[56px] font-bold leading-[1] tracking-[-0.045em]">Seu assistente financeiro para grandes conquistas.</h1>
-          <ul className="mt-8 space-y-2 text-[16px] font-medium opacity-80">
-            <li>Registre cada compra em segundos.</li>
-            <li>Veja o mês, os cartões e as metas numa tela.</li>
-            <li>Guarde para o que importa.</li>
+        <Logo className="text-[28px] text-white" />
+        <div className="relative z-10">
+          <h1 className="max-w-[520px] text-[56px] font-extrabold leading-[1] tracking-[-0.045em]">Suas finanças, em família.</h1>
+          <p className="mt-5 max-w-[460px] text-[18px] leading-relaxed text-white/80">Organize, planeje e construa o futuro financeiro da sua família, em um só lugar.</p>
+          <ul className="mt-10 grid max-w-[520px] grid-cols-4 gap-4">
+            {PILLARS.map(({ icon: I, label }) => (
+              <li key={label} className="text-center">
+                <span className="mx-auto grid size-16 place-items-center rounded-[20px] border border-white/10 bg-white/10 text-[#b9a8ff]"><I size={28} strokeWidth={1.8} /></span>
+                <span className="mt-2 block text-[13px] leading-snug text-white/85">{label}</span>
+              </li>
+            ))}
           </ul>
         </div>
-        <svg className="pointer-events-none absolute -right-24 top-24 size-[420px] opacity-[.12]" viewBox="0 0 100 100" aria-hidden>
-          {[48, 38, 28, 18].map((r) => <circle key={r} cx="50" cy="50" r={r} fill="none" stroke="#FFFFFF" strokeWidth=".8" />)}
-        </svg>
+        {/* forma da marca, como na peça de identidade */}
+        <span className="pointer-events-none absolute -bottom-40 -right-32 size-[440px] rounded-full bg-brand opacity-25 blur-3xl" aria-hidden />
       </section>
 
       <section className="relative flex flex-col justify-center px-5 py-10 md:px-16">
         <ThemeToggle className="absolute right-5 top-5" />
         <div className="mx-auto w-full max-w-[420px]">
-          <Logo className="text-[26px] lg:hidden" />
+          <Logo className="text-[26px] text-gm-text lg:hidden" />
+          <p className="mt-2 text-[15px] text-gm-secondary lg:hidden">Suas finanças, em família.</p>
           <div role="tablist" aria-label="Acesso" className="mt-8 grid grid-cols-2 rounded-full bg-gm-surface p-1.5 shadow-soft lg:mt-0">
             {(['login', 'signup'] as Mode[]).map((m) => (
               <button

@@ -12,6 +12,7 @@ export type SheetState =
   | { kind: 'goal'; goal?: Goal }
   | { kind: 'budget'; category: CategoryId | 'cap' | 'new' }
   | { kind: 'account' }
+  | { kind: 'profile' }
 
 export interface Nav {
   view: View

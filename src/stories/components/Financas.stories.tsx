@@ -18,7 +18,7 @@ export default meta
 export const Cartao: StoryObj<{ nickname: string; last4: string; invoice: number; limit: number; dueInDays: number; color: Card['color'] }> = {
   name: 'WalletCard',
   args: { nickname: 'Principal', last4: '4552', invoice: 1284, limit: 3000, dueInDays: 8, color: 'gradient' },
-  argTypes: { color: { control: 'inline-radio', options: ['gradient', 'lilac', 'offwhite'], description: 'gradient = lilás · lilac = lavanda · offwhite = prata' } },
+  argTypes: { color: { control: 'inline-radio', options: ['gradient', 'lilac', 'offwhite'], description: 'gradient = violeta Gamora (texto branco) · lilac = verde-água · offwhite = lavanda' } },
   render: (a) => <div className="max-w-[360px]"><WalletCard card={{ id: 'x', ...a }} /></div>,
 }
 
@@ -84,7 +84,7 @@ export const Carteira: StoryObj = {
               </button>
             ))}
           </div>
-          <Pocket className="z-10 !bg-[linear-gradient(165deg,rgba(255,255,255,.22)_0%,rgba(40,72,140,.42)_38%,rgba(24,48,98,.62)_100%)]">
+          <Pocket className="z-10 !bg-[linear-gradient(165deg,rgba(255,255,255,.22)_0%,rgba(91,63,224,.42)_38%,rgba(26,17,80,.62)_100%)]">
             <p className="text-[14px] text-white/85">Seu saldo</p>
             <p className="text-[40px] font-bold leading-none num">R$ 14.500</p>
             <p className="mt-4 text-[12px] text-white/70">Toque no cartão de trás para trazer à frente.</p>

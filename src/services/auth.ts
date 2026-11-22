@@ -20,9 +20,11 @@ export interface AuthService {
   signUp(name: string, email: string, password: string): Promise<User>
   signOut(): Promise<void>
   currentSession(): User | null
+  /** Atualiza nome, e-mail e foto da conta logada. Supabase: auth.updateUser + tabela profiles. */
+  updateProfile(currentEmail: string, next: User): Promise<User>
 }
 
-interface StoredAccount { name: string; email: string; hash: string }
+interface StoredAccount { name: string; email: string; hash: string; avatar?: string }
 const USERS = 'gamora:accounts'
 const SESSION = 'gamora:session'
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
@@ -47,7 +49,7 @@ function write(key: string, value: unknown) {
 async function accounts(): Promise<StoredAccount[]> {
   const list = read<StoredAccount[]>(USERS, [])
   if (!list.some((a) => a.email === DEMO_ACCOUNT.email)) {
-    list.push({ name: DEMO_ACCOUNT.name, email: DEMO_ACCOUNT.email, hash: await sha256(DEMO_ACCOUNT.password) })
+    list.push({ name: DEMO_ACCOUNT.name, email: DEMO_ACCOUNT.email, hash: await sha256(DEMO_ACCOUNT.password), avatar: DEMO_ACCOUNT.avatar })
     write(USERS, list)
   }
   return list
@@ -58,7 +60,7 @@ export const localAuth: AuthService = {
     await wait(650)
     const acc = (await accounts()).find((a) => a.email === norm(email))
     if (!acc || acc.hash !== (await sha256(password))) throw new AuthError('E-mail ou senha incorretos.')
-    const user = { name: acc.name, email: acc.email }
+    const user: User = { name: acc.name, email: acc.email, avatar: acc.avatar }
     write(SESSION, user)
     return user
   },
@@ -77,6 +79,17 @@ export const localAuth: AuthService = {
   },
   currentSession() {
     return read<User | null>(SESSION, null)
+  },
+  async updateProfile(currentEmail, next) {
+    await wait(500)
+    const list = await accounts()
+    const email = norm(next.email)
+    if (email !== norm(currentEmail) && list.some((a) => a.email === email)) throw new AuthError('Este e-mail já é usado por outra conta.')
+    const updated = list.map((a) => (a.email === norm(currentEmail) ? { ...a, name: next.name.trim(), email, avatar: next.avatar } : a))
+    write(USERS, updated)
+    const user: User = { name: next.name.trim(), email, avatar: next.avatar }
+    write(SESSION, user)
+    return user
   },
 }
 

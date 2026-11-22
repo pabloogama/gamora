@@ -23,6 +23,7 @@ export const NovaMeta = story({ kind: 'goal' }, 'Nova meta')
 export const Teto = story({ kind: 'budget', category: 'alimentacao' }, 'Ajustar teto')
 export const TetoDoMes = story({ kind: 'budget', category: 'cap' }, 'Teto do mês')
 export const Conta = story({ kind: 'account' }, 'Conta')
+export const EditarPerfil = story({ kind: 'profile' }, 'Editar perfil')
 
 // Detalhe usa o id do estado; os stories rodam com o mesmo seed.
 Detalhe.parameters = { state: s }

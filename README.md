@@ -1,11 +1,15 @@
 # Gamora
 
-> Seu assistente financeiro para grandes conquistas.
+> Suas finanças, em família.
 
 App de finanças pessoais **mobile-first com visão desktop**: saldo, gastos do mês, cartões e metas, registrados à mão (Estágio 1). O Estágio 2 (leitura de fatura e assistente via OpenAI) já tem os pontos de integração preparados, mas está **desligado**.
 
 **Stack:** React 19 · TypeScript · Vite · Tailwind CSS v4 · lucide-react
 **Futuro:** Supabase (auth + banco) · Vercel (hosting + Functions) · OpenAI (estágio 2)
+
+## Conta de demonstração
+
+Na tela de login, use **Conta de demonstração** (`pablo@gamora.app` / `gamora123`). O perfil (foto, nome e e-mail) é editável em Conta → Editar perfil.
 
 ## Rodar localmente
 

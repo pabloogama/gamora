@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useReducer, type ReactNode } from 'react'
 import { emptyState, seed, DEMO_ACCOUNT } from '@/data/mocks'
-import type { Budget, Card, CategoryId, Goal, InvoiceItem, State, Transaction } from '@/types/finance'
+import type { Budget, Card, CategoryId, Goal, InvoiceItem, State, Transaction, User } from '@/types/finance'
 import { toISODate, uid } from '@/lib/format'
 import { localRepository as repository } from '@/services/storage'
 import { auth } from '@/services/auth'
@@ -8,6 +8,7 @@ import { auth } from '@/services/auth'
 type Action =
   | { type: 'hydrate'; state: State }
   | { type: 'logout' }
+  | { type: 'updateUser'; user: User }
   | { type: 'toggleBalance' }
   | { type: 'saveTx'; tx: Transaction }
   | { type: 'deleteTx'; id: string }
@@ -30,6 +31,7 @@ function reducer(s: State, a: Action): State {
   switch (a.type) {
     case 'hydrate': return a.state
     case 'logout': return { ...s, user: null }
+    case 'updateUser': return { ...s, user: a.user }
     case 'toggleBalance': return { ...s, hideBalance: !s.hideBalance }
     case 'saveTx': {
       const prev = s.transactions.find((t) => t.id === a.tx.id)
@@ -95,7 +97,7 @@ function boot(): State {
 
 export function loadFor(user: NonNullable<State['user']>, startingBalance = 0): State {
   const saved = repository.load(user.email)
-  if (saved) return { ...saved, user }
+  if (saved) return { ...saved, user: { ...saved.user, ...user } }
   if (user.email === DEMO_ACCOUNT.email) return seed()
   return emptyState(user, startingBalance)
 }
@@ -111,6 +113,8 @@ interface Derived {
 const Ctx = createContext<{ state: State; dispatch: React.Dispatch<Action>; d: Derived } | null>(null)
 
 /** `initialState` e `persist` existem para o Storybook e testes; o app usa os padrões. */
+export { repository }
+
 export function StoreProvider({ children, initialState, persist = true }: { children: ReactNode; initialState?: State; persist?: boolean }) {
   const [state, dispatch] = useReducer(reducer, initialState, (init) => init ?? boot())
 

@@ -20,6 +20,7 @@
   --color-gm-accent: var(--gm-accent);
   --color-gm-lilac: var(--gm-lilac);
   --color-gm-lilac-strong: var(--gm-lilac-strong);
+  --color-gm-teal: var(--gm-teal);
   --color-gm-card: var(--gm-card);
   --color-gm-on-card: var(--gm-on-card);
   --color-gm-on: var(--gm-on);
@@ -28,7 +29,7 @@
 }
 
 @theme {
-  --font-sans: "Satoshi", "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --radius-hero: 34px;
@@ -51,61 +52,65 @@
   @keyframes shimmer { from { background-position: -200% 0; } to { background-position: 200% 0; } }
 }
 
-/* ── Tema claro (padrão) — cores da referência: marinho + lilás + branco */
+/* ── Tema claro (padrão) — identidade Gamora: primária #0B1230, violeta #7B5CFF, verde-água #00C2A8 */
 :root {
-  --gm-bg: #f2f4f9;
+  --gm-bg: #f8f9ff;
   --gm-surface: #ffffff;
-  --gm-elevated: #f6f7fb;
+  --gm-elevated: #f3f2ff;
   --gm-sheet: #ffffff;
-  --gm-row: #edf0f7;
-  --gm-border: #e3e7f0;
-  --gm-track: #dfe4ee;
-  --gm-text: #0e1a33;
-  --gm-text-2: #1e2b47;
-  --gm-secondary: #56627c;
-  --gm-muted: #68738d;
-  --gm-primary: #1f3b70;
+  --gm-row: #ede9ff;
+  --gm-border: #e6e2f7;
+  --gm-track: #dedcf5;
+  --gm-text: #0b1230;
+  --gm-text-2: #1b2147;
+  --gm-secondary: #54597a;
+  --gm-muted: #676b8a;
+  --gm-primary: #0b1230;
   --gm-on-primary: #ffffff;
-  --gm-accent: #2e64d4;
-  --gm-lilac: #cdbdf4;
-  --gm-lilac-strong: #9f86e8;
+  --gm-accent: #5b3fe0;
+  --gm-lilac: #b9a8ff;
+  --gm-lilac-strong: #7b5cff;
+  --gm-teal: #00c2a8;
   --gm-card: #ffffff;
-  --gm-on-card: #0e1a33;
-  --gm-on: #0e1a33; /* texto sobre lilás / cartões claros (igual nos dois temas) */
-  --gm-band-from: #1a3466;
-  --gm-band-to: #2d5392;
-  --gm-dock: #1f3b70;
-  --gm-shadow: 0 10px 30px rgba(22, 40, 84, 0.07);
-  --gm-gradient-hero: linear-gradient(128deg, #b9a2f1 0%, #d6c8f8 48%, #f1ebfd 100%);
-  --gm-gradient-wallet: linear-gradient(128deg, #b9a2f1 0%, #e4d9fb 70%);
-  --gm-gradient-periwinkle: linear-gradient(128deg, #a9bdf3 0%, #dbe4fb 75%);
-  --gm-gradient-silver: linear-gradient(128deg, #dfe4ee 0%, #f7f8fb 75%);
+  --gm-on-card: #0b1230;
+  --gm-on: #0b1230; /* texto sobre lilás / cartões claros (igual nos dois temas) */
+  --gm-band-from: #1a1150;
+  --gm-band-to: #3a2a8f;
+  --gm-dock: #1a1150;
+  --gm-shadow: 0 10px 30px rgba(11, 18, 48, 0.07);
+  --gm-gradient-hero: linear-gradient(128deg, #b9a8ff 0%, #ede9ff 55%, #f8f9ff 100%);
+  --gm-gradient-brand: linear-gradient(135deg, #7b5cff 0%, #00c2a8 100%);
+  --gm-gradient-wallet: radial-gradient(130% 120% at 100% 0%, #8f74ff 0%, #5b3fe0 42%, #2b1f7a 100%);
+  --gm-gradient-periwinkle: linear-gradient(128deg, #00c2a8 0%, #7be3d4 80%);
+  --gm-gradient-silver: linear-gradient(128deg, #ede9ff 0%, #ffffff 80%);
+  --gm-gradient-pocket: linear-gradient(172deg, #2c2378 0%, #18124a 45%, #0b0d2a 100%);
   color-scheme: light;
 }
 
-/* ── Tema escuro — mesmo marinho, mais profundo */
+/* ── Tema escuro — a mesma marca sobre o azul-noite da primária */
 :root[data-theme="dark"] {
-  --gm-bg: #0a1222;
-  --gm-surface: #121c30;
-  --gm-elevated: #18243b;
-  --gm-sheet: #131e34;
-  --gm-row: #1d2942;
-  --gm-border: #202e48;
-  --gm-track: #26344f;
-  --gm-text: #f2f5fb;
-  --gm-text-2: #dce3f0;
-  --gm-secondary: #a3aec4;
-  --gm-muted: #8d99b1;
-  --gm-primary: #a7bff7;
-  --gm-on-primary: #0a1222;
-  --gm-accent: #93b2ff;
-  --gm-lilac: #cdbdf4;
-  --gm-lilac-strong: #b29cf0;
-  --gm-card: #16223a;
-  --gm-on-card: #f2f5fb;
-  --gm-band-from: #0e1c3b;
-  --gm-band-to: #183262;
-  --gm-dock: #1c3060;
+  --gm-bg: #070a1f;
+  --gm-surface: #11152f;
+  --gm-elevated: #171c3a;
+  --gm-sheet: #121733;
+  --gm-row: #1c2142;
+  --gm-border: #222849;
+  --gm-track: #2a3055;
+  --gm-text: #f3f2ff;
+  --gm-text-2: #dedcf5;
+  --gm-secondary: #a9abca;
+  --gm-muted: #9295b6;
+  --gm-primary: #b9a8ff;
+  --gm-on-primary: #0b1230;
+  --gm-accent: #a897ff;
+  --gm-lilac: #b9a8ff;
+  --gm-lilac-strong: #8f74ff;
+  --gm-teal: #2ed8bf;
+  --gm-card: #151a36;
+  --gm-on-card: #f3f2ff;
+  --gm-band-from: #0d0a2e;
+  --gm-band-to: #241a63;
+  --gm-dock: #241a63;
   --gm-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   color-scheme: dark;
 }
@@ -123,6 +128,8 @@ body {
 
 @utility bg-hero { background-image: var(--gm-gradient-hero); }
 @utility bg-wallet { background-image: var(--gm-gradient-wallet); }
+@utility bg-brand { background-image: var(--gm-gradient-brand); }
+@utility bg-pocket { background-image: var(--gm-gradient-pocket); }
 @utility bg-periwinkle { background-image: var(--gm-gradient-periwinkle); }
 @utility bg-silver { background-image: var(--gm-gradient-silver); }
 /* faixa marinho do topo, que desbota no fundo da página */

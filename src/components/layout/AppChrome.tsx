@@ -4,6 +4,7 @@ import { useNav, type View } from '@/app/navigation'
 import { useStore } from '@/store'
 import { Avatar, BalanceToggle, cx, IconButton, Logo, ThemeToggle } from '@/components/ui'
 import { env } from '@/config/env'
+import { firstName } from '@/lib/image'
 
 function greeting() {
   const h = new Date().getHours()
@@ -34,6 +35,8 @@ export function TopBar() {
   const { state } = useStore()
   const nav = useNav()
   const name = state.user?.name ?? ''
+  const avatar = state.user?.avatar
+  const first = firstName(name)
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 12)
@@ -47,10 +50,10 @@ export function TopBar() {
         <span className="hidden lg:block"><Logo className="text-[22px] text-white" /></span>
 
         <button onClick={() => nav.open({ kind: 'account' })} className="flex cursor-pointer items-center gap-3 text-left lg:hidden" aria-label="Abrir conta">
-          <Avatar name={name} />
+          <Avatar name={name} src={avatar} />
           <span>
             <span className="block text-[13px] text-white/70">{greeting()},</span>
-            <span className="block text-[18px] font-bold leading-tight tracking-[-0.02em]">Olá, {name}</span>
+            <span className="block text-[18px] font-bold leading-tight tracking-[-0.02em]">Olá, {first}</span>
           </span>
         </button>
 
@@ -59,7 +62,7 @@ export function TopBar() {
             <button
               key={n.id} onClick={() => nav.go(n.id)} aria-current={nav.view === n.id ? 'page' : undefined}
               className={cx('inline-flex h-10 cursor-pointer items-center gap-2 rounded-full px-5 text-[14px] font-medium transition',
-                nav.view === n.id ? 'bg-white text-[#1f3b70]' : 'text-white/75 hover:text-white')}
+                nav.view === n.id ? 'bg-white text-[var(--gm-band-from)]' : 'text-white/75 hover:text-white')}
             >
               <n.icon size={16} strokeWidth={2} />{n.label}
             </button>
@@ -80,9 +83,9 @@ export function TopBar() {
           <button onClick={() => nav.open({ kind: 'account' })} className="hidden cursor-pointer items-center gap-3 lg:flex" aria-label="Abrir conta">
             <span className="text-right">
               <span className="block text-[12px] text-white/70">{greeting()},</span>
-              <span className="block text-[15px] font-bold leading-tight">Olá, {name}</span>
+              <span className="block text-[15px] font-bold leading-tight">Olá, {first}</span>
             </span>
-            <Avatar name={name} size={42} />
+            <Avatar name={name} src={avatar} size={42} />
           </button>
         </div>
       </div>
@@ -127,14 +130,14 @@ export function Dock() {
   if (nav.view === 'invoice' || nav.view === 'assistant') return null
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-5 pb-[max(16px,env(safe-area-inset-bottom))] lg:hidden">
-      <nav aria-label="Navegação" className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-white/10 bg-gm-dock/95 p-2 shadow-[0_18px_44px_rgba(14,26,51,.45)] backdrop-blur-xl">
+      <nav aria-label="Navegação" className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-white/10 bg-gm-dock/95 p-2 shadow-[0_18px_44px_rgba(11,18,48,.4)] backdrop-blur-xl">
         {NAV.map((n) => {
           const on = nav.view === n.id
           return (
             <button
               key={n.id} onClick={() => nav.go(n.id)} aria-label={n.label} aria-current={on ? 'page' : undefined}
               className={cx('grid cursor-pointer place-items-center rounded-full transition',
-                on ? 'size-14 -my-1.5 border-4 border-gm-dock bg-white text-[#1f3b70] shadow-[0_6px_18px_rgba(0,0,0,.25)]' : 'size-12 text-white/70 hover:text-white')}
+                on ? 'size-14 -my-1.5 border-4 border-gm-dock bg-white text-[var(--gm-band-from)] shadow-[0_6px_18px_rgba(0,0,0,.25)]' : 'size-12 text-white/70 hover:text-white')}
             >
               <n.icon size={21} strokeWidth={1.9} />
             </button>

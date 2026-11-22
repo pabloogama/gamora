@@ -8,6 +8,8 @@ import type { State } from '@/types/finance'
 export interface FinanceRepository {
   load(email: string): State | null
   save(state: State): void
+  /** remove os dados guardados de um e-mail (quando a pessoa troca o e-mail da conta) */
+  remove(email: string): void
 }
 
 const key = (email: string) => `gamora:data:${email}`
@@ -20,6 +22,9 @@ export const localRepository: FinanceRepository = {
     } catch {
       return null
     }
+  },
+  remove(email) {
+    try { localStorage.removeItem(key(email)) } catch { /* ok */ }
   },
   save(state) {
     if (!state.user) return

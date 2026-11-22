@@ -1,5 +1,8 @@
 import { useState } from 'react'
-import { LogOut, Moon, Pencil, RotateCcw, Sun, Trash2 } from 'lucide-react'
+import { Camera, LogOut, Moon, Pencil, RotateCcw, Sun, Trash2, UserPen } from 'lucide-react'
+import { firstName, squareImage } from '@/lib/image'
+import { AuthError } from '@/services/auth'
+import { repository } from '@/store'
 import { useTheme } from '@/hooks/useTheme'
 import { CATEGORIES, type Card, type CategoryId, type Goal, type Transaction } from '@/types/finance'
 import { maskMoney, parseMoney, pct, relativeDay, toISODate, uid } from '@/lib/format'
@@ -23,6 +26,7 @@ export function SheetHost({ sheet }: { sheet: SheetState }) {
     case 'goal': return <GoalForm goal={sheet.goal} />
     case 'budget': return <BudgetForm category={sheet.category} />
     case 'account': return <Account />
+    case 'profile': return <ProfileForm />
   }
 }
 
@@ -280,12 +284,15 @@ function Account() {
   return (
     <Sheet title="Conta" kicker="Gamora" onClose={nav.close}>
       <div className="flex items-center gap-4">
-        <Avatar name={state.user.name} size={60} />
-        <div>
-          <p className="text-[20px] font-bold">{state.user.name}</p>
-          <p className="text-[14px] text-gm-secondary">{state.user.email}</p>
+        <Avatar name={state.user.name} src={state.user.avatar} size={64} />
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-[20px] font-bold">{state.user.name}</p>
+          <p className="truncate text-[14px] text-gm-secondary">{state.user.email}</p>
         </div>
       </div>
+      <Button variant="secondary" size="md" className="mt-5 w-full" onClick={() => nav.open({ kind: 'profile' })}>
+        <UserPen size={18} /> Editar perfil
+      </Button>
       <div className="mt-6 divide-y divide-gm-border rounded-tile bg-gm-surface shadow-soft">
         <label className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4">
           <span className="text-[15px] font-medium">Ocultar valores</span>
@@ -332,5 +339,90 @@ function DangerZone({ label, question, detail, onConfirm }: { label: string; que
     </div>
   ) : (
     <Button variant="outline" className="mt-3 w-full" onClick={() => setOpen(true)}><Trash2 size={18} /> {label}</Button>
+  )
+}
+
+/* ---------- Editar perfil ---------- */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+
+function ProfileForm() {
+  const { state, dispatch } = useStore()
+  const nav = useNav()
+  const user = state.user
+  const [name, setName] = useState(user?.name ?? '')
+  const [email, setEmail] = useState(user?.email ?? '')
+  const [avatar, setAvatar] = useState<string | undefined>(user?.avatar)
+  const [tried, setTried] = useState(false)
+  const [saving, setSaving] = useState(false)
+  const [error, setError] = useState('')
+  const [photoError, setPhotoError] = useState('')
+  if (!user) return null
+
+  const errs = {
+    name: name.trim().split(/\s+/).filter(Boolean).length < 1 || name.trim().length < 2 ? 'Digite seu nome.' : '',
+    email: !EMAIL_RE.test(email.trim()) ? 'Digite um e-mail válido.' : '',
+  }
+  const changed = name.trim() !== user.name || email.trim().toLowerCase() !== user.email || avatar !== user.avatar
+
+  const pickPhoto = async (file?: File) => {
+    setPhotoError('')
+    if (!file) return
+    if (!file.type.startsWith('image/')) return setPhotoError('Escolha uma imagem (JPG, PNG, WEBP ou HEIC).')
+    if (file.size > 8 * 1024 * 1024) return setPhotoError('A imagem passa de 8 MB. Escolha uma menor.')
+    try { setAvatar(await squareImage(file, 256)) } catch (e) { setPhotoError((e as Error).message) }
+  }
+
+  const save = async (e: React.FormEvent) => {
+    e.preventDefault(); setTried(true); setError('')
+    if (errs.name || errs.email) return
+    setSaving(true)
+    try {
+      const updated = await auth.updateProfile(user.email, { name, email, avatar })
+      if (updated.email !== user.email) repository.remove(user.email)
+      dispatch({ type: 'updateUser', user: updated })
+      nav.close(); nav.toast('Perfil atualizado')
+    } catch (err) {
+      setError(err instanceof AuthError ? err.message : 'Não foi possível salvar agora. Tente de novo.')
+      setSaving(false)
+    }
+  }
+
+  return (
+    <Sheet title="Editar perfil" kicker="Conta" onClose={nav.close}>
+      <form onSubmit={save} className="space-y-5" noValidate>
+        {error && <p role="alert" className="rounded-control border border-gm-lilac/50 bg-gm-lilac/15 px-4 py-3 text-[14px] text-gm-text">{error}</p>}
+
+        <div className="flex items-center gap-5">
+          <div className="relative">
+            <Avatar name={name || user.name} src={avatar} size={88} />
+            <label className="absolute -bottom-1 -right-1 grid size-9 cursor-pointer place-items-center rounded-full border-4 border-gm-sheet bg-gm-primary text-gm-on-primary transition hover:brightness-110" title="Trocar foto">
+              <Camera size={16} />
+              <input id="profile-photo" type="file" accept="image/*" className="sr-only" aria-label="Trocar foto de perfil" onChange={(e) => { pickPhoto(e.target.files?.[0]); e.target.value = '' }} />
+            </label>
+          </div>
+          <div className="space-y-2">
+            <label className="inline-flex h-10 cursor-pointer items-center rounded-full bg-gm-row px-4 text-[14px] font-bold text-gm-text transition hover:bg-gm-track">
+              {avatar ? 'Trocar foto' : 'Adicionar foto'}
+              <input type="file" accept="image/*" className="sr-only" aria-label="Escolher foto de perfil" onChange={(e) => { pickPhoto(e.target.files?.[0]); e.target.value = '' }} />
+            </label>
+            {avatar && (
+              <button type="button" onClick={() => setAvatar(undefined)} className="block cursor-pointer text-[13px] font-medium text-gm-secondary underline-offset-4 hover:underline">
+                Remover foto
+              </button>
+            )}
+          </div>
+        </div>
+        {photoError && <p role="alert" className="text-[13px] text-gm-accent">{photoError}</p>}
+
+        <Field label="Nome completo" error={tried ? errs.name : undefined} hint={`Na tela inicial aparece "Olá, ${firstName(name) || '…'}".`}>
+          <input id="profile-name" className={inputCls} value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" maxLength={40} />
+        </Field>
+        <Field label="E-mail" error={tried ? errs.email : undefined} hint="É o e-mail que você usa para entrar.">
+          <input id="profile-email" className={inputCls} type="email" inputMode="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        </Field>
+
+        <Button type="submit" className="w-full" disabled={saving || !changed}>{saving ? 'Salvando…' : 'Salvar alterações'}</Button>
+      </form>
+    </Sheet>
   )
 }

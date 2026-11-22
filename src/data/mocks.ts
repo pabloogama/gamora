@@ -17,7 +17,8 @@ export function emptyState(user: State['user'], startingBalance = 0): State {
   }
 }
 
-export const DEMO_ACCOUNT = { name: 'Lucas', email: 'lucas@gamora.app', password: 'gamora123' }
+/** Conta de demonstração. A foto vem de public/avatars (caminho relativo ao BASE_URL do Vite). */
+export const DEMO_ACCOUNT = { name: 'Pablo Gama', email: 'pablo@gamora.app', password: 'gamora123', avatar: `${import.meta.env.BASE_URL}avatars/pablo.webp` }
 
 export function seed(): State {
   const transactions: Transaction[] = [
@@ -33,7 +34,7 @@ export function seed(): State {
     { id: uid(), name: 'Aluguel', category: 'moradia', method: 'pix', date: day(16), amount: 1200 },
   ]
   return {
-    user: { name: 'Lucas', email: 'lucas@gamora.app' },
+    user: { name: DEMO_ACCOUNT.name, email: DEMO_ACCOUNT.email, avatar: DEMO_ACCOUNT.avatar },
     hideBalance: false,
     baseBalance: 14500 + 2340,
     movedToGoals: 0,

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 import { ArrowRight, Pencil, Plus, Trash2 } from 'lucide-react'
 import {
-  Avatar, BalanceToggle, Button, CategoryIcon, IconButton, Kicker, LinkButton, Logo, MethodIcon, Money, SectionTitle, ThemeToggle,
+  Avatar, BalanceToggle, Button, CategoryIcon, IconButton, Kicker, LinkButton, Logo, LogoMark, MethodIcon, Money, SectionTitle, ThemeToggle,
 } from '@/components/ui'
 import { CATEGORIES, type CategoryId } from '@/types/finance'
 
@@ -87,12 +87,14 @@ export const IconesDeCategoria: StoryObj = {
 }
 
 export const Marca: StoryObj = {
-  name: 'Avatar e Logo',
+  name: 'Avatar, LogoMark e Logo',
   render: () => {
     const [size, setSize] = useState(44)
     return (
       <div className="flex flex-wrap items-center gap-6">
-        <Avatar name="Lucas" size={size} />
+        <Avatar name="Pablo Gama" src={`${import.meta.env.BASE_URL}avatars/pablo.webp`} size={size} />
+        <Avatar name="Pablo Gama" size={size} />
+        <LogoMark size={size} tile />
         <input type="range" min={28} max={72} value={size} onChange={(e) => setSize(+e.target.value)} aria-label="Tamanho do avatar" />
         <Logo className="text-[24px] text-gm-text" />
         <div className="rounded-[18px] bg-band-solid px-5 py-3"><Logo className="text-[24px] text-white" /></div>

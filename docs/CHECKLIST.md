@@ -50,24 +50,42 @@ Legenda: ✅ feito e testado no navegador · 🟡 feito com dados simulados · �
 | OpenAI no servidor, chave só no servidor | ⏳ | exemplos em `api/_examples` |
 | Leitura real de PDF | ⏳ | exemplo cobre foto; PDF precisa da Files API |
 
-## Identidade visual (mudança pedida sobre o briefing)
+## Identidade visual Gamora
 
-O briefing pedia preto + lima + lilás. Por pedido posterior, o visual segue a imagem de referência:
-marinho + lilás + branco, carteira com cartões saindo de um bolso de vidro com costura tracejada,
-cards brancos com sombra suave e dock marinho. Tokens em `src/styles/index.css` (`--gm-*`).
+Tirada da peça de identidade: **Suas finanças, em família.** Tokens em `src/styles/index.css` (`--gm-*`) e `tokens/source.mjs`.
+
+| Papel | Cor | Uso no app |
+|---|---|---|
+| Primária | `#0B1230` | texto, botão principal, chip selecionado |
+| Secundária | `#7B5CFF` | violeta da marca: cartão, 1ª série dos gráficos, assinaturas (só preenchimento; texto usa `#5B3FE0`) |
+| Acento | `#00C2A8` | verde-água: barras e anéis de progresso, 2ª série (nunca texto sobre branco) |
+| Superfície | `#EDE9FF` | ícones de categoria, chips, botões secundários |
+| Fundo | `#F8F9FF` | fundo da página |
 
 | Item | Status |
 |---|---|
-| Tema claro (referência) e tema escuro (marinho profundo) | ✅ |
-| Botão de tema no topo (mobile e desktop), no login e na folha Conta | ✅ |
-| Tema salvo no navegador; sem escolha, segue o sistema; sem piscar ao carregar | ✅ |
-| Carteira na Home (saldo dentro do bolso) e em Cartões (pilha saindo do bolso) | ✅ |
+| Logo "G" em gradiente violeta → verde-água (componente `LogoMark`) e ícone da aba | ✅ |
+| Tipografia Manrope (Google Fonts) | ✅ |
+| Faixa do topo em roxo profundo, dock e bolso da carteira na mesma família | ✅ |
+| Cartão Gamora: violeta com logo, chip e aproximação; variações verde-água e lavanda | ✅ |
+| Login com slogan e os 4 pilares (gastos, família, metas, patrimônio) | ✅ |
+| Tema claro como padrão; escuro opcional (botão no topo), escolha salva | ✅ |
+| Contraste AA conferido nas combinações de texto dos dois temas | ✅ |
+
+## Conta e perfil
+
+| Item | Status |
+|---|---|
+| Folha **Editar perfil** (Conta → Editar perfil): foto, nome completo, e-mail | ✅ |
+| Foto: escolher/trocar/remover, recorte quadrado e redução para 256 px no navegador | ✅ |
+| Saudação usa o primeiro nome ("Olá, Pablo") | ✅ |
+| Conta de demonstração: **Pablo Gama** · `pablo@gamora.app` · `gamora123`, com foto | ✅ |
+| Persistência do perfil (recarregar, sair/entrar) | ✅ local · ⏳ Supabase (`auth.updateUser` + `profiles`) |
 
 ## Lacunas conhecidas
 
 - **ESLint**: o briefing cita, o projeto ainda não tem configuração de lint.
 - **Modo estágio 1** (`VITE_APP_STAGE=1`): implementado, mas não foi testado no navegador.
 - **Alvo da Viagem ao Japão**: o briefing não define; usamos R$ 20.000 (68% de R$ 13.600 ≈ R$ 20.000).
-- **Fonte Satoshi**: vem do Fontshare; sem rede para lá, cai na Manrope.
 - **Dock flutuante no mobile**: veio da imagem de referência, não do briefing ("sem menu de abas").
 - **Contraste**: tokens escolhidos para WCAG AA (texto secundário ≥ 4.5:1 nos dois temas), mas sem auditoria automática.
