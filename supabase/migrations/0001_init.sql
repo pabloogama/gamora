@@ -1,5 +1,5 @@
 -- ════════════════════════════════════════════════════════════════════
---  Gamora · schema inicial — PRONTO, AINDA NÃO APLICADO
+--  Gamora · schema inicial — APLICADO no projeto Supabase "Gamora" (uwthinqxfdmfunzbcyti)
 --
 --  Espelha src/types/finance.ts (domínio) e src/types/database.ts (linhas).
 --  Mapa tela → ação → tabela → política: docs/CRUD.md
@@ -28,7 +28,7 @@ create type public.theme      as enum ('light','dark');
 
 -- ─── updated_at automático ──────────────────────────────────────────
 create or replace function public.set_updated_at() returns trigger
-language plpgsql as $$
+language plpgsql set search_path = '' as $$
 begin
   new.updated_at = now();
   return new;
@@ -97,6 +97,7 @@ create table public.invoice_imports (
   user_id           uuid not null default auth.uid() references auth.users on delete cascade,
   card_id           uuid,
   file_name         text not null,
+  file_path         text,            -- Storage: invoices/<uid>/<arquivo> (privado)
   total             numeric(12,2) not null check (total >= 0),
   item_count        integer not null check (item_count >= 0),
   previous_invoice  numeric(12,2) not null default 0,
@@ -106,6 +107,7 @@ create table public.invoice_imports (
   foreign key (card_id) references public.cards (id) on delete set null
 );
 create index invoice_imports_user on public.invoice_imports (user_id, imported_at desc);
+create index invoice_imports_card on public.invoice_imports (card_id) where card_id is not null;
 
 -- ════════════════════════════════════════════════════════════════════
 --  transactions — CRUD completo: Adicionar gasto · Extrato/Detalhe ·
@@ -182,7 +184,8 @@ create table public.goal_deposits (
   -- a meta precisa ser da mesma pessoa (FK composta com user_id)
   foreign key (goal_id, user_id) references public.goals (id, user_id) on delete cascade
 );
-create index goal_deposits_goal on public.goal_deposits (goal_id, date desc);
+create index goal_deposits_goal on public.goal_deposits (goal_id, user_id, date desc); -- cobre a FK composta
+create index goal_deposits_user on public.goal_deposits (user_id);
 
 -- ════════════════════════════════════════════════════════════════════
 --  assistant_messages — Estágio 2. C: enviar pergunta / resposta
@@ -208,7 +211,7 @@ create trigger goal_deposits_updated before update on public.goal_deposits for e
 
 -- ─── cartão do gasto/importação precisa ser da mesma pessoa ─────────
 create or replace function public.check_card_owner() returns trigger
-language plpgsql as $$
+language plpgsql set search_path = '' as $$
 begin
   if new.card_id is not null and not exists (
     select 1 from public.cards c where c.id = new.card_id and c.user_id = new.user_id
@@ -316,22 +319,46 @@ alter table public.goal_deposits      enable row level security;
 alter table public.assistant_messages enable row level security;
 
 -- profiles: insert vem do trigger (security definer); delete vem da cascata de auth.users
-create policy profiles_select on public.profiles for select using (id = auth.uid());
-create policy profiles_update on public.profiles for update using (id = auth.uid()) with check (id = auth.uid());
+create policy profiles_select on public.profiles for select to authenticated using (id = (select auth.uid()));
+create policy profiles_update on public.profiles for update to authenticated using (id = (select auth.uid())) with check (id = (select auth.uid()));
 
 do $$
 declare t text;
 begin
   foreach t in array array['cards','invoice_imports','transactions','budgets','goals','goal_deposits','assistant_messages'] loop
-    execute format('create policy %1$s_select on public.%1$s for select using (user_id = auth.uid())', t);
-    execute format('create policy %1$s_insert on public.%1$s for insert with check (user_id = auth.uid())', t);
-    execute format('create policy %1$s_update on public.%1$s for update using (user_id = auth.uid()) with check (user_id = auth.uid())', t);
-    execute format('create policy %1$s_delete on public.%1$s for delete using (user_id = auth.uid())', t);
+    execute format('create policy %1$s_select on public.%1$s for select to authenticated using (user_id = (select auth.uid()))', t);
+    execute format('create policy %1$s_insert on public.%1$s for insert to authenticated with check (user_id = (select auth.uid()))', t);
+    execute format('create policy %1$s_update on public.%1$s for update to authenticated using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()))', t);
+    execute format('create policy %1$s_delete on public.%1$s for delete to authenticated using (user_id = (select auth.uid()))', t);
   end loop;
 end $$;
 
 -- mensagens do assistente não são editadas
 drop policy assistant_messages_update on public.assistant_messages;
+
+-- funções: só quem está logado chama; os triggers não são chamados direto
+revoke execute on function public.import_invoice(uuid, text, jsonb) from public, anon;
+revoke execute on function public.undo_invoice_import(uuid) from public, anon;
+grant  execute on function public.import_invoice(uuid, text, jsonb) to authenticated;
+grant  execute on function public.undo_invoice_import(uuid) to authenticated;
+revoke execute on function public.handle_new_user() from public, anon, authenticated;
+
+-- ════════════════════════════════════════════════════════════════════
+--  GRANTs da Data API — projetos novos do Supabase não liberam as tabelas
+--  sozinhos. O GRANT libera a operação; o RLS acima filtra as linhas.
+--  anon (sem login) não tem acesso a nada.
+-- ════════════════════════════════════════════════════════════════════
+revoke all on all tables in schema public from anon;
+grant select                         on public.profiles           to authenticated;
+grant update (name, avatar_url, base_balance, month_cap, hide_balance, theme) on public.profiles to authenticated;
+grant select, insert, update, delete on public.cards              to authenticated;
+grant select, insert, update, delete on public.transactions       to authenticated;
+grant select, insert, update, delete on public.budgets            to authenticated;
+grant select, insert, update, delete on public.goals              to authenticated;
+grant select, insert, update, delete on public.goal_deposits      to authenticated;
+grant select, insert,         delete on public.invoice_imports    to authenticated;
+grant select, insert,         delete on public.assistant_messages to authenticated;
+grant select on public.goal_progress, public.account_summary, public.monthly_totals to authenticated;
 
 -- ════════════════════════════════════════════════════════════════════
 --  Storage: fotos de perfil em avatars/<uid>/<arquivo>
@@ -340,7 +367,21 @@ insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_typ
 values ('avatars', 'avatars', true, 2097152, array['image/webp','image/jpeg','image/png'])
 on conflict (id) do nothing;
 
-create policy avatars_read   on storage.objects for select using (bucket_id = 'avatars');
-create policy avatars_insert on storage.objects for insert with check (bucket_id = 'avatars' and (storage.foldername(name))[1] = auth.uid()::text);
-create policy avatars_update on storage.objects for update using (bucket_id = 'avatars' and (storage.foldername(name))[1] = auth.uid()::text);
-create policy avatars_delete on storage.objects for delete using (bucket_id = 'avatars' and (storage.foldername(name))[1] = auth.uid()::text);
+-- bucket público: a foto abre pela URL pública; listar/gerenciar só a própria pasta
+create policy avatars_read   on storage.objects for select to authenticated using (bucket_id = 'avatars' and (storage.foldername(name))[1] = (select auth.uid())::text);
+create policy avatars_insert on storage.objects for insert to authenticated with check (bucket_id = 'avatars' and (storage.foldername(name))[1] = (select auth.uid())::text);
+create policy avatars_update on storage.objects for update to authenticated using (bucket_id = 'avatars' and (storage.foldername(name))[1] = (select auth.uid())::text);
+create policy avatars_delete on storage.objects for delete to authenticated using (bucket_id = 'avatars' and (storage.foldername(name))[1] = (select auth.uid())::text);
+
+-- ════════════════════════════════════════════════════════════════════
+--  Storage: arquivos de fatura enviados (estágio 2) em invoices/<uid>/<arquivo>
+--  PRIVADO: só a dona lê (via URL assinada) e apaga.
+-- ════════════════════════════════════════════════════════════════════
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('invoices', 'invoices', false, 10485760, array['application/pdf','image/jpeg','image/png','image/webp','image/heic'])
+on conflict (id) do nothing;
+
+create policy invoices_read   on storage.objects for select to authenticated using (bucket_id = 'invoices' and (storage.foldername(name))[1] = (select auth.uid())::text);
+create policy invoices_insert on storage.objects for insert to authenticated with check (bucket_id = 'invoices' and (storage.foldername(name))[1] = (select auth.uid())::text);
+create policy invoices_update on storage.objects for update to authenticated using (bucket_id = 'invoices' and (storage.foldername(name))[1] = (select auth.uid())::text);
+create policy invoices_delete on storage.objects for delete to authenticated using (bucket_id = 'invoices' and (storage.foldername(name))[1] = (select auth.uid())::text);

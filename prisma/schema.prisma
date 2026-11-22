@@ -1,0 +1,322 @@
+// ════════════════════════════════════════════════════════════════════
+//  Gamora · Schema Prisma
+//
+//  ESPELHO do banco no Supabase (projeto "Gamora", uwthinqxfdmfunzbcyti).
+//  A FONTE DA VERDADE é o SQL em supabase/migrations/0001_init.sql:
+//  RLS, triggers, views, RPCs, GRANTs e Storage só existem lá.
+//  Não rode `prisma migrate` contra este banco — use `prisma db pull`
+//  para conferir e `prisma generate` para ter o client tipado.
+//
+//  Onde o Prisma entra: só no SERVIDOR (Vercel Functions em /api),
+//  com DATABASE_URL (pooler, porta 6543) e DIRECT_URL (porta 5432).
+//  Atenção: a conexão do Prisma usa o papel `postgres`, que IGNORA o RLS.
+//  Toda consulta no servidor precisa filtrar por userId explicitamente.
+//  O app no navegador NÃO usa Prisma: usa supabase-js + RLS.
+// ════════════════════════════════════════════════════════════════════
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["views"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+  schemas   = ["auth", "public"]
+}
+
+// ─── enums (public) ──────────────────────────────────────────────────
+
+enum Category {
+  moradia
+  alimentacao
+  transporte
+  lazer
+  assinaturas
+  saude
+  outros
+
+  @@map("category")
+  @@schema("public")
+}
+
+enum CardColor {
+  gradient
+  lilac
+  offwhite
+
+  @@map("card_color")
+  @@schema("public")
+}
+
+/// 'card' exige cardId; 'pix' e 'dinheiro' exigem cardId nulo (check card_only_for_card)
+enum PayMethod {
+  card
+  pix
+  dinheiro
+
+  @@map("pay_method")
+  @@schema("public")
+}
+
+enum TxSource {
+  manual
+  invoice
+
+  @@map("tx_source")
+  @@schema("public")
+}
+
+enum ChatRole {
+  user
+  assistant
+
+  @@map("chat_role")
+  @@schema("public")
+}
+
+enum Theme {
+  light
+  dark
+
+  @@map("theme")
+  @@schema("public")
+}
+
+// ─── auth.users (gerenciada pelo Supabase Auth; só leitura aqui) ──────
+
+/// Contas do Supabase Auth. Criar/editar/excluir é com a API de Auth, nunca pelo Prisma.
+/// Excluir a conta apaga tudo em cascata (on delete cascade em todas as tabelas).
+model AuthUser {
+  id    String  @id @db.Uuid
+  email String?
+
+  profile           Profile?
+  cards             Card[]
+  transactions      Transaction[]
+  invoiceImports    InvoiceImport[]
+  budgets           Budget[]
+  goals             Goal[]
+  goalDeposits      GoalDeposit[]
+  assistantMessages AssistantMessage[]
+
+  @@map("users")
+  @@schema("auth")
+}
+
+// ─── public ──────────────────────────────────────────────────────────
+
+/// 1 por conta. Criado pelo trigger on_auth_user_created no cadastro.
+/// RLS: select/update só o próprio (id = auth.uid()). Sem insert/delete pela API.
+/// Saldo = baseBalance − soma(transactions) − soma(goal_deposits) → view account_summary.
+model Profile {
+  id          String   @id @db.Uuid
+  name        String   @db.Text /// 1–40 caracteres
+  avatarUrl   String?  @map("avatar_url") @db.Text /// Storage: avatars/<uid>/avatar.webp
+  baseBalance Decimal  @default(0) @map("base_balance") @db.Decimal(12, 2)
+  monthCap    Decimal  @default(0) @map("month_cap") @db.Decimal(12, 2) /// 0 = sem teto do mês
+  hideBalance Boolean  @default(false) @map("hide_balance")
+  theme       Theme    @default(light)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @default(now()) @map("updated_at") @db.Timestamptz(6) /// trigger set_updated_at
+
+  user AuthUser @relation(fields: [id], references: [id], onDelete: Cascade)
+
+  @@map("profiles")
+  @@schema("public")
+}
+
+/// CRUD completo (tela Cartões). "Vence em N dias" é calculado a partir de dueDay.
+/// invoice soma/desconta sozinho quando um gasto no cartão é criado/editado/apagado (trigger bump_card_invoice).
+model Card {
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId      String    @default(dbgenerated("auth.uid()")) @map("user_id") @db.Uuid
+  nickname    String    @db.Text /// 1–20 caracteres
+  last4       String    @db.Char(4) /// 4 dígitos
+  invoice     Decimal   @default(0) @db.Decimal(12, 2) /// fatura atual (≥ 0)
+  creditLimit Decimal   @map("credit_limit") @db.Decimal(12, 2) /// > 0
+  dueDay      Int       @default(10) @map("due_day") @db.SmallInt /// 1–31
+  color       CardColor @default(lilac)
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime  @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  user           AuthUser        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  /// cartão apagado: os gastos ficam, com cardId = null ("Cartão removido")
+  transactions   Transaction[]
+  invoiceImports InvoiceImport[]
+
+  @@unique([id, userId])
+  @@index([userId], map: "cards_user")
+  @@map("cards")
+  @@schema("public")
+}
+
+/// Estágio 2. Criada pela RPC import_invoice; desfeita pela RPC undo_invoice_import
+/// (apaga os lançamentos em cascata e devolve a fatura anterior). Não se edita.
+model InvoiceImport {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId          String   @default(dbgenerated("auth.uid()")) @map("user_id") @db.Uuid
+  cardId          String?  @map("card_id") @db.Uuid
+  fileName        String   @map("file_name") @db.Text
+  filePath        String?  @map("file_path") @db.Text /// Storage privado: invoices/<uid>/<arquivo>
+  total           Decimal  @db.Decimal(12, 2)
+  itemCount       Int      @map("item_count")
+  previousInvoice Decimal  @default(0) @map("previous_invoice") @db.Decimal(12, 2)
+  importedAt      DateTime @default(now()) @map("imported_at") @db.Timestamptz(6)
+
+  user         AuthUser      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  card         Card?         @relation(fields: [cardId], references: [id], onDelete: SetNull)
+  transactions Transaction[]
+
+  @@unique([id, userId])
+  @@index([userId, importedAt(sort: Desc)], map: "invoice_imports_user")
+  @@index([cardId], map: "invoice_imports_card")
+  @@map("invoice_imports")
+  @@schema("public")
+}
+
+/// Gastos. CRUD completo (Adicionar, Extrato/Detalhe, Editar, Apagar).
+model Transaction {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId          String    @default(dbgenerated("auth.uid()")) @map("user_id") @db.Uuid
+  name            String    @db.Text /// 1–40 caracteres
+  category        Category
+  method          PayMethod
+  cardId          String?   @map("card_id") @db.Uuid /// só com method = card; precisa ser cartão da mesma pessoa (trigger check_card_owner)
+  date            DateTime  @default(dbgenerated("CURRENT_DATE")) @db.Date
+  amount          Decimal   @db.Decimal(12, 2) /// > 0
+  source          TxSource  @default(manual)
+  invoiceImportId String?   @map("invoice_import_id") @db.Uuid /// só com source = invoice
+  isSubscription  Boolean   @default(false) @map("is_subscription")
+  note            String?   @db.Text /// até 120 caracteres
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime  @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  user          AuthUser       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  card          Card?          @relation(fields: [cardId], references: [id], onDelete: SetNull)
+  invoiceImport InvoiceImport? @relation(fields: [invoiceImportId], references: [id], onDelete: Cascade)
+
+  @@index([userId, date(sort: Desc)], map: "transactions_user_date")
+  @@index([cardId], map: "transactions_card")
+  @@index([invoiceImportId], map: "transactions_import")
+  @@map("transactions")
+  @@schema("public")
+}
+
+/// Teto por categoria (o teto do mês inteiro é Profile.monthCap). Um por categoria: upsert em (userId, category).
+model Budget {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId      String   @default(dbgenerated("auth.uid()")) @map("user_id") @db.Uuid
+  category    Category
+  limitAmount Decimal  @map("limit_amount") @db.Decimal(12, 2) /// > 0
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  user AuthUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, category])
+  @@map("budgets")
+  @@schema("public")
+}
+
+/// Metas. Quanto já tem = initialSaved + soma dos depósitos → view goal_progress.
+/// Apagar a meta apaga os depósitos (o valor volta ao saldo).
+model Goal {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId       String    @default(dbgenerated("auth.uid()")) @map("user_id") @db.Uuid
+  name         String    @db.Text /// 1–30 caracteres
+  target       Decimal   @db.Decimal(12, 2) /// > 0
+  initialSaved Decimal   @default(0) @map("initial_saved") @db.Decimal(12, 2) /// guardado fora do app
+  targetMonth  DateTime? @map("target_month") @db.Date /// sempre dia 1 do mês
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime  @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  user     AuthUser      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  deposits GoalDeposit[]
+
+  @@unique([id, userId])
+  @@index([userId], map: "goals_user")
+  @@map("goals")
+  @@schema("public")
+}
+
+/// Cada valor guardado numa meta (sai do saldo). FK composta garante meta da mesma pessoa.
+model GoalDeposit {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String   @default(dbgenerated("auth.uid()")) @map("user_id") @db.Uuid
+  goalId    String   @map("goal_id") @db.Uuid
+  amount    Decimal  @db.Decimal(12, 2) /// > 0
+  date      DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
+  note      String?  @db.Text /// até 40 caracteres
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  user AuthUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goal Goal     @relation(fields: [goalId, userId], references: [id, userId], onDelete: Cascade)
+
+  @@index([goalId, userId, date(sort: Desc)], map: "goal_deposits_goal")
+  @@index([userId], map: "goal_deposits_user")
+  @@map("goal_deposits")
+  @@schema("public")
+}
+
+/// Conversa com o assistente (estágio 2). Criar, ver e apagar; não se edita.
+model AssistantMessage {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String   @default(dbgenerated("auth.uid()")) @map("user_id") @db.Uuid
+  role      ChatRole
+  content   String   @db.Text /// até 4000 caracteres
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  user AuthUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt], map: "assistant_messages_user")
+  @@map("assistant_messages")
+  @@schema("public")
+}
+
+// ─── views (só leitura) ──────────────────────────────────────────────
+
+/// goals + quanto já tem (saved = initial_saved + deposited)
+view GoalProgress {
+  id           String    @unique @db.Uuid
+  userId       String    @map("user_id") @db.Uuid
+  name         String
+  target       Decimal   @db.Decimal(12, 2)
+  initialSaved Decimal   @map("initial_saved") @db.Decimal(12, 2)
+  targetMonth  DateTime? @map("target_month") @db.Date
+  createdAt    DateTime  @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime  @map("updated_at") @db.Timestamptz(6)
+  deposited    Decimal
+  saved        Decimal
+  depositCount BigInt    @map("deposit_count")
+
+  @@map("goal_progress")
+  @@schema("public")
+}
+
+/// saldo = base_balance − spent_total − moved_to_goals
+view AccountSummary {
+  userId       String  @unique @map("user_id") @db.Uuid
+  baseBalance  Decimal @map("base_balance") @db.Decimal(12, 2)
+  spentTotal   Decimal @map("spent_total")
+  movedToGoals Decimal @map("moved_to_goals")
+  balance      Decimal
+
+  @@map("account_summary")
+  @@schema("public")
+}
+
+/// total por mês e categoria (Home, Extrato, comparação com o mês anterior)
+view MonthlyTotal {
+  userId   String   @map("user_id") @db.Uuid
+  month    DateTime @db.Date
+  category Category
+  total    Decimal
+  txCount  BigInt   @map("tx_count")
+
+  @@unique([userId, month, category])
+  @@map("monthly_totals")
+  @@schema("public")
+}

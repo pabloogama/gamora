@@ -81,7 +81,10 @@ Revisão completa contra o briefing, com **CRUD completo** para tudo que a pesso
 
 | Item | Status |
 |---|---|
-| Schema completo: 8 tabelas, 3 views, triggers, 2 RPCs, bucket de fotos | ✅ `supabase/migrations/0001_init.sql` |
+| **Banco criado no Supabase** (projeto Gamora) com dados de demonstração | ✅ ver [`docs/SUPABASE.md`](SUPABASE.md) |
+| Schema completo: 8 tabelas, 3 views, triggers, 2 RPCs, GRANTs, buckets `avatars` e `invoices` | ✅ `supabase/migrations/0001_init.sql` |
+| CRUD + RLS + Storage validados pela API real (61/61) | ✅ `supabase/tests/api-crud.test.mjs` |
+| Schema Prisma (documentação, conferido contra o banco) | ✅ `prisma/schema.prisma` |
 | RLS com 4 políticas por tabela (select/insert/update/delete) | ✅ testado |
 | Isolamento: não usa o cartão ou a meta de outra conta | ✅ testado |
 | Cascatas: excluir conta apaga tudo; apagar meta apaga depósitos; apagar cartão mantém os gastos | ✅ testado |
@@ -89,7 +92,7 @@ Revisão completa contra o briefing, com **CRUD completo** para tudo que a pesso
 | Contratos de repositório por entidade (`src/services/api/contracts.ts`) | ✅ |
 | Contrato de auth com alterar senha e excluir conta | ✅ local · ⏳ Supabase |
 | `.env` / `.env.example` / `.gitignore` · rotas de exemplo da OpenAI | ✅ |
-| Persistência real no Supabase | ⏳ hoje: localStorage por conta |
+| App lendo e gravando no Supabase | ⏳ banco pronto; o front ainda usa localStorage |
 | OpenAI real (fatura e assistente) | ⏳ hoje: simulado |
 
 ## 6. Visual e acessibilidade

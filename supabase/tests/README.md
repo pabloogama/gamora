@@ -22,3 +22,7 @@ O que é conferido:
   - apagar um cartão mantém os gastos dele (o vínculo com o cartão fica vazio);
   - apagar uma meta apaga os depósitos, e o valor volta para o saldo;
   - excluir a conta apaga tudo.
+
+## Pela API real do Supabase
+
+`api-crud.test.mjs` faz as mesmas verificações e mais o Storage, com login de verdade (61 verificações). Instruções em [`docs/SUPABASE.md`](../../docs/SUPABASE.md#rodar-a-validação-de-novo).

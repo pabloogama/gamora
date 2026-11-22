@@ -43,6 +43,7 @@ Testes do banco (Postgres puro, sem Supabase): veja `supabase/tests/README.md`.
 ## Documentação
 
 - [`docs/CHECKLIST.md`](docs/CHECKLIST.md): todas as telas, folhas e funcionalidades, com o status de cada uma.
+- [`docs/SUPABASE.md`](docs/SUPABASE.md): o banco no Supabase (tabelas, RLS, Storage, Prisma, dados de demonstração) e o checklist do banco.
 - [`docs/CRUD.md`](docs/CRUD.md): cada entidade × criar, ver, editar e apagar, ligadas à tela, à ação do store, ao contrato e à tabela.
 - [`docs/TOKENS.md`](docs/TOKENS.md): design tokens primitivos e semânticos.
 
@@ -56,7 +57,9 @@ gamora/
 ├─ tokens/                   # design tokens: source.mjs (fonte) → primitives/semantic/figma-variables.json
 ├─ docs/                     # CHECKLIST.md, CRUD.md, TOKENS.md (gerado)
 ├─ .storybook/               # configuração do Storybook (tema, viewports, providers)
+├─ prisma/schema.prisma      # espelho do banco para o Prisma (só servidor)
 ├─ supabase/
+│  ├─ seed/demo.sql          # dados de demonstração (temporários)
 │  ├─ migrations/            # schema SQL + RLS + views + RPCs, pronto para aplicar
 │  └─ tests/                 # testes do CRUD e do RLS (Postgres puro)
 ├─ tests/e2e/                # testes ponta a ponta (Playwright)
@@ -99,9 +102,9 @@ Imports usam o alias `@/` → `src/`.
 
 ## Roteiro de integração
 
-**Supabase**
+**Supabase** (banco já criado e populado: [`docs/SUPABASE.md`](docs/SUPABASE.md))
 1. `npm install @supabase/supabase-js`
-2. Rodar `supabase/migrations/0001_init.sql` no projeto (SQL Editor ou `supabase db push`)
+2. ~~Rodar `supabase/migrations/0001_init.sql`~~ feito no projeto Gamora
 3. Preencher `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` no `.env`
 4. Ativar `src/services/supabase/client.ts` e implementar `DataApi` (`src/services/api/contracts.ts`) usando `mappers.ts`
 5. `VITE_DATA_SOURCE=supabase` e trocar `localAuth` por um `supabaseAuth` (mesmo contrato `AuthService`)

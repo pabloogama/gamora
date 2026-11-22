@@ -1,6 +1,6 @@
 -- Testes do CRUD + RLS. Roda num Postgres puro com supabase/tests/_supabase_stub.sql (ver supabase/tests/README.md).
 \set ON_ERROR_STOP on
-grant all on all tables in schema public to authenticated;
+-- os GRANTs vêm da migração
 grant execute on all functions in schema public to authenticated;
 -- duas contas (o trigger cria os profiles)
 insert into auth.users (id, email, raw_user_meta_data) values

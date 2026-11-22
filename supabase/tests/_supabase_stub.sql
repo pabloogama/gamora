@@ -6,4 +6,6 @@ create table storage.buckets (id text primary key, name text, public boolean, fi
 create table storage.objects (id uuid primary key default gen_random_uuid(), bucket_id text, name text);
 create function storage.foldername(name text) returns text[] language sql as $$ select string_to_array(name, '/') $$;
 do $$ begin create role authenticated; exception when duplicate_object then null; end $$;
+do $$ begin create role anon; exception when duplicate_object then null; end $$;
+grant usage on schema public to anon;
 grant usage on schema public, auth, storage to authenticated;
