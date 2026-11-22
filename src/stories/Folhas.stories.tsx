@@ -50,6 +50,8 @@ export const AjustarSaldo = story({ kind: 'balance' }, 'Ajustar saldo')
 export const AlterarSenha = story({ kind: 'password' }, 'Alterar senha')
 export const ExcluirConta = story({ kind: 'deleteAccount' }, 'Excluir conta')
 export const Conta = story({ kind: 'account' }, 'Conta')
+export const ContaAdmin = story({ kind: 'account' }, 'Conta · administrador')
+export const ContaComum = story({ kind: 'account' }, 'Conta · pessoa comum (Começar do zero)')
 export const EditarPerfil = story({ kind: 'profile' }, 'Editar perfil')
 
 // Detalhe usa o id do estado; os stories rodam com o mesmo seed.
@@ -60,3 +62,5 @@ DetalheMeta.parameters = { state: s }
 EditarMeta.parameters = { state: s }
 EditarDeposito.parameters = { state: s }
 FaturaImportada.parameters = { state: withImport }
+ContaAdmin.parameters = { state: { ...seed(), user: { ...seed().user!, name: 'Pablo Gama', email: 'admin@gamora.app', isAdmin: true } } }
+ContaComum.parameters = { state: { ...seed(), user: { name: 'Ana Souza', email: 'ana@exemplo.com' } } }

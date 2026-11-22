@@ -27,6 +27,8 @@ npm run dev              # http://localhost:5173
 | `npm run typecheck` | só a checagem de tipos |
 | `npm run storybook` | Storybook local em http://localhost:6006 (tokens, componentes, folhas e telas) |
 | `npm run build-storybook` | Storybook estático em `storybook-static/` |
+| `npm run build:ds` | página do Design System em `dist/design-system/`, gerada dos tokens |
+| `npm run build:vercel` | o que a Vercel roda: app + Design System + Storybook em `dist/` |
 | `npm run tokens` | regenera `tokens/*.json` e `docs/TOKENS.md` a partir de `tokens/source.mjs` e confere com o CSS |
 
 ### Testes
@@ -41,6 +43,16 @@ node tests/e2e/crud.cjs     # criar · ver · editar · apagar em cada entidade
 Esses dois rodam no modo local (`VITE_DATA_SOURCE=local`). Para o app conectado ao Supabase, use `tests/e2e/supabase.cjs` e `tests/e2e/supabase-conta.cjs` (instruções no topo de cada arquivo).
 
 Testes do banco (Postgres puro, sem Supabase): veja `supabase/tests/README.md`.
+
+## Endereços publicados (Vercel)
+
+| Endereço | O quê |
+|---|---|
+| `/` | o app |
+| `/storybook/` | o Storybook (componentes, folhas e telas) |
+| `/design-system/` | o Design System (marca, cores, tipografia, tokens e logos para baixar) |
+
+Os três saem do mesmo build (`npm run build:vercel`) e se atualizam a cada envio para a `main`.
 
 ## Documentação
 
@@ -57,6 +69,7 @@ gamora/
 │  ├─ assistant.ts · invoice.ts  # IA (OpenAI) com login obrigatório
 │  └─ _lib/                  # código comum das rotas
 ├─ public/                   # arquivos estáticos (favicon)
+├─ design-system/assets/     # logos usados na página do Design System
 ├─ tokens/                   # design tokens: source.mjs (fonte) → primitives/semantic/figma-variables.json
 ├─ docs/                     # CHECKLIST.md, CRUD.md, TOKENS.md (gerado)
 ├─ .storybook/               # configuração do Storybook (tema, viewports, providers)

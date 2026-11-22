@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 import { Plus } from 'lucide-react'
-import { Bar, Button, Empty, Ring, Sheet, Skeleton, Toast } from '@/components/ui'
+import { Bar, BootSplash, Button, Empty, Ring, Sheet, Skeleton, Toast } from '@/components/ui'
 
 const meta: Meta = { title: 'Componentes/Feedback', parameters: { docs: { description: { component: 'Progresso, estados vazio e carregando, toast e folha.' } } } }
 export default meta
@@ -42,6 +42,18 @@ export const Carregando: S = {
 export const Aviso: S = {
   name: 'Toast',
   render: () => <div className="h-40"><Toast msg="Gasto de R$ 45,90 salvo" /></div>,
+}
+
+export const AvisoErro: S = {
+  name: 'Toast · erro',
+  parameters: { docs: { description: { story: 'Quando o Supabase recusa uma gravação ou cai a conexão. O app relê os dados do servidor em seguida.' } } },
+  render: () => <div className="h-40"><Toast error msg="Sem conexão. A última alteração não foi salva." /></div>,
+}
+
+export const Abertura: S = {
+  name: 'BootSplash',
+  parameters: { layout: 'fullscreen', docs: { description: { story: 'Tela de abertura enquanto a sessão salva e os dados da conta são carregados do Supabase.' } } },
+  render: () => <BootSplash />,
 }
 
 export const Folha: S = {

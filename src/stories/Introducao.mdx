@@ -6,15 +6,18 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 Suas finanças, em família.
 
-Este Storybook documenta os **tokens** e os **componentes** que já existem no app (`src/`). Ele usa o mesmo CSS, os mesmos componentes e os mesmos dados de referência do app.
+Este Storybook documenta os **tokens** e os **componentes** que já existem no app (`src/`). Ele usa o mesmo CSS, os mesmos componentes e os mesmos dados de referência do app. As histórias rodam com dados de exemplo e não mexem no Supabase.
+
+**Links:** <a href="../" target="_top">App</a> · <a href="../design-system/" target="_top">Design System</a> (marca, cores, tipografia e tokens para baixar).
 
 ## Como navegar
 
 - **Tokens / Primitivos**: valores crus (cor, fonte, tamanho, peso, altura de linha, letter-spacing, espaço, espaço negativo, raio, stroke, tamanho, opacidade, blur, sombra, duração, easing, z-index, breakpoint).
 - **Tokens / Semânticos**: aliases em kebab-case (`color-bg-surface`, `space-inset-card`, `radius-wallet-card`…), com valor no tema claro e no escuro.
 - **Componentes**: Base, Formulário, Feedback, Finanças (carteira) e Layout.
-- **Folhas**: Adicionar, Detalhe, Cartão, Guardar, Meta, Teto e Conta.
-- **Telas**: Home, Cartões, Metas, Fatura, Assistente e Login.
+- **Folhas**: gasto, cartão, meta e depósitos, teto, fatura importada, conta (comum e administrador), perfil, saldo, senha e excluir conta.
+- **Telas**: Home, Extrato, Cartões, Metas, Fatura, Assistente e Login.
+- **Feedback**: inclui o toast de erro de gravação e a tela de abertura (BootSplash).
 
 Na barra de cima: **Tema** (claro/escuro) e **Viewport** (mobile 390, mobile 375, tablet, desktop 1440).
 

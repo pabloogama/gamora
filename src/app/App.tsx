@@ -3,7 +3,7 @@ import { NavCtx, type Nav, type SheetState, type View } from '@/app/navigation'
 import { useStore } from '@/store'
 import { env } from '@/config/env'
 import { Dock, TopBand, TopBar } from '@/components/layout/AppChrome'
-import { Logo, Toast } from '@/components/ui'
+import { BootSplash, Toast } from '@/components/ui'
 import HomeScreen from '@/features/home/HomeScreen'
 import AuthScreen from '@/features/auth/AuthScreen'
 
@@ -81,16 +81,7 @@ export default function App() {
     toastTimer.current = window.setTimeout(() => setToastMsg(null), 4500)
   }, [syncError])
 
-  if (status === 'booting') {
-    return (
-      <div className="grid min-h-dvh place-items-center bg-gm-bg" aria-busy="true" aria-label="Carregando seus dados">
-        <div className="flex flex-col items-center gap-5">
-          <Logo className="text-[26px] text-gm-text" />
-          <span className="h-1 w-28 overflow-hidden rounded-full bg-gm-track"><span className="block h-full w-1/2 animate-pulse rounded-full bg-gm-accent" /></span>
-        </div>
-      </div>
-    )
-  }
+  if (status === 'booting') return <BootSplash />
   if (!state.user) return <>{toastMsg && <Toast key={toastMsg.id} msg={toastMsg.msg} error={toastMsg.error} />}<AuthScreen /></>
 
   return (
